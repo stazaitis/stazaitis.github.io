@@ -1,123 +1,57 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephen Stasaitis | Cybersecurity Projects</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #0D1117; color: #C9D1D9; padding: 20px; }
+        h1, h2 { color: #58A6FF; }
+        a { color: #58A6FF; text-decoration: none; }
+        pre { background: #161B22; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Stephen Stasaitis Cybersecurity Projects</h1>
+    <p>Welcome to my cybersecurity portfolio! This repository showcases my hands-on experience in penetration testing, network security, system hardening, and SIEM analysis.</p>
+    
+    <h2>🔹 Cybersecurity Project Summary</h2>
+    <p>I have completed a comprehensive cybersecurity project simulating an enterprise environment. This project involved provisioning virtual machines, setting up a domain infrastructure, configuring security monitoring tools, and conducting cyber-attacks to test defenses.</p>
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+    <ul>
+        <li><b>Virtualization & Infrastructure Setup</b> – VirtualBox, Windows/Linux VMs.</li>
+        <li><b>Active Directory & Security</b> – Windows Server 2025, user authentication, security policies.</li>
+        <li><b>Endpoint Hardening</b> – Securing Windows/Linux machines, FIM, logging.</li>
+        <li><b>SIEM Integration</b> – Security Onion, Wazuh, log monitoring.</li>
+        <li><b>Offensive Security</b> – Kali Linux, phishing, privilege escalation.</li>
+    </ul>
 
-[Link to another page](./another-page.html).
+    <h2>📁 Featured Projects</h2>
+    <h3>🛡️ Active Directory Security Lab</h3>
+    <p><b>Tools Used:</b> VirtualBox, Windows Server, AD, Group Policy</p>
 
-There should be whitespace between paragraphs.
+    <h3>🔍 SIEM & Threat Detection Lab</h3>
+    <p><b>Tools Used:</b> Splunk, ELK Stack, Sysmon, Wazuh</p>
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+    <h3>🔓 Penetration Testing</h3>
+    <p><b>Tools Used:</b> Kali Linux, Metasploit, Nessus, Burp Suite</p>
 
-# Header 1
+    <h2>🛠️ Skills & Experience</h2>
+    <ul>
+        <li><b>System Administration:</b> Windows Server 2025, Ubuntu 22.04</li>
+        <li><b>Network Security:</b> NAT, static IP, firewall rules</li>
+        <li><b>SIEM & Log Analysis:</b> Security Onion, Suricata, Zeek</li>
+        <li><b>Offensive Security:</b> Kali Linux, privilege escalation</li>
+    </ul>
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+    <h2>📄 Certifications</h2>
+    <ul>
+        <li>✅ CompTIA Security+</li>
+        <li>✅ CompTIA Network+</li>
+    </ul>
 
-## Header 2
+    <h2>📢 Connect with Me</h2>
+    <p><a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
+</body>
+</html>
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
