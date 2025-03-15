@@ -34,12 +34,15 @@
             margin: 5px;
             display: inline-block;
         }
+        .cert-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
         .cert-badge {
-            width: 80px;  /* Adjust size as needed */
+            width: 120px;  /* Adjust size as needed */
             height: auto; /* Keeps aspect ratio */
-            vertical-align: middle; /* Align with text */
             border-radius: 10px; /* Optional: Rounded corners */
-            padding-left: 10px; /* Space between icon and text */
         }
     </style>
 </head>
@@ -82,10 +85,16 @@
     </ul>
     
 <h2>📄 Certifications</h2>
-<ul>
-    <li>✅ <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Security+.png" class="cert-badge"> CompTIA Security+</li>
-    <li>✅ <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Network+.png" class="cert-badge"> CompTIA Network+</li>
-</ul>
+<div class="cert-container">
+    <div>
+        <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Security+.png" class="cert-badge">
+        <p>CompTIA Security+</p>
+    </div>
+    <div>
+        <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Network+.png" class="cert-badge">
+        <p>CompTIA Network+</p>
+    </div>
+</div>
     
     <h2>📢 Connect with Me</h2>
     <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn" style="background: #0077B5;">LinkedIn</a>
