@@ -9,10 +9,11 @@
     <style>
         body { 
             font-family: Arial, sans-serif;
-            background-color: #0D1117;
-            color: #C9D1D9;
+            background: black;
+            color: #00FF00; /* Neon green text */
             padding: 40px;
             line-height: 1.6;
+            overflow: hidden; /* Prevents scrolling */
         }
         h1, h2 { color: #00FF00; } /* Hacking-style neon green */
         h2 { margin-top: 20px; }
@@ -44,9 +45,51 @@
             height: auto; /* Keeps aspect ratio */
             border-radius: 10px; /* Optional: Rounded corners */
         }
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keeps it in the background */
+        }
     </style>
 </head>
 <body>
+    <canvas id="matrix-canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("matrix-canvas");
+        const ctx = canvas.getContext("2d");
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const letters = "01"; // Binary code
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Fade effect
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#00FF00"; // Neon green text
+            ctx.font = fontSize + "px monospace";
+        
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 50);
+    </script>
+
     <div class="hero">
         <h1>Stephen Stasaitis</h1>
         <p>Cybersecurity Enthusiast | Ethical Hacker | Security Analyst</p>
@@ -63,30 +106,7 @@
         <li>📂 <a href="incident-response.html">Incident Response & Log Analysis</a></li>
     </ul>
 
-    <h2>🔹 Cybersecurity Project Summary</h2>
-    <ul>
-        <li><b>Virtualization & Infrastructure Setup</b> – Created a networked virtual environment using VirtualBox, provisioning Windows and Linux systems.</li>
-        <li><b>Active Directory & Enterprise Security</b> – Configured Windows Server 2025 as a domain controller, managing users, authentication, and security policies.</li>
-        <li><b>Endpoint & Server Hardening</b> – Implemented security best practices across Windows and Linux machines, securing endpoints against attacks.</li>
-        <li><b>Email Security & SIEM Integration</b> – Configured Postfix as a mail server and integrated Security Onion and Wazuh for intrusion detection and log monitoring.</li>
-        <li><b>Vulnerability Simulation & Threat Detection</b> – Created a vulnerable environment, configured detection mechanisms, and monitored real-world attack vectors.</li>
-        <li><b>Offensive Security & Penetration Testing</b> – Used Kali Linux for ethical hacking, including phishing, privilege escalation, lateral movement, and exfiltration.</li>
-        <li><b>Incident Response & Log Analysis</b> – Implemented monitoring solutions to detect and analyze security incidents.</li>
-    </ul>
-
-    <h2>🛠️ Significant Skills & Experience</h2>
-    <ul>
-        <li><b>System Administration:</b> Configured and managed Windows Server 2025, Windows 11 Enterprise, and Ubuntu 22.04.</li>
-        <li><b>Active Directory & Identity Management:</b> Configured AD DS, Group Policies, DNS, DHCP, and authentication mechanisms.</li>
-        <li><b>Network Security:</b> Implemented NAT networking, static IP addressing, and firewall rules for a secure virtual environment.</li>
-        <li><b>Security Monitoring & SIEM:</b> Configured Security Onion for intrusion detection with Zeek and Suricata. Implemented Wazuh SIEM for log aggregation, rule-based detection, and threat hunting.</li>
-        <li><b>Email Security & SMTP Configuration:</b> Configured Postfix Mail Transfer Agent (MTA) for secure email delivery. Enabled email filtering and security controls to prevent phishing and spam.</li>
-        <li><b>Endpoint Hardening & Detection Engineering:</b> Enabled WinRM, RDP, and SSH logging for visibility into remote access attempts. Configured File Integrity Monitoring (FIM) to detect unauthorized file modifications. Implemented custom detection rules in Wazuh for security alerting.</li>
-        <li><b>Offensive Security & Ethical Hacking:</b> Conducted phishing simulations using Kali Linux. Exploited misconfigurations in Active Directory and Linux environments. Performed privilege escalation, lateral movement, and data exfiltration simulations.</li>
-        <li><b>Incident Detection & Response:</b> Monitored Windows Event Logs, Sysmon logs, and SIEM alerts for security threats. Used Wazuh XDR for real-time event correlation and automated responses. Created custom detection alerts for SSH brute-force attacks, unauthorized RDP access, and file exfiltration.</li>
-    </ul>
-    
-<h2>📄 Certifications</h2>
+    <h2>📄 Certifications</h2>
     <div class="cert-container">
         <div>
             <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Security+.png" class="cert-badge">
