@@ -3,179 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephen Stasaitis | Cybersecurity Projects</title>
+    <title>Stephen Stasaitis | Cybersecurity Portfolio</title>
     <link rel="icon" type="image/png" href="https://your-logo-url.png">
-    <meta name="description" content="Cybersecurity projects by Stephen Stasaitis, featuring AD Security, SIEM, and Penetration Testing.">
+    <meta name="description" content="Cybersecurity Portfolio of Stephen Stasaitis">
     <style>
+        /* General Styles */
         body { 
             font-family: Arial, sans-serif;
             background: black;
             color: #FFFFFF;
-            padding: 40px;
-            line-height: 1.6;
-            overflow: auto;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow: hidden;
             text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: -1;
-        }
-
+        /* Matrix Background */
         #matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: -1;
         }
 
-        .hero {
-            text-align: center;
-            padding: 20px;
-            border-bottom: 2px solid #00FF00;
-        }
-        .hero h1 { 
-            font-size: 36px; 
-            color: #00FF00;
-            text-shadow: 2px 2px 10px rgba(0, 255, 0, 0.8);
-        }
-        .hero p {
-            font-size: 18px; 
-            color: #FFFFFF;
-        }
-
-        h1, h2 { 
-            color: #00FF00; 
-            text-shadow: 2px 2px 10px rgba(0, 255, 0, 0.8);
-        }
-
-        a {
-            color: #FFD700;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .section-box {
-            border: 2px solid #00FF00;
-            padding: 15px;
-            margin: 20px 0;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
-            border-radius: 10px;
-        }
-
-        .cert-container {
+        /* Navigation Bar */
+        .navbar {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 40px;
-            margin-top: 20px;
+            justify-content: center;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
         }
 
-        .cert-badge {
-            width: 140px;
-            height: auto;
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-top: -10px;
+        }
+
+        /* Button Styles */
+        .button-container {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 20px;
+            margin: 10px;
+            color: black;
+            background: #00FF00;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #008000;
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        /* Hide Sections by Default */
+        .section {
+            display: none;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .active-section {
+            display: block;
         }
     </style>
 </head>
 <body>
+
     <canvas id="matrix-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#" class="active" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('projects')">Projects</a>
+        <a href="#" onclick="showSection('resume')">Resume</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+    </div>
+
+    <!-- Hero Section (Home) -->
+    <div id="home" class="section active-section">
+        <div class="hero">
+            <h1>Stephen Stasaitis</h1>
+            <p>Cybersecurity Enthusiast | Ethical Hacker | Security Analyst</p>
+        </div>
+
+        <div class="button-container">
+            <a href="#" class="btn" onclick="showSection('projects')">View My Projects</a>
+            <a href="#" class="btn" onclick="showSection('resume')">See My Resume</a>
+            <a href="#" class="btn" onclick="showSection('contact')">Contact Me</a>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="section">
+        <h2>🔹 Cybersecurity Projects</h2>
+        <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
+    </div>
+
+    <!-- Resume Section -->
+    <div id="resume" class="section">
+        <h2>📄 Resume</h2>
+        <p>Download my full resume here.</p>
+        <a href="your-resume.pdf" class="btn" download>Download Resume</a>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>📢 Contact Me</h2>
+        <p>Connect with me on LinkedIn or GitHub.</p>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://github.com/stazaitis" target="_blank" class="btn">GitHub</a>
+    </div>
+
     <script>
+        function showSection(sectionId) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            document.getElementById(sectionId).classList.add('active-section');
+
+            let navLinks = document.querySelectorAll('.navbar a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            event.target.classList.add('active');
+        }
+
         const canvas = document.getElementById("matrix-canvas");
         const ctx = canvas.getContext("2d");
-        
+
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
+
         const letters = "01";
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
-        
+
         function drawMatrix() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             ctx.fillStyle = "#00FF00";
             ctx.font = fontSize + "px monospace";
-        
+
             for (let i = 0; i < drops.length; i++) {
                 const text = letters[Math.floor(Math.random() * letters.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        
+
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
                 drops[i]++;
             }
         }
-        
+
         setInterval(drawMatrix, 50);
     </script>
-
-    <div class="hero">
-        <h1>Stephen Stasaitis</h1>
-        <p>Cybersecurity Enthusiast | Ethical Hacker | Security Analyst</p>
-    </div>
-
-    <p>Welcome to my cybersecurity portfolio! This repository showcases my hands-on experience in penetration testing, network security, system hardening, and SIEM analysis.</p>
-    
-    <div class="section-box">
-        <h2>📁 Cybersecurity Topics</h2>
-        <ul>
-            <li>📂 <a href="active-directory.html">Active Directory Security</a></li>
-            <li>📂 <a href="siem.html">SIEM & Threat Detection</a></li>
-            <li>📂 <a href="offensive-security.html">Offensive Security & Ethical Hacking</a></li>
-            <li>📂 <a href="incident-response.html">Incident Response & Log Analysis</a></li>
-        </ul>
-    </div>
-
-    <div class="section-box">
-        <h2>🔹 Cybersecurity Project Portfolio</h2>
-        <ul>
-            <li><strong>Infrastructure & Virtualization:</strong> Built a virtualized network environment using VirtualBox, provisioning Windows 11 Enterprise and Ubuntu 22.04 systems.</li>
-            <li><strong>Active Directory & Identity Management:</strong> Deployed and administered Windows Server 2025 as a domain controller.</li>
-            <li><strong>Endpoint & Server Security Hardening:</strong> Implemented endpoint protection, including WinRM, RDP, and SSH logging.</li>
-            <li><strong>Email Security & SMTP Configuration:</strong> Set up and secured Postfix Mail Transfer Agent (MTA).</li>
-            <li><strong>Security Monitoring & SIEM Integration:</strong> Integrated Security Onion with Zeek and Suricata.</li>
-            <li><strong>Vulnerability Simulation & Threat Detection:</strong> Developed intentionally vulnerable systems to simulate real-world threats.</li>
-            <li><strong>Offensive Security & Ethical Hacking:</strong> Conducted penetration tests with Kali Linux.</li>
-            <li><strong>Incident Response & Automation:</strong> Monitored security incidents using SIEM and automated responses.</li>
-        </ul>
-    </div>
-    
-    <div class="section-box">
-        <h2>📄 Certifications</h2>
-        <div class="cert-container">
-            <div>
-                <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Security+.png" class="cert-badge">
-                <p>CompTIA Security+</p>
-            </div>
-            <div>
-                <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Network+.png" class="cert-badge">
-                <p>CompTIA Network+</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-box">
-        <h2>📢 Connect with Me</h2>
-        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn" style="background: #0077B5;">LinkedIn</a>
-        <a href="https://github.com/stazaitis" target="_blank" class="btn" style="background: #333;">GitHub</a>
-    </div>
 
 </body>
 </html>
