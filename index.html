@@ -29,15 +29,13 @@
             z-index: -1;
         }
 
-        /* Centered Home Button at Top */
+        /* Navigation Bar */
         .navbar {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
             background: rgba(0, 255, 0, 0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: 15px;
+            border-bottom: 2px solid #00FF00;
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
         }
 
@@ -45,10 +43,11 @@
             color: #00FF00;
             text-decoration: none;
             font-size: 18px;
-            font-weight: bold;
             padding: 10px 20px;
+            margin: 0 10px;
             border-radius: 5px;
             transition: 0.3s;
+            font-weight: bold;
         }
 
         .navbar a:hover, .navbar a.active {
@@ -59,7 +58,7 @@
 
         /* Hero Section */
         .hero {
-            margin-top: 150px;
+            margin-top: 100px;
         }
 
         .hero h1 {
@@ -98,31 +97,83 @@
             color: white;
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
+
+        /* Hide Sections by Default */
+        .section {
+            display: none;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .active-section {
+            display: block;
+        }
     </style>
 </head>
 <body>
 
     <canvas id="matrix-canvas"></canvas>
 
-    <!-- Centered Home Button -->
+    <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="#" class="active">Home</a>
+        <a href="#" class="active" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('projects')">Projects</a>
+        <a href="#" onclick="showSection('resume')">Resume</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Stephen Stasaitis</h1>
-        <p>Cybersecurity Enthusiast | Ethical Hacker | Security Analyst</p>
+    <!-- Hero Section (Home) -->
+    <div id="home" class="section active-section">
+        <div class="hero">
+            <h1>Stephen Stasaitis</h1>
+            <p>Cybersecurity Enthusiast | Ethical Hacker | Security Analyst</p>
+        </div>
 
         <div class="button-container">
-            <a href="projects.html" class="btn">View My Projects</a>
-            <a href="resume.html" class="btn">See My Resume</a>
-            <a href="contact.html" class="btn">Contact Me</a>
+            <a href="#" class="btn" onclick="showSection('projects')">View My Projects</a>
+            <a href="#" class="btn" onclick="showSection('resume')">See My Resume</a>
+            <a href="#" class="btn" onclick="showSection('contact')">Contact Me</a>
         </div>
     </div>
 
+    <!-- Projects Section -->
+    <div id="projects" class="section">
+        <h2>🔹 Cybersecurity Projects</h2>
+        <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
+    </div>
+
+    <!-- Resume Section -->
+    <div id="resume" class="section">
+        <h2>📄 Resume</h2>
+        <p>Download my full resume here.</p>
+        <a href="your-resume.pdf" class="btn" download>Download Resume</a>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>📢 Contact Me</h2>
+        <p>Connect with me on LinkedIn or GitHub.</p>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://github.com/stazaitis" target="_blank" class="btn">GitHub</a>
+    </div>
+
     <script>
-        // Matrix Rain Effect
+        function showSection(sectionId) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            document.getElementById(sectionId).classList.add('active-section');
+
+            let navLinks = document.querySelectorAll('.navbar a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            event.target.classList.add('active');
+        }
+
         const canvas = document.getElementById("matrix-canvas");
         const ctx = canvas.getContext("2d");
 
@@ -157,3 +208,4 @@
 
 </body>
 </html>
+
