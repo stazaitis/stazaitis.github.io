@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Projects</title>
+    <title>My Resume</title>
     <style>
         body { 
             font-family: Arial, sans-serif;
@@ -14,15 +14,19 @@
             text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
         }
 
+        /* Full-Width Navbar */
         .navbar {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 100%;
             background: rgba(0, 255, 0, 0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
 
         .navbar a {
@@ -31,25 +35,29 @@
             font-size: 18px;
             font-weight: bold;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
         }
 
-        .navbar a:hover {
+        .navbar a:hover, .navbar a.active {
             background: #00FF00;
             color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
     </style>
 </head>
 <body>
 
-    <!-- Home Button -->
+    <!-- Full-width Navbar with Only Home Button -->
     <div class="navbar">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
     </div>
 
-    <h1>📄 Resume</h1>
-    <p>Download my full resume here.</p>
-    <a href="your-resume.pdf" download>Download Resume</a>
+    <h1>📄 My Resume</h1>
+    <p>Download my full resume below:</p>
+    <a href="your-resume.pdf" download style="color: #00FF00; font-size: 20px;">Download Resume</a>
 
 </body>
 </html>
