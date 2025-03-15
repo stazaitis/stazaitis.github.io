@@ -10,14 +10,13 @@
         body { 
             font-family: Arial, sans-serif;
             background: black;
-            color: #FFFFFF; /* White text for better contrast */
+            color: #FFFFFF;
             padding: 40px;
             line-height: 1.6;
             overflow: auto;
-            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5); /* Soft neon glow */
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
         }
 
-        /* Semi-transparent overlay */
         body::before {
             content: "";
             position: fixed;
@@ -25,21 +24,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Darkens background slightly */
+            background: rgba(0, 0, 0, 0.6);
             z-index: -1;
         }
 
-        /* Matrix Background */
         #matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2; /* Keep it behind everything */
+            z-index: -2;
         }
 
-        /* Centered header */
         .hero {
             text-align: center;
             padding: 20px;
@@ -52,18 +49,16 @@
         }
         .hero p {
             font-size: 18px; 
-            color: #FFFFFF; /* White for contrast */
+            color: #FFFFFF;
         }
 
-        /* Headings with neon green color */
         h1, h2 { 
             color: #00FF00; 
-            text-shadow: 2px 2px 10px rgba(0, 255, 0, 0.8); /* More readable glow */
+            text-shadow: 2px 2px 10px rgba(0, 255, 0, 0.8);
         }
 
-        /* Improve folder link readability */
         a {
-            color: #FFD700; /* Bright gold for contrast */
+            color: #FFD700;
             font-weight: bold;
             font-size: 18px;
         }
@@ -72,20 +67,27 @@
             text-decoration: underline;
         }
 
-        /* Certifications moved to the side */
+        .section-box {
+            border: 2px solid #00FF00;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
         .cert-container {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Move to the side */
+            justify-content: flex-start;
             gap: 40px;
             margin-top: 20px;
         }
 
         .cert-badge {
-            width: 140px; /* Make badges larger */
+            width: 140px;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5); /* Add glow */
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
         }
     </style>
 </head>
@@ -98,16 +100,16 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
-        const letters = "01"; // Binary code
+        const letters = "01";
         const fontSize = 16;
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
         
         function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Fade effect
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            ctx.fillStyle = "#00FF00"; // Neon green text
+            ctx.fillStyle = "#00FF00";
             ctx.font = fontSize + "px monospace";
         
             for (let i = 0; i < drops.length; i++) {
@@ -131,80 +133,49 @@
 
     <p>Welcome to my cybersecurity portfolio! This repository showcases my hands-on experience in penetration testing, network security, system hardening, and SIEM analysis.</p>
     
-    <h2>📁 Cybersecurity Topics</h2>
-    <ul>
-        <li>📂 <a href="active-directory.html">Active Directory Security</a></li>
-        <li>📂 <a href="siem.html">SIEM & Threat Detection</a></li>
-        <li>📂 <a href="offensive-security.html">Offensive Security & Ethical Hacking</a></li>
-        <li>📂 <a href="incident-response.html">Incident Response & Log Analysis</a></li>
-    </ul>
+    <div class="section-box">
+        <h2>📁 Cybersecurity Topics</h2>
+        <ul>
+            <li>📂 <a href="active-directory.html">Active Directory Security</a></li>
+            <li>📂 <a href="siem.html">SIEM & Threat Detection</a></li>
+            <li>📂 <a href="offensive-security.html">Offensive Security & Ethical Hacking</a></li>
+            <li>📂 <a href="incident-response.html">Incident Response & Log Analysis</a></li>
+        </ul>
+    </div>
 
-    <h2>🔹 Cybersecurity Project Portfolio</h2>
-    <ul>
-    <h3>Infrastructure &amp; Virtualization</h3>
-<ul>
-  <li>Built a virtualized network environment using VirtualBox, provisioning Windows 11 Enterprise and Ubuntu 22.04 systems.</li>
-  <li>Configured NAT networking, static IP addresses, and firewall rules to secure virtual environments.</li>
-</ul>
-
-<h3>Active Directory &amp; Identity Management</h3>
-<ul>
-  <li>Deployed and administered Windows Server 2025 as a domain controller.</li>
-  <li>Managed Active Directory Domain Services (AD DS), Group Policy, DNS, DHCP, and authentication mechanisms.</li>
-</ul>
-
-<h3>Endpoint &amp; Server Security Hardening</h3>
-<ul>
-  <li>Applied security best practices to Windows and Linux endpoints.</li>
-  <li>Implemented endpoint protection, including enabling WinRM, RDP, and SSH logging for enhanced visibility.</li>
-  <li>Configured File Integrity Monitoring (FIM) to detect unauthorized file modifications.</li>
-</ul>
-
-<h3>Email Security &amp; SMTP Configuration</h3>
-<ul>
-  <li>Set up and secured Postfix Mail Transfer Agent (MTA) for reliable and secure email delivery.</li>
-  <li>Enabled filtering controls to mitigate phishing and spam threats.</li>
-</ul>
-
-<h3>Security Monitoring &amp; SIEM Integration</h3>
-<ul>
-  <li>Integrated Security Onion with Zeek and Suricata for advanced intrusion detection.</li>
-  <li>Configured Wazuh SIEM for log aggregation, rule-based threat detection, and proactive threat hunting.</li>
-</ul>
-
-<h3>Vulnerability Simulation &amp; Threat Detection</h3>
-<ul>
-  <li>Developed intentionally vulnerable systems to simulate real-world security threats.</li>
-  <li>Monitored and analyzed attack vectors using customized detection rules in Wazuh for threats such as SSH brute-force attacks, unauthorized RDP access, and file exfiltration.</li>
-</ul>
-
-<h3>Offensive Security &amp; Ethical Hacking</h3>
-<ul>
-  <li>Conducted penetration tests with Kali Linux, performing phishing simulations, privilege escalation, lateral movement, and data exfiltration scenarios.</li>
-  <li>Identified and exploited security misconfigurations in Active Directory and Linux environments.</li>
-</ul>
-
-<h3>Incident Response &amp; Automation</h3>
-<ul>
-  <li>Monitored security incidents via Windows Event Logs, Sysmon, and real-time alerts from SIEM.</li>
-  <li>Leveraged Wazuh XDR for event correlation and automated incident response.</li>
-  <li>Developed custom detection rules and alerts for timely threat identification and mitigation.</li>
-</ul>
+    <div class="section-box">
+        <h2>🔹 Cybersecurity Project Portfolio</h2>
+        <ul>
+            <li><strong>Infrastructure & Virtualization:</strong> Built a virtualized network environment using VirtualBox, provisioning Windows 11 Enterprise and Ubuntu 22.04 systems.</li>
+            <li><strong>Active Directory & Identity Management:</strong> Deployed and administered Windows Server 2025 as a domain controller.</li>
+            <li><strong>Endpoint & Server Security Hardening:</strong> Implemented endpoint protection, including WinRM, RDP, and SSH logging.</li>
+            <li><strong>Email Security & SMTP Configuration:</strong> Set up and secured Postfix Mail Transfer Agent (MTA).</li>
+            <li><strong>Security Monitoring & SIEM Integration:</strong> Integrated Security Onion with Zeek and Suricata.</li>
+            <li><strong>Vulnerability Simulation & Threat Detection:</strong> Developed intentionally vulnerable systems to simulate real-world threats.</li>
+            <li><strong>Offensive Security & Ethical Hacking:</strong> Conducted penetration tests with Kali Linux.</li>
+            <li><strong>Incident Response & Automation:</strong> Monitored security incidents using SIEM and automated responses.</li>
+        </ul>
+    </div>
     
-    <h2>📄 Certifications</h2>
-    <div class="cert-container">
-        <div>
-            <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Security+.png" class="cert-badge">
-            <p>CompTIA Security+</p>
-        </div>
-        <div>
-            <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Network+.png" class="cert-badge">
-            <p>CompTIA Network+</p>
+    <div class="section-box">
+        <h2>📄 Certifications</h2>
+        <div class="cert-container">
+            <div>
+                <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Security+.png" class="cert-badge">
+                <p>CompTIA Security+</p>
+            </div>
+            <div>
+                <img src="https://raw.githubusercontent.com/stazaitis/stazaitis.github.io/main/assets/images/Network+.png" class="cert-badge">
+                <p>CompTIA Network+</p>
+            </div>
         </div>
     </div>
 
-    <h2>📢 Connect with Me</h2>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn" style="background: #0077B5;">LinkedIn</a>
-    <a href="https://github.com/stazaitis" target="_blank" class="btn" style="background: #333;">GitHub</a>
+    <div class="section-box">
+        <h2>📢 Connect with Me</h2>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn" style="background: #0077B5;">LinkedIn</a>
+        <a href="https://github.com/stazaitis" target="_blank" class="btn" style="background: #333;">GitHub</a>
+    </div>
+
 </body>
 </html>
