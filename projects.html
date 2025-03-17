@@ -116,6 +116,32 @@
             background: white;
             color: black;
         }
+
+         .info-section {
+            margin: 50px auto;
+            max-width: 800px;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+
+        }
+        .info-section h2 {
+            color: #00FF00;
+            text-decoration: underline;
+            text-align: center;
+        }
+
+        .info-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -160,6 +186,18 @@
         <button class="enlarge-button" onclick="enlargeImage()">Enlarge</button>
     </div>
 
+    <div class="info-section">
+        <h2>Operating Systems & Functions</h2>
+        <ul>
+            <li><strong>Windows Server 2025:</strong> Designed for enterprise-level applications, network, and identity management. Used as the directory services server.</li>
+            <li><strong>Windows 11 Enterprise:</strong> Optimized for productivity, commonly used in businesses. Simulated a business user.</li>
+            <li><strong>Ubuntu Desktop 22.04:</strong> General-purpose desktop OS for software development. Simulated an enterprise development environment.</li>
+            <li><strong>Security Onion:</strong> Open-source security monitoring, log analysis, and intrusion detection system.</li>
+            <li><strong>Ubuntu Server 22.04:</strong> Linux server OS for hosting applications and databases. Configured as the email server.</li>
+            <li><strong>Kali Linux:</strong> Penetration testing and ethical hacking OS used for attacking the project-x network.</li>
+        </ul>
+    </div>
+    
     <script>
         function enlargeImage() {
             let img = document.getElementById("topology-image");
