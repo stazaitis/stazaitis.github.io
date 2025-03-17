@@ -175,6 +175,51 @@
             background-color: #00FF00;
             color: black;
         }
+
+                .fullscreen-image, .fullscreen-table {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .fullscreen-image img, .fullscreen-table table {
+            max-width: 90%;
+            max-height: 90%;
+            background: black;
+            padding: 20px;
+            border: 2px solid #00FF00;
+        }
+
+        .fullscreen-image .close, .fullscreen-table .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        .table-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .enlarge-icon {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -232,52 +277,58 @@
         </ul>
     </div>
 
-    <div class="info-section">
-        <h2>Hosts Table</h2>
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th>Hostname</th>
-                    <th>IP Address</th>
-                    <th>Function</th>
-                </tr>
-                <tr>
-                    <td>dc (corp.project-x-dc.com)</td>
-                    <td>10.0.0.5</td>
-                    <td>Domain Controller (DNS, DHCP, SSO)</td>
-                </tr>
-                <tr>
-                    <td>email-svr</td>
-                    <td>10.0.0.8</td>
-                    <td>SMTP Relay Server</td>
-                </tr>
-                <tr>
-                    <td>sec-box</td>
-                    <td>10.0.0.10</td>
-                    <td>Dedicated Security Server</td>
-                </tr>
-                <tr>
-                    <td>sec-work</td>
-                    <td>10.0.0.103 (dynamic)</td>
-                    <td>Security Playground</td>
-                </tr>
-                <tr>
-                    <td>win-client</td>
-                    <td>10.0.0.100 (dynamic)</td>
-                    <td>Windows Workstation</td>
-                </tr>
-                <tr>
-                    <td>linux-client</td>
-                    <td>10.0.0.101 (dynamic)</td>
-                    <td>Linux Desktop Workstation</td>
-                </tr>
-                <tr>
-                    <td>attacker</td>
-                    <td>10.0.0.50 (dynamic)</td>
-                    <td>Attacker Environment</td>
-                </tr>
-            </table>
-        </div>
+    <div class="table-container">
+        <h3>Hosts Table</h3>
+        <img class="enlarge-icon" src="assets/images/enlarge-icon.png" alt="Enlarge" onclick="openFullscreen('fullscreen-table')">
+        <table id="hosts-table">
+            <tr>
+                <th>Hostname</th>
+                <th>IP Address</th>
+                <th>Function</th>
+            </tr>
+            <tr>
+                <td>dc (corp.project-x-dc.com)</td>
+                <td>10.0.0.5</td>
+                <td>Domain Controller (DNS, DHCP, SSO)</td>
+            </tr>
+            <tr>
+                <td>email-svr</td>
+                <td>10.0.0.8</td>
+                <td>SMTP Relay Server</td>
+            </tr>
+            <tr>
+                <td>sec-box</td>
+                <td>10.0.0.10</td>
+                <td>Dedicated Security Server</td>
+            </tr>
+            <tr>
+                <td>sec-work</td>
+                <td>10.0.0.103 (dynamic)</td>
+                <td>Security Playground</td>
+            </tr>
+            <tr>
+                <td>win-client</td>
+                <td>10.0.0.100 (dynamic)</td>
+                <td>Windows Workstation</td>
+            </tr>
+            <tr>
+                <td>linux-client</td>
+                <td>10.0.0.101 (dynamic)</td>
+                <td>Linux Desktop Workstation</td>
+            </tr>
+            <tr>
+                <td>attacker</td>
+                <td>10.0.0.50 (dynamic)</td>
+                <td>Attacker Environment</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="fullscreen-table" class="fullscreen-table" onclick="closeFullscreen('fullscreen-table')">
+        <span class="close">&times;</span>
+        <table id="hosts-table-fullscreen">
+            <!-- The same table content as above will be dynamically copied here -->
+        </table>
     </div>
     
     <div class="info-section">
@@ -318,6 +369,14 @@
 
         function closeFullscreen() {
             document.getElementById("fullscreen-container").style.display = "none";
+        }
+        
+        function openFullscreen(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+
+        function closeFullscreen(id) {
+            document.getElementById(id).style.display = "none";
         }
     </script>
 </body>
