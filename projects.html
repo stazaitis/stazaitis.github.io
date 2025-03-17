@@ -159,6 +159,31 @@
             background-color: #00FF00;
             color: black;
         }
+
+        @media screen and (max-width: 600px) {
+            table, th, td {
+                display: block;
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                text-align: left;
+                padding: 10px;
+                border-bottom: 1px solid #00FF00;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #00FF00;
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -222,39 +247,39 @@
                 <th>Function</th>
             </tr>
             <tr>
-                <td>dc (corp.project-x-dc.com)</td>
-                <td>10.0.0.5</td>
-                <td>Domain Controller (DNS, DHCP, SSO)</td>
+                <td data-label="Hostname">dc (corp.project-x-dc.com)</td>
+                <td data-label="IP Address">10.0.0.5</td>
+                <td data-label="Function">Domain Controller (DNS, DHCP, SSO)</td>
             </tr>
             <tr>
-                <td>email-svr</td>
-                <td>10.0.0.8</td>
-                <td>SMTP Relay Server</td>
+                <td data-label="Hostname">email-svr</td>
+                <td data-label="IP Address">10.0.0.8</td>
+                <td data-label="Function">SMTP Relay Server</td>
             </tr>
             <tr>
-                <td>sec-box</td>
-                <td>10.0.0.10</td>
-                <td>Dedicated Security Server</td>
+                <td data-label="Hostname">sec-box</td>
+                <td data-label="IP Address">10.0.0.10</td>
+                <td data-label="Function">Dedicated Security Server</td>
             </tr>
             <tr>
-                <td>sec-work</td>
-                <td>10.0.0.103 (dynamic)</td>
-                <td>Security Playground</td>
+                <td data-label="Hostname">sec-work</td>
+                <td data-label="IP Address">10.0.0.103 (dynamic)</td>
+                <td data-label="Function">Security Playground</td>
             </tr>
             <tr>
-                <td>win-client</td>
-                <td>10.0.0.100 (dynamic)</td>
-                <td>Windows Workstation</td>
+                <td data-label="Hostname">win-client</td>
+                <td data-label="IP Address">10.0.0.100 (dynamic)</td>
+                <td data-label="Function">Windows Workstation</td>
             </tr>
             <tr>
-                <td>linux-client</td>
-                <td>10.0.0.101 (dynamic)</td>
-                <td>Linux Desktop Workstation</td>
+                <td data-label="Hostname">linux-client</td>
+                <td data-label="IP Address">10.0.0.101 (dynamic)</td>
+                <td data-label="Function">Linux Desktop Workstation</td>
             </tr>
             <tr>
-                <td>attacker</td>
-                <td>10.0.0.50 (dynamic)</td>
-                <td>Attacker Environment</td>
+                <td data-label="Hostname">attacker</td>
+                <td data-label="IP Address">10.0.0.50 (dynamic)</td>
+                <td data-label="Function">Attacker Environment</td>
             </tr>
         </table>
     </div>
