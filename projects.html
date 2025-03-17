@@ -99,22 +99,31 @@
             transition: transform 0.3s ease;
         }
 
-        .enlarge-button {
-            background: #00FF00;
-            color: black;
-            border: none;
-            padding: 10px 15px;
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+        .fullscreen-image {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
         }
 
-        .enlarge-button:hover {
-            background: white;
-            color: black;
+        .fullscreen-image img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .fullscreen-image .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: #FFFFFF;
+            cursor: pointer;
         }
 
          .info-section {
@@ -205,9 +214,12 @@
 
     <div class="image-container">
         <h3>Network Topology & Cyber Attack Simulation</h3>
-        <img id="topology-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram">
-        <br>
-        <button class="enlarge-button" onclick="enlargeImage()">Enlarge</button>
+        <img id="topology-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram" onclick="openFullscreen()">
+    </div>
+
+    <div id="fullscreen-container" class="fullscreen-image" onclick="closeFullscreen()">
+        <span class="close">&times;</span>
+        <img id="fullscreen-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram">
     </div>
 
     <div class="info-section">
@@ -300,15 +312,12 @@
     </div>
     
     <script>
-        function enlargeImage() {
-            let img = document.getElementById("topology-image");
-            if (img.style.width === "80%") {
-                img.style.width = "100%";
-                img.style.maxWidth = "1000px";
-            } else {
-                img.style.width = "80%";
-                img.style.maxWidth = "800px";
-            }
+        function openFullscreen() {
+            document.getElementById("fullscreen-container").style.display = "flex";
+        }
+
+        function closeFullscreen() {
+            document.getElementById("fullscreen-container").style.display = "none";
         }
     </script>
 </body>
