@@ -143,10 +143,16 @@
             margin: 10px 0;
         }
         
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 600px;
         }
 
         th, td {
@@ -159,31 +165,6 @@
         th {
             background-color: #00FF00;
             color: black;
-        }
-
-        @media screen and (max-width: 600px) {
-            table, th, td {
-                display: block;
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                text-align: left;
-                padding: 10px;
-                border-bottom: 1px solid #00FF00;
-                position: relative;
-            }
-
-            td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                color: #00FF00;
-                display: block;
-            }
         }
     </style>
 </head>
