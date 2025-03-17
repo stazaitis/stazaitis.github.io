@@ -14,7 +14,6 @@
             text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
         }
 
-        /* Full-Width Navbar */
         .navbar {
             width: 100%;
             background: rgba(0, 255, 0, 0.2);
@@ -47,7 +46,6 @@
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
 
-        /* Layout for Project-X */
         .project-container {
             margin-top: 80px;
             display: flex;
@@ -92,11 +90,23 @@
             color: white;
         }
 
+        hr {
+            border: 1px solid #00FF00;
+            margin: 30px 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+            display: block;
+            margin: 20px auto;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Full-width Navbar with Only Home Button -->
     <div class="navbar">
         <a href="index.html" class="active">Home</a>
     </div>
@@ -104,28 +114,16 @@
     <h1>🔹 Cybersecurity Projects</h1>
     <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
 
-    <!-- Project-X Section -->
     <div class="project-container">
-
-        <!-- Project Overview (Side Section) -->
         <div class="project-overview">
             <h2>📂 Project-X</h2>
             <h3>Project Overview</h3>
-            <p>
-                Project-X is an imitation of an enterprise environment that builds software for consumers. Leveraging virtualization, I simulated a business network with essential components and systems that power today’s modern networks.
-            </p>
-            <p>
-                I also simulated an end-to-end cyber attack on the Project-X network from reconnaissance to defense evasion. As the attacker, my goal was to achieve persistence, access sensitive files for extortion, and create a backdoor for continuous access.
-            </p>
-            <p>
-                VirtualBox was used as the hypervisor, facilitating a NAT Network across my seven virtual machines. This allowed a small, private lab network that could communicate internally while maintaining internet access.
-            </p>
-            <p>
-                To the side are 11 mini projects that break down the components of Project-X.
-            </p>
+            <p>Project-X is an imitation of an enterprise environment that builds software for consumers. Leveraging virtualization, I simulated a business network with essential components and systems that power today’s modern networks.</p>
+            <p>I also simulated an end-to-end cyber attack on the Project-X network from reconnaissance to defense evasion. As the attacker, my goal was to achieve persistence, access sensitive files for extortion, and create a backdoor for continuous access.</p>
+            <p>VirtualBox was used as the hypervisor, facilitating a NAT Network across my seven virtual machines. This allowed a small, private lab network that could communicate internally while maintaining internet access.</p>
+            <p>To the side are 11 mini projects that break down the components of Project-X.</p>
         </div>
 
-        <!-- Mini Projects List -->
         <div>
             <ul class="mini-projects">
                 <li><a href="#">🔹 Building a Directory Service Server with Active Directory</a></li>
@@ -141,9 +139,14 @@
                 <li><a href="#">🔹 Cyber Attack - Initial Access to Breach</a></li>
             </ul>
         </div>
-
     </div>
 
+    <hr>
+
+    <div class="image-container">
+        <h3>Network Topology & Cyber Attack Simulation</h3>
+        <img src="/mnt/data/image.png" alt="Network Topology Diagram">
+    </div>
 </body>
 </html>
 
