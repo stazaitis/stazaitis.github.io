@@ -47,18 +47,28 @@
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
 
-        /* Project Sections */
+        /* Layout for Project-X */
         .project-container {
             margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
             text-align: left;
-            display: inline-block;
         }
 
-        .project-title {
+        .project-overview {
+            max-width: 400px;
+            padding: 20px;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .project-overview h2 {
             color: #00FF00;
-            font-size: 22px;
             text-decoration: underline;
-            margin-bottom: 10px;
+            font-size: 22px;
         }
 
         .mini-projects {
@@ -94,26 +104,48 @@
     <h1>🔹 Cybersecurity Projects</h1>
     <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
 
-    <!-- Project-X Folder -->
+    <!-- Project-X Section -->
     <div class="project-container">
-        <h2 class="project-title">📂 Project-X</h2>
 
-        <ul class="mini-projects">
-            <li><a href="#">🔹 Building a Directory Service Server with Active Directory</a></li>
-            <li><a href="#">🔹 Setup Windows 11 Enterprise</a></li>
-            <li><a href="#">🔹 Setup Ubuntu Desktop 22.04</a></li>
-            <li><a href="#">🔹 Setup Ubuntu Server 22.04</a></li>
-            <li><a href="#">🔹 Setup Postfix Mail Transfer Agent</a></li>
-            <li><a href="#">🔹 Setup Security Onion</a></li>
-            <li><a href="#">🔹 Security Server - Setup Ubuntu Desktop 22.04</a></li>
-            <li><a href="#">🔹 Setup Wazuh</a></li>
-            <li><a href="#">🔹 Configure a Vulnerable Environment</a></li>
-            <li><a href="#">🔹 Setup Attacker Machine</a></li>
-            <li><a href="#">🔹 Cyber Attack - Initial Access to Breach</a></li>
-        </ul>
+        <!-- Project Overview (Side Section) -->
+        <div class="project-overview">
+            <h2>📂 Project-X</h2>
+            <h3>Project Overview</h3>
+            <p>
+                Project-X is an imitation of an enterprise environment that builds software for consumers. Leveraging virtualization, I simulated a business network with essential components and systems that power today’s modern networks.
+            </p>
+            <p>
+                I also simulated an end-to-end cyber attack on the Project-X network from reconnaissance to defense evasion. As the attacker, my goal was to achieve persistence, access sensitive files for extortion, and create a backdoor for continuous access.
+            </p>
+            <p>
+                VirtualBox was used as the hypervisor, facilitating a NAT Network across my seven virtual machines. This allowed a small, private lab network that could communicate internally while maintaining internet access.
+            </p>
+            <p>
+                Below are 11 mini projects that break down the components of Project-X.
+            </p>
+        </div>
+
+        <!-- Mini Projects List -->
+        <div>
+            <ul class="mini-projects">
+                <li><a href="#">🔹 Building a Directory Service Server with Active Directory</a></li>
+                <li><a href="#">🔹 Setup Windows 11 Enterprise</a></li>
+                <li><a href="#">🔹 Setup Ubuntu Desktop 22.04</a></li>
+                <li><a href="#">🔹 Setup Ubuntu Server 22.04</a></li>
+                <li><a href="#">🔹 Setup Postfix Mail Transfer Agent</a></li>
+                <li><a href="#">🔹 Setup Security Onion</a></li>
+                <li><a href="#">🔹 Security Server - Setup Ubuntu Desktop 22.04</a></li>
+                <li><a href="#">🔹 Setup Wazuh</a></li>
+                <li><a href="#">🔹 Configure a Vulnerable Environment</a></li>
+                <li><a href="#">🔹 Setup Attacker Machine</a></li>
+                <li><a href="#">🔹 Cyber Attack - Initial Access to Breach</a></li>
+            </ul>
+        </div>
+
     </div>
 
 </body>
 </html>
+
 
 
