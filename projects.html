@@ -63,12 +63,6 @@
             border-radius: 10px;
         }
 
-        .project-overview h2 {
-            color: #00FF00;
-            text-decoration: underline;
-            font-size: 22px;
-        }
-
         .mini-projects {
             list-style-type: none;
             padding: 0;
@@ -90,19 +84,37 @@
             color: white;
         }
 
-        hr {
-            border: 1px solid #00FF00;
-            margin: 30px 0;
+        .image-container {
+            text-align: center;
+            margin-top: 30px;
         }
 
         .image-container img {
-            width: 100%;
-            max-width: 600px;
+            width: 80%;
+            max-width: 800px;
             border: 2px solid #00FF00;
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
             border-radius: 10px;
-            display: block;
-            margin: 20px auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .enlarge-button {
+            background: #00FF00;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+        }
+
+        .enlarge-button:hover {
+            background: white;
+            color: black;
         }
     </style>
 </head>
@@ -121,7 +133,7 @@
             <p>Project-X is an imitation of an enterprise environment that builds software for consumers. Leveraging virtualization, I simulated a business network with essential components and systems that power today’s modern networks.</p>
             <p>I also simulated an end-to-end cyber attack on the Project-X network from reconnaissance to defense evasion. As the attacker, my goal was to achieve persistence, access sensitive files for extortion, and create a backdoor for continuous access.</p>
             <p>VirtualBox was used as the hypervisor, facilitating a NAT Network across my seven virtual machines. This allowed a small, private lab network that could communicate internally while maintaining internet access.</p>
-            <p>To the side are 11 mini projects that break down the components of Project-X.</p>
+            <p>Below are 11 mini projects that break down the components of Project-X.</p>
         </div>
 
         <div>
@@ -141,14 +153,24 @@
         </div>
     </div>
 
-    <hr>
-
     <div class="image-container">
         <h3>Network Topology & Cyber Attack Simulation</h3>
-        <img src="assets/images/attacker.drawio.png" alt="Network Topology Diagram">
+        <img id="topology-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram">
+        <br>
+        <button class="enlarge-button" onclick="enlargeImage()">Enlarge</button>
     </div>
+
+    <script>
+        function enlargeImage() {
+            let img = document.getElementById("topology-image");
+            if (img.style.width === "80%") {
+                img.style.width = "100%";
+                img.style.maxWidth = "1000px";
+            } else {
+                img.style.width = "80%";
+                img.style.maxWidth = "800px";
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-
