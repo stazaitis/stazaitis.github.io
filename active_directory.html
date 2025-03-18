@@ -137,7 +137,36 @@
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
             border-radius: 10px;
         }
+
+        /* Style for Device Table */
+        .device-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
         
+        .device-table th, .device-table td {
+            padding: 12px;
+            border: 1px solid #00FF00;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        
+        .device-table th {
+            background: rgba(0, 255, 0, 0.3);
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 20px;
+        }
+        
+        .device-table td {
+            font-size: 18px;
+        }
+
     </style>
 </head>
 <body>
@@ -187,6 +216,56 @@
         <p>With this tool, I can install additional packages and modules to extend the functionality of my Windows Server, customizing it for enterprise-level security and operations.</p>
     </div>
 
+    <div class="content">
+        <h2>Project X Domain: corp.project-x-dc.com</h2>
+        <p>The domain <strong>corp.project-x-dc.com</strong> is the main interface and domain I will be using to connect the workstations and other servers seen below.</p>
+        <p>(Full table available in the <strong>“View My Projects Overview”</strong> tab.)</p>
+
+        <div class="image-container">
+            <img src="assets/images/domain.png" alt="Project X Domain Overview">
+        </div>
+
+        <table class="device-table">
+            <thead>
+                <tr>
+                    <th>Device Name</th>
+                    <th>IP Address</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Workstations -->
+                <tr>
+                    <td>sec-work</td>
+                    <td>10.0.0.103 or (dynamic)</td>
+                    <td>Security Playground</td>
+                </tr>
+                <tr>
+                    <td>win-client</td>
+                    <td>10.0.0.100 or (dynamic)</td>
+                    <td>Windows Workstation</td>
+                </tr>
+                <tr>
+                    <td>linux-client</td>
+                    <td>10.0.0.101 or (dynamic)</td>
+                    <td>Linux Desktop Workstation</td>
+                </tr>
+    
+                <!-- Servers -->
+                <tr>
+                    <td>email-svr</td>
+                    <td>10.0.0.8</td>
+                    <td>SMTP Relay Server</td>
+                </tr>
+                <tr>
+                    <td>sec-box</td>
+                    <td>10.0.0.10</td>
+                    <td>Dedicated Security Server</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
