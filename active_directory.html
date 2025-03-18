@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Active Directory</title>
+    <title>Active Directory | Cybersecurity Project</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
+        /* General Styles */
         body { 
-            font-family: 'Orbitron', sans-serif;
+            font-family: Arial, sans-serif;
             background: black;
-            color: #00FF00;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+            color: #FFFFFF;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
         }
 
-        /* Navigation Bar */
+        /* Full-Width Navbar with Only Home Button */
         .navbar {
             width: 100%;
             background: rgba(0, 255, 0, 0.2);
             padding: 15px 0;
             border-bottom: 2px solid #00FF00;
-            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
             display: flex;
             justify-content: center;
-            align-items: center;
             position: fixed;
             top: 0;
             left: 0;
@@ -37,78 +32,105 @@
         }
 
         .navbar a {
-            color: black;
+            color: #00FF00;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 10px;
-            background: #00FF00;
-            box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.8);
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
             transition: 0.3s;
         }
 
-        .navbar a:hover {
-            background: black;
-            color: #00FF00;
-            box-shadow: 0px 0px 20px rgba(0, 255, 0, 1);
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
 
-        /* Cyberpunk Title */
-        .title {
+        /* Title Section (Matches Home Page) */
+        .title-section {
+            margin-top: 100px; /* Matches home page spacing */
+        }
+
+        .title-section h1 {
             font-size: 48px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(0, 255, 0, 1), 0 0 25px rgba(0, 255, 0, 0.8);
-            display: inline-block;
-            border-bottom: 2px solid #00FF00;
-            padding-bottom: 10px;
-            margin-top: 120px; /* Matches home page layout */
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+            margin-bottom: 10px;
         }
 
+        .title-section p {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-top: -10px;
+        }
+
+        /* Content Section */
         .content {
-            flex-grow: 1; /* Ensures content expands properly */
-            padding-bottom: 80px; /* Prevents overlap with back button */
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
         }
 
-        /* Back Button Always at Bottom */
+        /* Back Button (Fixed at Bottom) */
         .back-button {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 15px 30px;
+            padding: 12px 20px;
             font-size: 18px;
             font-weight: bold;
             color: black;
             background: #00FF00;
-            border: none;
             border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
             transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         .back-button:hover {
-            background: black;
-            color: #00FF00;
-            box-shadow: 0px 0px 20px rgba(0, 255, 0, 1);
+            background: #008000;
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Full-width Navbar with Only Home Button -->
     <div class="navbar">
         <a href="index.html" class="active">Home</a>
     </div>
 
-    <!-- Page Content -->
+    <!-- Title Section (Matches Home Page) -->
+    <div class="title-section">
+        <h1>Building a Directory Service Server with Active Directory</h1>
+        <p>Cybersecurity Project Overview</p>
+    </div>
+
+    <!-- Project Content -->
     <div class="content">
-        <h1 class="title">🔹 Building a Directory Service Server with Active Directory</h1>
-        <p>This is the project page for [Project Name]. Add project details here.</p>
-        <p>Scroll down to see the back button stay in place.</p>
-        <p style="height: 1000px;">(Imagine this as long project documentation that requires scrolling.)</p>
+        <p><strong>Overview:</strong> This project demonstrates setting up an enterprise-level Active Directory domain environment. It includes user authentication, policy management, and centralized security controls.</p>
+        <p><strong>Technologies Used:</strong> Windows Server 2025, Active Directory, DNS, DHCP, Group Policy</p>
+        <p><strong>Key Objectives:</strong></p>
+        <ul>
+            <li>Deploy Windows Server as a Domain Controller</li>
+            <li>Configure Active Directory Users and Groups</li>
+            <li>Implement Group Policy for security hardening</li>
+            <li>Enable Single Sign-On (SSO) for enterprise applications</li>
+        </ul>
+        <p>Scroll down to see more details...</p>
     </div>
 
     <!-- Back Button Stays Fixed at Bottom -->
