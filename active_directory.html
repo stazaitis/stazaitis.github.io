@@ -192,16 +192,16 @@
     <div class="content">
         <h2>Overview</h2>
         <p><strong>This project demonstrates setting up an enterprise-level Active Directory domain environment.</strong></p>
-        <p>The <strong>Directory Services Server</strong> functions as the central authentication and management hub, operating through three core components:</p>
+        <p>The <strong>Directory Services Server</strong> will function as the central authentication and management hub, operating through three main components:</p>
         
         <h2>DNS (Domain Name System)</h2>
-        <p>When one of my desktop machines attempts to access <strong>google.com</strong>, the request is first sent to the <strong>Directory Services Server</strong>. This server processes the request by delegating the query and retrieving the corresponding <strong>IP address</strong> for google.com, allowing seamless domain resolution within the enterprise network.</p>
+        <p>When one of my desktop machines attempts to access <strong>google.com</strong>, the request is first sent to the <strong>Directory Services Server</strong>. This server processes the request by delegating the query and retrieving the corresponding <strong>IP address</strong> for google.com, allowing domain resolution within the enterprise network.</p>
 
         <h2>DHCP (Dynamic Host Configuration Protocol)</h2>
         <p>The <strong>DHCP server</strong> dynamically assigns <strong>IP addresses</strong> to workstations across the enterprise network, ensuring efficient IP management and connectivity without requiring manual configuration.</p>
 
         <h2>Identity & Single Sign-On (SSO)</h2>
-        <p>The <strong>Active Directory</strong> service centrally manages <strong>user accounts, computer identities, and authentication policies</strong> across the enterprise network. It maps users to their designated workstations, including <strong>Ubuntu and Windows 11 Enterprise</strong> machines.</p>
+        <p>The <strong>Active Directory</strong> service server centrally manages <strong>user accounts, computer identities, and authentication policies</strong> across the enterprise network. It maps users to their designated workstations, such as <strong>Ubuntu and Windows 11 Enterprise</strong> machines.</p>
         <p>With <strong>SSO (Single Sign-On)</strong>, users can authenticate once and gain secure access to multiple enterprise applications without repeated logins.</p>
     </div>
 
@@ -297,7 +297,7 @@
     
         <p>To ensure the <strong>Domain Controller</strong> has internet access, it must be configured properly.</p>
     
-        <p>When a workstation—such as our <strong>Linux client</strong> or a <strong>Windows 11 Enterprise</strong> machine—attempts to access the internet, its request will first route through the <strong>Windows Server</strong> (this machine). This functionality is achieved by creating a <strong>lookup zone</strong>, which facilitates domain name resolution and network connectivity.</p>
+        <p>When a workstation—such as the <strong>Linux client</strong> or a <strong>Windows 11 Enterprise</strong> machine—attempts to access the internet, its request will first route through the <strong>Windows Server</strong> (this machine). This functionality is achieved by creating a <strong>lookup zone</strong>, which facilitates domain name resolution and network connectivity.</p>
     
         <div class="image-container">
             <img src="assets/images/DNS lookup zone.png" alt="DNS Lookup Zone Configuration">
