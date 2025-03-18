@@ -54,6 +54,10 @@
             transform: translateY(-100%);
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
+
+        .title-section {
+            margin-top: 80px; /* Adjusted so title is not hidden behind the navbar */
+        }
         
         .project-container {
             margin-top: 100px;
@@ -192,8 +196,10 @@
         <a href="index.html" class="active">Home</a>
     </div>
 
-    <h1>🔹 Cybersecurity Projects</h1>
-    <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
+    <div class="title-section">
+        <h1>🔹 Cybersecurity Projects</h1>
+        <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
+    </div>
 
     <div class="project-container">
         <div class="project-overview">
