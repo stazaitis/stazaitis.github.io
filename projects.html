@@ -53,7 +53,13 @@
             opacity: 0;
             transform: translateY(-100%);
         }
+        /* Navbar Hide/Show Effect */
+        .hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         
+        }
         .project-container {
             margin-top: 100px;
             padding-bottom: 100px;
@@ -322,30 +328,31 @@
     
     <script>
         function openFullscreen() {
-            document.getElementById("fullscreen-container").style.display = "flex";
-        }
+        document.getElementById("fullscreen-container").style.display = "flex";
+    }
 
         function closeFullscreen() {
-            document.getElementById("fullscreen-container").style.display = "none";
-        }
+        document.getElementById("fullscreen-container").style.display = "none";
+    }
 
-        // Navbar Scroll Hide/Show
-        document.addEventListener("DOMContentLoaded", function () {
-            let lastScrollTop = 0;
-            const navbar = document.getElementById("navbar");
+    // Navbar Scroll Hide/Show
+    document.addEventListener("DOMContentLoaded", function () {
+        let lastScrollTop = 0;
+        const navbar = document.getElementById("navbar");
 
-            window.addEventListener("scroll", function () {
-                let scrollTop = window.scrollY || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop) {
-                    // Scrolling down, hide navbar
-                    navbar.classList.add("hidden");
-                } else {
-                    // Scrolling up, show navbar
-                    navbar.classList.remove("hidden");
-                }
-                lastScrollTop = scrollTop;
-            });
-        });          
-    </script>
+        window.addEventListener("scroll", function () {
+            let scrollTop = window.scrollY || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scrolling down, hide navbar
+                navbar.classList.add("hidden");
+            } else {
+                // Scrolling up or at the top, show navbar
+                navbar.classList.remove("hidden");
+            }
+            lastScrollTop = scrollTop;
+        });
+    });
+</script>
 </body>
 </html>
