@@ -275,6 +275,19 @@
             <img src="assets/images/vbxs.png" alt="VirtualBox NAT Network Configuration">
         </div>
     </div>
+
+    <div class="content">
+        <h2>Static IP Configuration for the Domain Controller</h2>
+        <p>I have set up a <strong>static IP address</strong> for the <strong>Domain Controller (10.0.0.5)</strong>. This ensures that if the IP address were to change, the connected machines wouldn’t be able to locate and communicate with the DC.</p>
+    
+        <p><strong>10.0.0.1</strong> will serve as the <strong>default gateway</strong> across all workstations and servers, enabling internet access.</p>
+    
+        <p>Since this setup conforms to the <strong>VirtualBox NAT Network</strong> I created earlier, the subnet is set to <strong>255.255.255.0</strong>. This allows for a total of <strong>256 addresses</strong>, of which <strong>254 are usable</strong> for devices on the network.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/static_ip_DC.png" alt="Static IP Configuration for Domain Controller">
+        </div>
+    </div>
     
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
