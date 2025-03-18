@@ -125,38 +125,6 @@
             color: white;
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
             opacity: 1; /* Fully visible on hover */
-
-        /* Next Button - Adjusted Transparency */
-        .next-button {
-            position: fixed;
-            bottom: 20px;
-            right: 5%; /* Positioned on the bottom right */
-            transform: translateX(50%);
-            padding: 12px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: black;
-            background: rgba(0, 255, 0, 0.6); /* Semi-transparent */
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            opacity: 0.8; /* Slightly transparent */
-        }
-        
-        /* Hover effect to make it fully visible and show "Next Section" */
-        .next-button:hover {
-            background: rgba(0, 255, 0, 1);
-            color: white;
-            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
-            opacity: 1; /* Fully visible on hover */
-        }
-        
-        .next-button:hover::after {
-            content: " Next Section →"; /* Shows text on hover */
-            font-size: 16px;
-            padding-left: 8px;
         }
 
         .image-container {
@@ -392,9 +360,6 @@
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
-    <!-- Next Section Button -->
-    <a href="setup-windows-11-enterprise.html" class="next-button">Next</a>
-    
     <script>
         function goBack() {
             window.history.back();
