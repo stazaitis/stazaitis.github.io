@@ -306,6 +306,46 @@
     
         <p>This was successfully confirmed by performing a <strong>ping command</strong> and <strong>nslookup</strong> within the <strong>Windows PowerShell</strong> of this virtual machine's <strong>Domain Controller</strong>.</p>
     </div>
+
+    <div class="content">
+        <h2>DHCP Configuration & Scope Setup</h2>
+        <p>The next step is to configure <strong>DHCP</strong>. DHCP will act as <strong>Project-X’s leasing server</strong>, assigning various IP addresses to the workstations.</p>
+    
+        <p>Although I won’t be using this functionality extensively (since I am setting up static IP addresses for specific workstations), learning to configure **DHCP** is important as it is commonly used in enterprise environments.</p>
+    
+        <p>I have created a <strong>DHCP scope</strong> of <strong>10.0.0.100 - 10.0.0.200</strong>, meaning it will lease out **100 IP addresses** dynamically.</p>
+    
+        <p>The default gateway remains **10.0.0.1**, as previously configured. For example, if the **Windows client workstation** (IP: <strong>10.0.0.100</strong>) needs to access the internet, it will route through the **default gateway (10.0.0.1)**, which functions as the router’s IP address.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/DHCP Scope.png" alt="DHCP Scope Configuration">
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Active Directory User Accounts</h2>
+        <p>After setting up the domain and network, I proceeded to create **user accounts** within <strong>Active Directory</strong>.</p>
+    
+        <p>These **AD user accounts** map a particular user to their corresponding workstation, serving as their **identity** within the system. A user can sign into multiple machines if needed. For example, a **developer** may require access to both **Linux and Windows** environments.</p>
+    
+        <p><strong>Jane Doe</strong> is associated with the **Linux client**, while <strong>John Doe</strong> is linked to the **Windows client**.</p>
+    
+        <p>Additional user accounts include:</p>
+        <ul>
+            <li><strong>Administrator</strong></li>
+            <li><strong>Email</strong></li>
+            <li><strong>Guest</strong></li>
+            <li><strong>sec-user</strong></li>
+            <li><strong>project-x-user</strong> (Attacker-created account after infiltrating the DC)</li>
+        </ul>
+    
+        <p>More details on these accounts will be discussed in the **Mini Projects** tabs on the Project Page.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/AD users.png" alt="Active Directory User Accounts">
+        </div>
+    </div>
+    
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
