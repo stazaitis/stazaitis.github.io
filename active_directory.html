@@ -22,12 +22,22 @@
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Spreads out buttons */
+            justify-content: space-between; /* Ensures Back is left, Home is centered */
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
             padding: 10px 20px;
+        }
+
+        .navbar .nav-left {
+            flex: 1; /* Makes sure Home stays centered */
+        }
+
+        .navbar .nav-right {
+            flex: 1; /* Ensures proper spacing */
+            display: flex;
+            justify-content: flex-end;
         }
 
         .navbar a, .back-button {
@@ -49,6 +59,7 @@
             color: black;
         }
 
+        /* Cyberpunk Title Style */
         .title {
             font-size: 40px;
             font-weight: bold;
@@ -58,16 +69,19 @@
             display: inline-block;
             border-bottom: 2px solid #00FF00;
             padding-bottom: 10px;
-            margin-top: 80px; /* Adjusted for fixed navbar */
+            margin-top: 100px; /* Adjusted for fixed navbar */
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar with Back Button (Left) and Home Button (Center) -->
+    <!-- Navigation Bar -->
     <div class="navbar">
-        <button class="back-button" onclick="goBack()">⬅ Back</button>
+        <div class="nav-left">
+            <button class="back-button" onclick="goBack()">⬅ Back</button>
+        </div>
         <a href="index.html" class="active">Home</a>
+        <div class="nav-right"></div>
     </div>
 
     <!-- Cyberpunk Title -->
