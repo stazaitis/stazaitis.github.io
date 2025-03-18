@@ -16,7 +16,7 @@
             text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
         }
 
-        /* Full-Width Navbar with Only Home Button */
+        /* Navbar */
         .navbar {
             width: 100%;
             background: rgba(0, 255, 0, 0.2);
@@ -55,22 +55,15 @@
             transform: translateY(-100%);
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
-        
+
         .title-section {
-            margin-top: 100px; /* Matches home page spacing */
+            margin-top: 100px;
         }
 
         .title-section h1 {
-            font-size: 48px;
+            font-size: 36px;
             color: #00FF00;
             text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
-            margin-bottom: 10px;
-        }
-
-        .title-section p {
-            font-size: 20px;
-            color: #FFFFFF;
-            margin-top: -10px;
         }
 
         /* Content Section */
@@ -87,7 +80,28 @@
             border-radius: 10px;
         }
 
-        /* Back Button (Fixed at Bottom) */
+        .content h2 {
+            color: #00FF00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .content p, .content ul {
+            color: #FFFFFF;
+            font-size: 18px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content ul li {
+            margin: 10px 0;
+        }
+
+        /* Back Button */
         .back-button {
             position: fixed;
             bottom: 20px;
@@ -114,12 +128,12 @@
 </head>
 <body>
 
-    <!-- Full-width Navbar with Only Home Button -->
+    <!-- Navbar -->
     <div class="navbar">
         <a href="index.html" class="active">Home</a>
     </div>
 
-    <!-- Title Section (Matches Home Page) -->
+    <!-- Title Section -->
     <div class="title-section">
         <h1>Building a Directory Service Server with Active Directory</h1>
     </div>
@@ -128,22 +142,24 @@
     <div class="image-container">
         <img src="assets/images/ActiveDirectory.drawio.png" alt="Active Directory Attack Flow Diagram" style="width: 90%; max-width: 1000px; border: 2px solid #00FF00; box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5); border-radius: 10px;">
     </div>
-    
+
     <!-- Project Content -->
     <div class="content">
-        <p><strong>Overview:</strong> This project demonstrates setting up an enterprise-level Active Directory domain environment. The directory service server will be the active directory, functioning as three main components: DNS, DHCP, and SSO.</p>
-        <p><strong>Technologies Used:</strong> Windows Server 2025, Active Directory, DNS, DHCP, Group Policy</p>
-        <p><strong>Key Objectives:</strong></p>
-        <ul>
-            <li>Deploy Windows Server as a Domain Controller</li>
-            <li>Configure Active Directory Users and Groups</li>
-            <li>Implement Group Policy for security hardening</li>
-            <li>Enable Single Sign-On (SSO) for enterprise applications</li>
-        </ul>
-        <p>Scroll down to see more details...</p>
+        <p><strong>This project demonstrates setting up an enterprise-level Active Directory domain environment.</strong></p>
+        <p>The <strong>Directory Services Server</strong> functions as the central authentication and management hub, operating through three core components:</p>
+        
+        <h2>DNS (Domain Name System)</h2>
+        <p>When one of my desktop machines attempts to access <strong>google.com</strong>, the request is first sent to the <strong>Directory Services Server</strong>. This server processes the request by delegating the query and retrieving the corresponding <strong>IP address</strong> for google.com, allowing seamless domain resolution within the enterprise network.</p>
+
+        <h2>DHCP (Dynamic Host Configuration Protocol)</h2>
+        <p>The <strong>DHCP server</strong> dynamically assigns <strong>IP addresses</strong> to workstations across the enterprise network, ensuring efficient IP management and connectivity without requiring manual configuration.</p>
+
+        <h2>Identity & Single Sign-On (SSO)</h2>
+        <p>The <strong>Active Directory</strong> service centrally manages <strong>user accounts, computer identities, and authentication policies</strong> across the enterprise network. It maps users to their designated workstations, including <strong>Ubuntu and Windows 11 Enterprise</strong> machines.</p>
+        <p>With <strong>SSO (Single Sign-On)</strong>, users can authenticate once and gain secure access to multiple enterprise applications without repeated logins.</p>
     </div>
 
-    <!-- Back Button Stays Fixed at Bottom -->
+    <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
     <script>
@@ -159,16 +175,16 @@
                 let scrollTop = window.scrollY || document.documentElement.scrollTop;
                 
                 if (scrollTop > lastScrollTop && scrollTop > 50) {
-                // Scrolling down, hide navbar
+                    // Scrolling down, hide navbar
                     navbar.classList.add("hidden");
                 } else {
                     // Scrolling up or at the top, show navbar
                     navbar.classList.remove("hidden");
-            }
+                }
                 
-            lastScrollTop = scrollTop;
+                lastScrollTop = scrollTop;
+            });
         });
-    });
     </script>
 
 </body>
