@@ -288,7 +288,24 @@
             <img src="assets/images/static ip DC.png" alt="Static IP Configuration for Domain Controller">
         </div>
     </div>
+
+    <div class="content">
+        <h2>DNS Manager & Lookup Zone Configuration</h2>
+        <p>The <strong>DNS Manager</strong> enables the configuration of <strong>DNS lookup zones</strong>, allowing for efficient domain name resolution.</p>
     
+        <p>To ensure the <strong>Domain Controller</strong> has internet access, it must be configured properly.</p>
+    
+        <p>When a workstation—such as our <strong>Linux client</strong> or a <strong>Windows 11 Enterprise</strong> machine—attempts to access the internet, its request will first route through the <strong>Windows Server</strong> (this machine). This functionality is achieved by creating a <strong>lookup zone</strong>, which facilitates domain name resolution and network connectivity.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/DNS lookup zone.png" alt="DNS Lookup Zone Configuration">
+        </div>
+    
+        <h2>Configuring Google’s DNS for Internet Access</h2>
+        <p>To allow <strong>Project-X</strong> to access the internet, I have added <strong>Google’s public DNS server (8.8.8.8)</strong>.</p>
+    
+        <p>This was successfully confirmed by performing a <strong>ping command</strong> and <strong>nslookup</strong> within the <strong>Windows PowerShell</strong> of this virtual machine's <strong>Domain Controller</strong>.</p>
+    </div>
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
