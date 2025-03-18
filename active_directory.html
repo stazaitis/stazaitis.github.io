@@ -12,6 +12,10 @@
             text-align: center;
             padding: 50px;
             text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
@@ -29,21 +33,20 @@
         }
 
         .navbar a {
-            color: #00FF00;
+            color: black;
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
             padding: 10px 20px;
             border-radius: 10px;
-            background: rgba(0, 255, 0, 0.3);
+            background: #00FF00;
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
             transition: 0.3s;
         }
 
-        .navbar a:hover, .navbar a.active {
-            background: #00FF00;
+        .navbar a:hover {
+            background: white;
             color: black;
-            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
         }
 
         /* Cyberpunk Title Style */
@@ -56,13 +59,21 @@
             display: inline-block;
             border-bottom: 2px solid #00FF00;
             padding-bottom: 10px;
-            margin-bottom: 20px;
+            margin-top: 100px; /* Adjusted for fixed navbar */
         }
 
+        .content {
+            flex-grow: 1; /* Ensures content expands properly */
+            padding-bottom: 60px; /* Prevents overlap with back button */
+        }
+
+        /* Back Button Always at Bottom */
         .back-button {
-            display: block;
-            margin: 40px auto;
-            padding: 10px 20px;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 25px;
             font-size: 18px;
             font-weight: bold;
             color: black;
@@ -82,17 +93,20 @@
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
+    <!-- Navigation Bar -->
     <div class="navbar">
         <a href="index.html" class="active">Home</a>
     </div>
 
-    <!-- Cyberpunk Title -->
-    <h1 class="title">🔹 Building a Directory Service Server with Active Directory</h1>
+    <!-- Page Content -->
+    <div class="content">
+        <h1 class="title">🔹 Building a Directory Service Server with Active Directory</h1>
+        <p>This is the project page for [Project Name]. Add project details here.</p>
+        <p>Scroll down to see the back button stay in place.</p>
+        <p style="height: 1000px;">(Imagine this as long project documentation that requires scrolling.)</p>
+    </div>
 
-    <p>This is the project page for [Project Name]. Add project details here.</p>
-
-    <!-- Back Button -->
+    <!-- Back Button Stays Fixed at Bottom -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
     <script>
