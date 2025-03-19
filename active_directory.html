@@ -126,6 +126,33 @@
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
             opacity: 1; /* Fully visible on hover */
         }
+        
+        /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
 
         .image-container {
             text-align: center;
@@ -360,6 +387,9 @@
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
+    <!-- Next Section Button -->
+    <a href="setup-windows-11-enterprise.html" class="next-button">Next ➡</a>
+    
     <script>
         function goBack() {
             window.history.back();
