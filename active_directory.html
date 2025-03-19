@@ -106,18 +106,18 @@
             position: fixed;
             bottom: 20px;
             left: 12.5%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); /* Same as Next button */
             padding: 12px 20px;
             font-size: 18px;
             font-weight: bold;
             color: black;
-            background: rgba(0, 255, 0, 0.6); /* Adjusted transparency */
+            background: rgba(0, 255, 0, 0.6);
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            opacity: 0.8; /* Added opacity to make it more transparent */
+            opacity: 0.8;
         }
 
         .back-button:hover {
@@ -131,22 +131,26 @@
         .next-button {
             position: fixed;
             bottom: 20px;
-            right: 12.5%; /* Matches back button positioning */
-            transform: translateX(50%);
-            padding: 12px 20px;
+            right: 12.5%;
+            transform: translateX(-50%); /* Changed from 50% to -50% */
+            padding: 12px 20px; /* Same padding as Back */
             font-size: 18px;
             font-weight: bold;
             color: black;
-            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            background: rgba(0, 255, 0, 0.6);
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
             transition: 0.3s;
             border: none;
             cursor: pointer;
             opacity: 0.8;
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Makes it behave like a button */
+            text-align: center; /* Ensures proper text alignment */
         }
 
-        /* Hover effect to make it fully visible */
+        /* Hover Effect for Both Buttons */
+        .back-button:hover,
         .next-button:hover {
             background: rgba(0, 255, 0, 1);
             color: white;
