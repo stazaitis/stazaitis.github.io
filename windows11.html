@@ -87,19 +87,6 @@
             margin-bottom: 10px;
         }
 
-        .image-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .image-container img {
-            width: 90%;
-            max-width: 1000px;
-            border: 2px solid #00FF00;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
-            border-radius: 10px;
-        }
-
         /* Back Button */
         .back-button {
             position: fixed;
@@ -125,6 +112,52 @@
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
             opacity: 1;
         }
+
+                /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+        /* Remove underline from Next button */
+        .next-button {
+            text-decoration: none; /* This removes the underline */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+        
     </style>
 </head>
 <body>
@@ -187,10 +220,32 @@
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
+    <!-- Next Section Button -->
+    <a href="windows11.html" class="next-button">Next ➡</a>
+
     <script>
         function goBack() {
             window.history.back();
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let lastScrollTop = 0;
+            const navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function () {
+                let scrollTop = window.scrollY || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 50) {
+                    // Scrolling down, hide navbar
+                    navbar.classList.add("hidden");
+                } else {
+                    // Scrolling up or at the top, show navbar
+                    navbar.classList.remove("hidden");
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
     </script>
 
 </body>
