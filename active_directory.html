@@ -144,7 +144,6 @@
             border: none;
             cursor: pointer;
             opacity: 0.8;
-            position: relative; /* Allows absolute positioning inside */
         }
 
         /* Hover effect to make it fully visible */
@@ -152,30 +151,6 @@
             background: rgba(0, 255, 0, 1);
             color: white;
             box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
-            opacity: 1;
-        }
-
-        /* Tooltip that appears above the button */
-        .next-button::before {
-            content: "Setup Windows 11 Enterprise"; /* Name of next section */
-            position: absolute;
-            bottom: 40px; /* Moves tooltip directly above button */
-            left: 50%; /* Centering */
-            transform: translateX(-50%); /* Ensures proper centering */
-            background: rgba(0, 255, 0, 0.9);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            white-space: nowrap;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
-        }
-
-        /* Show tooltip when hovering */
-        .next-button:hover::before {
             opacity: 1;
         }
 
