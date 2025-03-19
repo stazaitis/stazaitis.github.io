@@ -87,6 +87,19 @@
             margin-bottom: 10px;
         }
 
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
         /* Back Button */
         .back-button {
             position: fixed;
@@ -129,7 +142,46 @@
     <!-- Content Placeholder -->
     <div class="content">
         <h2>Overview</h2>
-        <p><strong>This section will cover the installation and configuration of Windows 11 Enterprise.</strong></p>
+        <p>This machine will simulate a workstation environment. As Project-X continues to grow, new laptops and desktops will be added, also known as workstations. Based on my research, this mirrors real-world enterprise environments where workstations are managed through Active Directory.</p>
+        <p>After mounting the Windows 11 Enterprise ISO file in VirtualBox and successfully installing Windows 11, I then proceeded to assign a static IP for proper network connectivity.</p>
+    </div>
+
+    <div class="content">
+        <h2>Static IP Configuration</h2>
+        <p>All of these settings look familiar based on the previously configured Domain Controller.</p>
+        <p>I set the DNS server to point to the Domain Controller. So when the Windows machine needs to go out and look for a host name, it first runs through the Domain Controller, which then queries or resolves that domain on behalf of this machine.</p>
+        <div class="image-container">
+            <img src="assets/images/johnd.static.png" alt="Static IP Configuration">
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Joining the Active Directory Domain</h2>
+        <p>I then added the machine to the Active Directory domain.</p>
+        <p>Renamed the computer name to <strong>project-x-win-client</strong> for easier management. Then, selected the domain and typed in <strong>corp.project-x-dc.com</strong> to join this workstation to the AD domain.</p>
+        <div class="image-container">
+            <img src="assets/images/johnd.domain.png" alt="Joining the Active Directory Domain">
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Authenticating the User</h2>
+        <p>A Windows Security dialog box appeared, and this is where I authenticated <strong>Johnd</strong>, the user account I provisioned in the previous project.</p>
+        <div class="image-container">
+            <img src="assets/images/johnd.authenticate.png" alt="Authenticating User in Windows Security Dialog">
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Provisioning the User Account</h2>
+        <p>Upon restarting the workstation and logging into Johnd’s account, the user was successfully provisioned.</p>
+        <p>The presence of <strong>CORP</strong> under login credentials confirms that this workstation has successfully joined the Domain Controller.</p>
+        <div class="image-container">
+            <img src="assets/images/johnd.provisioned.png" alt="Provisioned User Account">
+        </div>
+        <div class="image-container">
+            <img src="assets/images/provisioned.png" alt="Final Confirmation of User Provisioning">
+        </div>
     </div>
 
     <!-- Back Button -->
