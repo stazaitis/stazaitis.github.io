@@ -252,12 +252,18 @@
 
     <div class="content">
         <h2>Adding Roles & Features</h2>
-        <p>On the server dashboard I went to “Add Roles and Features” and went through a default wizard configuration adding Active Directory Domain Services, DHCP Server, and DNS Server. </p>
-        <p>I want to emphasize that by this point, I had already completed the necessary configurations. However, I am capturing screenshots of the process, including steps that may not have been previously documented in my notes.</p>
+        <p>On the server dashboard I used the "Add Roles and Features" wizard with the default settings to install Active Directory Domain Services (AD DS), DHCP Server, and DNS Server.</p>
+        <p>By this point, I had already completed the necessary configurations. However, I am capturing screenshots of specific steps in my process that I hadn't documented earlier in my notes.</p>
         
         <div class="image-container">
             <img src="assets/images/server.roles.png" alt="Project X Domain Overview">
         </div>
+    </div>
+
+    <div class="content">
+        <h2>Root Domain Deployment Configuration</h2>
+        <p>After installing the server roles, I then deployed the Active Directory Domain Service configuration.</p>
+        <p>I added corp.project-x-dc.com as the Root domain name which is what I used to connect the workstations and other servers seen below (full table on “view my projects overview” tab).</p>
 
         <table class="device-table">
             <thead>
@@ -298,13 +304,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <div class="content">
-        <h2>Root Domain Deployment Configuration</h2>
-        <p>After installing the server roles, I then deployed the Active Directory Domain Service configuration.</p>
-        <p>I added corp.project-x-dc.com as the Root domain name which is what I used to connect the workstations and other servers (full table on “view my projects overview” tab).</p>
-
+        
         <div class="image-container">
             <img src="assets/images/dashboard.png" alt="Windows Server Manager Dashboard">
         </div>
