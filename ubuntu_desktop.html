@@ -232,6 +232,26 @@
     <div class="image-container">
         <img src="assets/images/conf.png" alt="Configuring Samba for Active Directory">
     </div>
+
+    <ol start="5">
+        <li>Added <code>"winbind"</code> to the <code>passwd</code> and <code>group</code> lines.</li>
+    </ol>
+    
+    <div class="image-container">
+        <img src="assets/images/winbind.png" alt="Adding Winbind to passwd and group lines">
+    </div>
+
+    <ol start="6">
+        <li>On Ubuntu, every user that has an interactive logon to the system needs a home directory. 
+            For domain users, we need to set this before a user is able to successfully logon and start working.</li>
+        <pre><code>sudo pam-auth-update</code></pre>
+    </ol>
+    
+    <div class="image-container">
+        <img src="assets/images/pam.png" alt="Configuring PAM Authentication">
+    </div>
+
+    
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
