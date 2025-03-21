@@ -304,9 +304,10 @@
 
     <div class="content">
         <h2>Joining the Domain with Administrator</h2>
-        <p>From here, I joined the domain using the administrator account so user <strong>janed</strong> could sign in with the account that was created in the Active Directory project.</p>
     
-        <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+        <p><strong>8.</strong> From here, I joined the domain using the administrator account so user <strong>janed</strong> could sign in with the account that was created in the Active Directory project.</p>
+    
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
             sudo net ads join -U Administrator
         </div>
     
@@ -317,9 +318,10 @@
         </div>
     
         <h2>Restarting Winbind</h2>
-        <p>After joining the domain, I restarted Winbind to ensure authentication services were running correctly.</p>
     
-        <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+        <p><strong>9.</strong> After joining the domain, I restarted Winbind to ensure authentication services were running correctly.</p>
+    
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
             systemctl restart winbind
         </div>
     </div>
