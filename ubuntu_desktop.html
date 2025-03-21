@@ -187,6 +187,32 @@
         </div>
     </div>
 
+    <div class="content">
+        <h2>Connecting Ubuntu to Active Directory</h2>
+        <p>However, since Linux is not native to Microsoft, I had to use third-party libraries to connect to the Domain Controller. I used a service called <strong>Samba Winbind</strong>, which allows Linux systems to authenticate users against Windows Active Directory and integrate with Windows network environments.</p>
+        <p>I followed instructions from this guide: <a href="https://www.server-world.info/en/note?os=Ubuntu_22.04&p=samba&f=4" target="_blank">Server World - Samba Active Directory Integration</a></p>
+        
+        <p>Below, I have laid out the instructions for easy viewing.</p>
+    
+        <h3>Preparing the System</h3>
+        <p>Before installing Winbind, I updated the system within the terminal:</p>
+        <pre><code>sudo apt update</code></pre>
+    
+        <h3>Installing Required Packages</h3>
+        <p>I then installed the necessary packages for Active Directory integration:</p>
+        <pre><code>sudo apt install realmd sssd sssd-tools samba-common krb5-user packagekit libnss-sss libpam-sss adcli samba-common-bin</code></pre>
+    
+        <div class="image-container">
+            <img src="assets/images/auth.png" alt="Installing Authentication Packages">
+        </div>
+        <div class="image-container">
+            <img src="assets/images/auth2.png" alt="Configuration of Authentication Services">
+        </div>
+        <div class="image-container">
+            <img src="assets/images/auth3.png" alt="Domain Join Process">
+        </div>
+    </div>
+
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
