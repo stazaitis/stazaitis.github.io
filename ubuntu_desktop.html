@@ -305,25 +305,33 @@
     <div class="content">
         <h2>Joining the Domain with Administrator</h2>
     
-        <p><strong>8.</strong> From here, I joined the domain using the administrator account so user <strong>janed</strong> could sign in with the account that was created in the Active Directory project.</p>
+        <ol>
+            <li value="8">From here, I joined the domain using the administrator account so user <strong>janed</strong> could sign in with the account that was created in the Active Directory project.</li>
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                sudo net ads join -U Administrator
+            </div>
     
-        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
-            sudo net ads join -U Administrator
-        </div>
-    
-        <p>I used the same password for all workstation and server virtual machines when prompted to enter. The administrator account for the domain controller was the only one with a different password.</p>
+            <p>I used the same password for all workstation and server virtual machines when prompted to enter. The administrator account for the domain controller was the only one with a different password.</p>
+        </ol>
     
         <div class="image-container">
-            <img src="assets/images/admin.png" alt="Joining Domain with Administrator">
+            <img src="assets/images/admin.png" alt="Joining the Domain with Administrator">
         </div>
+    </div>
     
+    <div class="content">
         <h2>Restarting Winbind</h2>
     
-        <p><strong>9.</strong> After joining the domain, I restarted Winbind to ensure authentication services were running correctly.</p>
+        <ol>
+            <li value="9">After joining the domain, I restarted Winbind to ensure authentication services were running correctly.</li>
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
     
-        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
-            systemctl restart winbind
-        </div>
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                systemctl restart winbind
+            </div>
+        </ol>
     </div>
 
     <div class="content">
