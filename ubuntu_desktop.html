@@ -284,7 +284,24 @@
             <img src="assets/images/pam.png" alt="Configuring PAM for Home Directories">
         </div>
     </div>
+
+    <div class="content">
+        <h2>Configuring DNS for Active Directory</h2>
+        
+        <ol>
+            <li value="7">I then proceeded to change DNS settings to <strong>10.0.0.5</strong>, which is the Domain Controller.</li>
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                sudo nano /etc/resolv.conf
+            </div>
+        </ol>
     
+        <div class="image-container">
+            <img src="assets/images/resolv.png" alt="Configuring DNS for Active Directory">
+        </div>
+    </div>
+        
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
