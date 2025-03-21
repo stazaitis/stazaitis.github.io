@@ -218,20 +218,23 @@
     </div>
 
     <div class="content">
-        <ol start="3">
-            <li>Moved the <code>smb.conf</code> file:</li>
+        <h2>Configuring Samba for Active Directory</h2>
+        
+        <ol>
+            <li>Moved the existing Samba configuration file for backup:</li>
             <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
                 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.org
             </div>
-        <ol start="4">
-            <li>Then, I added the configuration from the provided guide and pasted it into my terminal session, replacing <strong>realm</strong> and <strong>workgroup</strong> with <code>CORP.PROJECT-X-DC.COM</code> and <code>CORP</code>:</li>
+    
+            <li>Then added the configuration from <a href="https://www.server-world.info/en/note?os=Ubuntu_22.04&p=samba&f=4" target="_blank">this guide</a> and pasted it into my terminal session, replacing realm and workgroup with <strong>CORP.PROJECT-X-DC.COM</strong> and <strong>CORP</strong>:</li>
             <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
                 sudo nano /etc/samba/smb.conf
             </div>
         </ol>
     
-    <div class="image-container">
-        <img src="assets/images/conf.png" alt="Configuring Samba for Active Directory">
+        <div class="image-container">
+            <img src="assets/images/conf.png" alt="Editing Samba Configuration">
+        </div>
     </div>
 
     <ol start="5">
