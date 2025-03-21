@@ -189,19 +189,27 @@
 
     <div class="content">
         <h2>Connecting Ubuntu to Active Directory</h2>
+        
         <p>Since Linux is not native to Microsoft, I had to use third-party libraries to connect to the Domain Controller. I used a service called <strong>Samba Winbind</strong>, which allows Linux systems to authenticate users against Windows Active Directory and integrate with Windows network environments.</p>
-        <p>I followed instructions from this guide: <a href="https://www.server-world.info/en/note?os=Ubuntu_22.04&p=samba&f=4" target="_blank">Server World - Samba Active Directory Integration</a></p>
+    
+        <p>I followed instructions from this guide: 
+            <a href="https://www.server-world.info/en/note?os=Ubuntu_22.04&p=samba&f=4" target="_blank">
+                Server World - Samba Active Directory Integration
+            </a>
+        </p>
         
         <p>I laid out the instructions for easy viewing:</p>
         
         <ol>
             <li>Prior to installing Winbind, I updated the system within the terminal with:</li>
-            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00; margin-bottom: 15px;">
                 sudo apt update
             </div>
     
             <li>Installed the required packages:</li>
-            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00; margin-bottom: 15px;">
                 sudo apt install realmd sssd sssd-tools samba-common krb5-user packagekit libnss-sss libpam-sss adcli samba-common-bin
             </div>
         </ol>
