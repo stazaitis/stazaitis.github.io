@@ -267,16 +267,23 @@
         </div>
     </div>
 
-    <ol start="6">
-        <li>On Ubuntu, every user that has an interactive logon to the system needs a home directory. 
-            For domain users, we need to set this before a user is able to successfully logon and start working.</li>
-        <pre><code>sudo pam-auth-update</code></pre>
-    </ol>
+    <div class="content">
+        <h2>Configuring PAM for Home Directories</h2>
+        
+        <ol>
+            <li value="6">On Ubuntu, every user that has an interactive logon to the system needs a home directory.
+                For domain users, we need to set this before a user is able to successfully logon and start working.</li>
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                sudo pam-auth-update
+            </div>
+        </ol>
     
-    <div class="image-container">
-        <img src="assets/images/pam.png" alt="Configuring PAM Authentication">
+        <div class="image-container">
+            <img src="assets/images/pam.png" alt="Configuring PAM for Home Directories">
+        </div>
     </div>
-
     
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
