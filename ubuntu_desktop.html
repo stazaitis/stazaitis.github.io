@@ -361,6 +361,30 @@
             <img src="assets/images/info.png" alt="Verifying Active Directory Integration">
         </div>
     </div>
+
+    <div class="content">
+        <h2>Adding Jane Doe to Active Directory</h2>
+    
+        <ol>
+            <li value="12">Moving over to the Active Directory Virtual Machine, I added Jane Doe through the DC 
+                server manager dashboard by taking this path:</li>
+            
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+    
+            <p style="margin-bottom: 10px;">
+                ➝ Going to <strong>Tools</strong> ➝ <strong>Active Directory Users and Computers</strong> ➝ 
+                Right-clicking on <strong>Users</strong> ➝ <strong>New</strong> ➝ Adding Jane Doe’s information and setting 
+                her username as <a href="mailto:janed@corp.project-x-dc.com">janed@corp.project-x-dc.com</a>.
+            </p>
+    
+            <p>After creating Jane’s AD account in the Domain Controller, I went back to my Linux client and performed 
+                another restart to clear the Winbind cache and see the changes reflected.</p>
+        </ol>
+    
+        <div class="image-container">
+            <img src="assets/images/admin.png" alt="Adding Jane Doe to Active Directory">
+        </div>
+    </div>
         
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
