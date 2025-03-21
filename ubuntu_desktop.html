@@ -250,12 +250,21 @@
         </div>
     </div>
     
-    <ol start="5">
-        <li>Added <code>"winbind"</code> to the <code>passwd</code> and <code>group</code> lines.</li>
-    </ol>
+    <div class="content">
+        <h2>Configuring Winbind for Authentication</h2>
+        
+        <ol>
+            <li value="5">Added <strong>"winbind"</strong> to the <code>/etc/nsswitch.conf</code> file under the <strong>passwd</strong> and <strong>group</strong> lines.</li>
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                sudo nano /etc/nsswitch.conf
+            </div>
+        </ol>
     
-    <div class="image-container">
-        <img src="assets/images/winbind.png" alt="Adding Winbind to passwd and group lines">
+        <div class="image-container">
+            <img src="assets/images/winbind.png" alt="Editing nsswitch.conf to include winbind">
+        </div>
     </div>
 
     <ol start="6">
