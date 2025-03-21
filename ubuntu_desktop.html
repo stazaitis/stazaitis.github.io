@@ -216,7 +216,22 @@
             <img src="assets/images/auth3.png" alt="Domain Join Process">
         </div>
     </div>
+
+    <ol start="3">
+        <li>Moved the <code>smb.conf</code> file:</li>
+        <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
+            sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.org
+        </div>
     
+        <li>Then, I added the configuration from the provided guide and pasted it into my terminal session, replacing <strong>realm</strong> and <strong>workgroup</strong> with <code>CORP.PROJECT-X-DC.COM</code> and <code>CORP</code>:</li>
+        <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
+            sudo nano /etc/samba/smb.conf
+        </div>
+    </ol>
+    
+    <div class="image-container">
+        <img src="assets/images/conf.png" alt="Configuring Samba for Active Directory">
+    </div>
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
