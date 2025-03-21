@@ -333,27 +333,43 @@
     
         <ol>
             <li>Displayed Active Directory services information:</li>
-            <div style="margin-top: 8px;"></div> <!-- Adjusted spacing -->
-            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+            <br>
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
                 net ads info
             </div>
-            <div style="margin-bottom: 10px;"></div> <!-- Adjusted spacing -->
-    
+            <br><br>
             <p>After running this command, I confirmed that the system could see the <strong>LDAP server 10.0.0.5</strong> and the domain name <strong>CORP.PROJECT-X-DC.COM</strong>.</p>
+            <br>
     
             <li>Listed all Active Directory users:</li>
-            <div style="margin-top: 8px;"></div> <!-- Adjusted spacing -->
-            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+            <br>
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
                 wbinfo -u
             </div>
-            <div style="margin-bottom: 10px;"></div> <!-- Adjusted spacing -->
+            <br><br>
+            <p>Several users were already displayed (including <strong>janed</strong>) because I had already completed my project and am now documenting some of the previously missing steps in my notes.</p>
     
+            <div class="image-container">
+                <img src="assets/images/info.png" alt="Verifying Active Directory Integration">
+            </div>
+    
+            <li><strong>10.</strong> Displayed Active Directory services information:</li>
+            <br>
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+                net ads info
+            </div>
+            <br><br>
+            <p>Can see LDAP server <strong>10.0.0.5</strong> and domain name <strong>CORP.PROJECT-X-DC.COM</strong>.</p>
+            <br>
+    
+            <li><strong>11.</strong> Listed all AD users:</li>
+            <br>
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+                wbinfo -u
+            </div>
+            <br><br>
             <p>Several users were already displayed (including <strong>janed</strong>) because I had already completed my project and am now documenting some of the previously missing steps in my notes.</p>
         </ol>
-    
-        <div class="image-container">
-            <img src="assets/images/info.png" alt="Verifying Active Directory Integration">
-        </div>
     </div>
         
     <!-- Back Button -->
