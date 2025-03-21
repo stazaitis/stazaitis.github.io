@@ -222,12 +222,14 @@
         
         <ol start="3">
             <li>Moved the existing Samba configuration file for backup:</li>
-            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00; margin-bottom: 15px;">
                 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.org
             </div>
     
             <li>Then added the configuration from <a href="https://www.server-world.info/en/note?os=Ubuntu_22.04&p=samba&f=4" target="_blank">this guide</a> and pasted it into my terminal session, replacing realm and workgroup with <strong>CORP.PROJECT-X-DC.COM</strong> and <strong>CORP</strong>:</li>
-            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00;">
+            <p style="margin-bottom: 10px;"></p> <!-- Added spacing -->
+            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #00FF00; margin-bottom: 15px;">
                 sudo nano /etc/samba/smb.conf
             </div>
         </ol>
