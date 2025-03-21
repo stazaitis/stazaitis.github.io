@@ -323,6 +323,32 @@
             systemctl restart winbind
         </div>
     </div>
+
+    <div class="content">
+        <h2>Verifying Active Directory Integration</h2>
+    
+        <p>After joining the domain, I verified that the system was properly connected to the Active Directory environment.</p>
+    
+        <ol>
+            <li>Displayed Active Directory services information:</li>
+            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+                net ads info
+            </div>
+    
+            <p>After running this command, I confirmed that the system could see the <strong>LDAP server 10.0.0.5</strong> and the domain name <strong>CORP.PROJECT-X-DC.COM</strong>.</p>
+    
+            <li>Listed all Active Directory users:</li>
+            <div style="background-color: black; padding: 10px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: red;">
+                wbinfo -u
+            </div>
+    
+            <p>Several users were already displayed (including <strong>janed</strong>) because I had already completed my project and am now documenting some of the previously missing steps in my notes.</p>
+        </ol>
+    
+        <div class="image-container">
+            <img src="assets/images/info.png" alt="Verifying Active Directory Integration">
+        </div>
+    </div>
         
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
