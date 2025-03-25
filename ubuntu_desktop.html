@@ -419,7 +419,97 @@
     
         <p>I wanted to get down to the root cause of the issue, so I performed additional research.</p>
     </div>
+
+    <div class="content">
+        <h2>Challenge: Investigating and Resolving Unexpected AD Account Disablement</h2>
     
+        <p>As shared above, during my cybersecurity project, I encountered an issue where Active Directory (AD) user accounts — including Jane’s — were being unexpectedly <strong>disabled</strong>. At first, I suspected a typical account lockout due to failed login attempts. However, after reviewing the <strong>Account Lockout Policy</strong> settings, I confirmed that the accounts were being <strong>disabled</strong>, not locked.</p>
+    
+        <h3>Investigation Process</h3>
+    
+        <ol>
+            <li><strong>Checked Group Policy for Enforced Disablement Policies</strong><br><br>
+                I generated a Group Policy Report to identify any automated domain policies affecting user accounts:<br><br>
+    
+                <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                    gpresult /h C:\GroupPolicyReport.html
+                </div>
+    
+                <p>I also manually navigated through Group Policy Object (GPO) settings:</p>
+                <ul>
+                    <li>Opened <strong>Group Policy Management (gpmc.msc)</strong></li>
+                    <li>Went to <strong>Default Domain Policy</strong></li>
+                    <li>Checked:
+                        <br>→ <code>Computer Configuration</code>
+                        <br>→ <code>Windows Settings</code>
+                        <br>→ <code>Security Settings</code>
+                        <br>→ <code>Account Policies</code>
+                        <br>→ <code>Account Lockout Policy</code>
+                    </li>
+                </ul>
+    
+                <div class="image-container">
+                    <img src="assets/images/group.png" alt="Group Policy Settings Overview">
+                </div>
+    
+                <p><strong>Finding:</strong> No policies were found that automatically disabled user accounts.</p>
+            </li>
+    
+            <li><strong>Searched Event Logs for Account Disablement Events</strong><br><br>
+                I then checked Windows Security Logs for <strong>Event ID 4725</strong>, which records when a user account is disabled. This was done using PowerShell:
+                <br><br>
+                <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                    Get-WinEvent -LogName Security | Where-Object { $_.Id -eq 4725 }
+                </div>
+    
+                <p><strong>Finding:</strong> The logs showed that multiple accounts, including Jane’s, were disabled on different dates.</p>
+    
+                <div class="image-container">
+                    <img src="assets/images/4725.png" alt="Event ID 4725 Log Results">
+                </div>
+            </li>
+    
+            <li><strong>Identified the Source of the Disablement</strong><br><br>
+                To determine who disabled the accounts, I ran:
+                <br><br>
+                <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                    Get-WinEvent -LogName Security | Where-Object { $_.Id -eq 4725 } | Format-List
+                </div>
+    
+                <p><strong>Finding:</strong> The logs confirmed that the <strong>Administrator</strong> account manually disabled several user accounts. This ruled out system-enforced restrictions or automated scripts.</p>
+            </li>
+        </ol>
+    
+        <h3>Root Cause: Manual Administrator Action</h3>
+        <p>The logs definitively showed that the domain Administrator account manually disabled Jane’s account. No automated lockout or enforcement was responsible.</p>
+    
+        <h3>Resolution Steps</h3>
+        <ul>
+            <li><strong>Confirmed</strong> that Jane’s account was disabled by the Administrator via Event Logs.</li>
+            <li><strong>Re-enabled</strong> Jane’s account using PowerShell:
+                <br><br>
+                <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+                    Enable-ADAccount -Identity janeds
+                </div>
+            </li>
+            <li>Successfully logged into the domain from the Linux client.</li>
+            <li>Confirmed a new home directory: <code>/home/CORP/janed</code></li>
+            <li>Ran <code>id</code> to confirm domain connection under <strong>CORP</strong>.</li>
+        </ul>
+    
+        <div class="image-container">
+            <img src="assets/images/joined.png" alt="Jane's Account Successfully Joined to CORP Domain">
+        </div>
+    
+        <p>To finalize confirmation, I returned to the Domain Controller’s <strong>Active Directory Users and Computers</strong> interface.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/linuxjoined.png" alt="Linux Client Successfully Joined to Domain in ADUC">
+        </div>
+    
+        <p><strong>Success!</strong> Jane’s Linux machine was now fully integrated into the enterprise domain and functioning as expected.</p>
+    </div>
+
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
