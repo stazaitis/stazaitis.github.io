@@ -446,7 +446,14 @@
         <span class="arrow">▶</span> Reverse Engineering a Domain-Restricted AI Assistant (Prompt Injection & Safety Control Evasion)
     </button>
     <div class="dropdown-content">
-        <p>[Insert second project content here...]</p>
+        <div class="project-overview">
+            <h2>🧠 Reverse Engineering AI Assistant</h2>
+            <h3>Overview</h3>
+            <p>I ran a solo red team engagement against a restricted-access virtual assistant designed to only handle running-related topics. The goal was to test its ability to enforce topic boundaries and resist unauthorized access to internal logic.</p>
+            <p>By simulating trusted roles — like a coach requesting training advice — and layering in conditions like injury, asthma, and extreme weather, I was able to escalate access and bypass multiple safety filters. This led to the exposure of internal decision structures, configuration schemas, fallback behavior, and unsafe plan generation.</p>
+            <p>The attack surface was expanded using YAML-based probes and developer-style audits to trigger logic traces, override attempts, and unfiltered responses. I documented the full behavior chain, including rule prioritization, conflict handling, and escalation logic.</p>
+            <p>The case study highlights key weaknesses in prompt filtering, input conflict resolution, and contextual manipulation — demonstrating how domain-locked assistants can be reverse-engineered through structured adversarial framing.</p>
+        </div>
     </div>
 </div>
     
