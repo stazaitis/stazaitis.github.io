@@ -489,8 +489,7 @@
         </ol>
     </div>
     
-    <div style="border: 2px solid #00FF00; padding: 25px; border-radius: 12px; background-color: rgba(0, 255, 0, 0.05); margin-top: 20px;">
-
+    <div class="content">
         <h3>Root Cause: Manual Administrator Action</h3>
         <p>The logs definitively showed that the domain Administrator account manually disabled Jane’s account. No automated lockout or enforcement was responsible.</p>
     
@@ -498,10 +497,13 @@
         <ul>
             <li><strong>Confirmed</strong> that Jane’s account was disabled by the Administrator via Event Logs.</li>
             <li><strong>Re-enabled</strong> Jane’s account using PowerShell:</li>
-            <br>
-            <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
-                Enable-ADAccount -Identity janeds
-            </div>
+        </ul>
+    
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            Enable-ADAccount -Identity janeds
+        </div>
+    
+        <ul>
             <li>Successfully logged into the domain from the Linux client.</li>
             <li>Confirmed a new home directory: <code>/home/CORP/janed</code></li>
             <li>Ran <code>id</code> to confirm domain connection under <strong>CORP</strong>.</li>
@@ -518,7 +520,6 @@
         </div>
     
         <p><strong>Success!</strong> Jane’s Linux machine was now fully integrated into the enterprise domain and functioning as expected.</p>
-    
     </div>
 
     <!-- Back Button -->
