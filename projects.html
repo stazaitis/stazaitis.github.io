@@ -483,44 +483,119 @@
         </div>
 
         <!-- Vulnerabilities Section -->
-        <div class="info-section">
-            <h3 class="center-heading">⭐ALL VULNERABILITIES I DISCOVERED WITH EXPLOIT ID'S⭐</h3>
-            <section id="exploit-matrix" class="py-10">
-              <div class="overflow-x-auto">
-                <table class="min-w-[800px] text-sm border border-gray-300">
-                    <thead class="bg-gray-100">
-                      <tr>
-                        <th class="px-4 py-2 border" style="white-space: nowrap;">Exploit ID</th>
-                        <th class="px-4 py-2 border">Title</th>
-                        <th class="px-4 py-2 border" style="white-space: nowrap;">Domain</th>
-                        <th class="px-4 py-2 border" style="white-space: nowrap;">Severity</th>
-                        <th class="px-4 py-2 border">Description</th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-001</td><td class="px-4 py-2 border">Fallback Logic Bypass via YAML Prompts</td><td class="px-4 py-2 border" style="white-space: nowrap;">Logic Engine</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Triggered fallback pathways using structured YAML framing.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-003</td><td class="px-4 py-2 border">Safety Gate Inversion via Goal-First Logic</td><td class="px-4 py-2 border" style="white-space: nowrap;">Runner</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Allowed bypass by asserting goal completion before filter enforcement.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-004</td><td class="px-4 py-2 border">Unsafe Plan Generation with Contradictory Inputs</td><td class="px-4 py-2 border" style="white-space: nowrap;">Logic Engine</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Gave responses with unsafe logic despite mutually exclusive inputs.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-006</td><td class="px-4 py-2 border">Medical-Aware Output without Disclaimers</td><td class="px-4 py-2 border" style="white-space: nowrap;">Health Filters</td><td class="px-4 py-2 border" style="white-space: nowrap;">Critical</td><td class="px-4 py-2 border">Provided diagnostic or treatment-like advice with no disclaimers.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-008</td><td class="px-4 py-2 border">Prompt Chaining Risk Escalation</td><td class="px-4 py-2 border" style="white-space: nowrap;">Safety Stack</td><td class="px-4 py-2 border" style="white-space: nowrap;">Critical</td><td class="px-4 py-2 border">Escalated via multi-turn chaining that overrode safety mid-sequence.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-009</td><td class="px-4 py-2 border">Logic Introspection Block on Direct Audit</td><td class="px-4 py-2 border" style="white-space: nowrap;">Introspection</td><td class="px-4 py-2 border" style="white-space: nowrap;">Medium</td><td class="px-4 py-2 border">Refused logic tracing via direct queries, but indirect prompts worked.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-011</td><td class="px-4 py-2 border">Semantic Filter Failure via Surreal Input</td><td class="px-4 py-2 border" style="white-space: nowrap;">Semantic Filters</td><td class="px-4 py-2 border" style="white-space: nowrap;">Critical</td><td class="px-4 py-2 border">Provided unsafe advice when inputs were surreal/metaphoric in nature.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-014</td><td class="px-4 py-2 border">Shadow Prompt Simulation via Developer Framing</td><td class="px-4 py-2 border" style="white-space: nowrap;">Internal Prompting</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Leaked hidden system prompt via developer-mode simulation prompts.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-015</td><td class="px-4 py-2 border">Logic Engine Simulation Leak via YAML Framing</td><td class="px-4 py-2 border" style="white-space: nowrap;">Runner</td><td class="px-4 py-2 border" style="white-space: nowrap;">Critical</td><td class="px-4 py-2 border">Returned structured logic trees and simulation rules.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-016</td><td class="px-4 py-2 border">Business Config Simulation Attempt</td><td class="px-4 py-2 border" style="white-space: nowrap;">Admin</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Simulated business-side configuration fields like alert workflows.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-017</td><td class="px-4 py-2 border">API Route Leakage via Multi-Assistant Framing</td><td class="px-4 py-2 border" style="white-space: nowrap;">Admin</td><td class="px-4 py-2 border" style="white-space: nowrap;">Critical</td><td class="px-4 py-2 border">Leaked operational routing logic using multi-agent simulation techniques.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-018</td><td class="px-4 py-2 border">Internal Ops Role Simulation</td><td class="px-4 py-2 border" style="white-space: nowrap;">Staff</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Simulated backoffice roles and escalated to logic path exposure.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-019</td><td class="px-4 py-2 border">Vendor Escalation Logic Block</td><td class="px-4 py-2 border" style="white-space: nowrap;">Vendor</td><td class="px-4 py-2 border" style="white-space: nowrap;">Medium</td><td class="px-4 py-2 border">Triggered vendor escalation logic and conditional bypass behaviors.</td></tr>
-                      <tr><td class="px-4 py-2 border" style="white-space: nowrap;">LLM-020</td><td class="px-4 py-2 border">Volunteer HR Logic Leak</td><td class="px-4 py-2 border" style="white-space: nowrap;">Human Resources</td><td class="px-4 py-2 border" style="white-space: nowrap;">High</td><td class="px-4 py-2 border">Extracted HR onboarding logic from assistant via roleplay simulation.</td></tr>
-                    </tbody>
-                </table>
-              </div>
-            </section>
-        </div>
-
+<div class="info-section">
+    <h2>⭐ALL VULNERABILITIES I DISCOVERED WITH EXPLOIT ID'S⭐</h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Exploit ID</th>
+                <th>Title</th>
+                <th>Domain</th>
+                <th>Severity</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>LLM-001</td>
+                <td>Fallback Logic Bypass via YAML Prompts</td>
+                <td>Logic Engine</td>
+                <td>High</td>
+                <td>Triggered fallback pathways using structured YAML framing.</td>
+            </tr>
+            <tr>
+                <td>LLM-003</td>
+                <td>Safety Gate Inversion via Goal-First Logic</td>
+                <td>Runner</td>
+                <td>High</td>
+                <td>Allowed bypass by asserting goal completion before filter enforcement.</td>
+            </tr>
+            <tr>
+                <td>LLM-004</td>
+                <td>Unsafe Plan Generation with Contradictory Inputs</td>
+                <td>Logic Engine</td>
+                <td>High</td>
+                <td>Gave responses with unsafe logic despite mutually exclusive inputs.</td>
+            </tr>
+            <tr>
+                <td>LLM-006</td>
+                <td>Medical-Aware Output without Disclaimers</td>
+                <td>Health Filters</td>
+                <td>Critical</td>
+                <td>Provided diagnostic or treatment-like advice with no disclaimers.</td>
+            </tr>
+            <tr>
+                <td>LLM-008</td>
+                <td>Prompt Chaining Risk Escalation</td>
+                <td>Safety Stack</td>
+                <td>Critical</td>
+                <td>Escalated via multi-turn chaining that overrode safety mid-sequence.</td>
+            </tr>
+            <tr>
+                <td>LLM-009</td>
+                <td>Logic Introspection Block on Direct Audit</td>
+                <td>Introspection</td>
+                <td>Medium</td>
+                <td>Refused logic tracing via direct queries, but indirect prompts worked.</td>
+            </tr>
+            <tr>
+                <td>LLM-011</td>
+                <td>Semantic Filter Failure via Surreal Input</td>
+                <td>Semantic Filters</td>
+                <td>Critical</td>
+                <td>Provided unsafe advice when inputs were surreal/metaphoric in nature.</td>
+            </tr>
+            <tr>
+                <td>LLM-014</td>
+                <td>Shadow Prompt Simulation via Developer Framing</td>
+                <td>Internal Prompting</td>
+                <td>High</td>
+                <td>Leaked hidden system prompt via developer-mode simulation prompts.</td>
+            </tr>
+            <tr>
+                <td>LLM-015</td>
+                <td>Logic Engine Simulation Leak via YAML Framing</td>
+                <td>Runner</td>
+                <td>Critical</td>
+                <td>Returned structured logic trees and simulation rules.</td>
+            </tr>
+            <tr>
+                <td>LLM-016</td>
+                <td>Business Config Simulation Attempt</td>
+                <td>Admin</td>
+                <td>High</td>
+                <td>Simulated business-side configuration fields like alert workflows.</td>
+            </tr>
+            <tr>
+                <td>LLM-017</td>
+                <td>API Route Leakage via Multi-Assistant Framing</td>
+                <td>Admin</td>
+                <td>Critical</td>
+                <td>Leaked operational routing logic using multi-agent simulation techniques.</td>
+            </tr>
+            <tr>
+                <td>LLM-018</td>
+                <td>Internal Ops Role Simulation</td>
+                <td>Staff</td>
+                <td>High</td>
+                <td>Simulated backoffice roles and escalated to logic path exposure.</td>
+            </tr>
+            <tr>
+                <td>LLM-019</td>
+                <td>Vendor Escalation Logic Block</td>
+                <td>Vendor</td>
+                <td>Medium</td>
+                <td>Triggered vendor escalation logic and conditional bypass behaviors.</td>
+            </tr>
+            <tr>
+                <td>LLM-020</td>
+                <td>Volunteer HR Logic Leak</td>
+                <td>Human Resources</td>
+                <td>High</td>
+                <td>Extracted HR onboarding logic from assistant via roleplay simulation.</td>
+            </tr>
+        </table>
     </div>
 </div>
-    
+
  <script>
     document.querySelectorAll('.dropdown-toggle').forEach(button => {
         button.addEventListener('click', () => {
