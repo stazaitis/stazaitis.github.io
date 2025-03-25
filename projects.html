@@ -299,14 +299,11 @@
         }
 
         .center-text {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          width: 100%;
-          font-weight: bold;
-          font-size: 1.25rem; /* optional styling */
-          margin: 1rem 0;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-weight: bold;
+            font-size: 1.25rem;
+            display: block; /* override any unwanted flex behavior */
         }
 
     </style>
@@ -489,6 +486,7 @@
         <!-- Vulnerabilities Section -->
         <div class="info-section">
             <h3 class="center-text">⭐ALL VULNERABILITIES I DISCOVERED WITH EXPLOIT ID'S⭐</h3>
+        </div>
             <section id="exploit-matrix" class="py-10">
               <div class="overflow-x-auto">
                 <table class="min-w-full text-sm border border-gray-300">
