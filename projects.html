@@ -286,7 +286,17 @@
             padding: 10px;
             box-sizing: border-box;
         }
-    }
+
+        .full-width-overview {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 2px solid #00FF00;
+            border-radius: 12px;
+            background-color: rgba(0, 255, 0, 0.05);
+            box-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
+            text-align: left;
+        }
 
     </style>
 </head>
@@ -446,7 +456,7 @@
         <span class="arrow">▶</span> Reverse Engineering a Domain-Restricted AI Assistant (Prompt Injection & Safety Control Evasion)
     </button>
     <div class="dropdown-content">
-        <div class="project-overview">
+        <div class="full-width-overview">
             <h2>🧠 Reverse Engineering AI Assistant</h2>
             <h3>Overview</h3>
             <p>I ran a solo red team engagement against a restricted-access virtual assistant designed to only handle running-related topics. The goal was to test its ability to enforce topic boundaries and resist unauthorized access to internal logic.</p>
