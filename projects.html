@@ -201,132 +201,154 @@
         <p>Here you will find my hands-on projects involving network security, SIEM, and penetration testing.</p>
     </div>
 
-    <div class="project-container">
-        <div class="project-overview">
-            <h2>📂 Project-X</h2>
-            <h3>Project Overview</h3>
-            <p>Project-X is an imitation of an enterprise environment that builds software for consumers. Leveraging virtualization, I simulated a business network with essential components and systems that power today’s modern networks.</p>
-            <p>I also simulated an end-to-end cyber attack on the Project-X network from reconnaissance to defense evasion. As the attacker, my goal was to achieve persistence, access sensitive files for extortion, and create a backdoor for continuous access.</p>
-            <p>VirtualBox was used as the hypervisor, facilitating a NAT Network across my seven virtual machines. This allowed a small, private lab network that could communicate internally while maintaining internet access.</p>
-            <p>Throughout the development of my business network, I encountered several challenges. To the side are 11 mini projects that break down the components of Project-X. Within those projects, I will also provide details of these obstacles, how they were addressed, and ultimately resolved.</p>
-            <p>At this point, I have already achieved my goals for project-x. I am revisiting my notes to provide an in-depth explanation of most of the steps in my process and how I accomplished them.</p>
+    <!-- Dropdown for Project-X -->
+<div class="project-dropdown">
+    <button class="dropdown-toggle">
+        <span class="arrow">▶</span> Project-X (Cybersecurity)
+    </button>
+    <div class="dropdown-content">
+         <!-- Paste your existing Project-X content here -->
+        <div class="project-container">
+            <div class="project-overview">
+                <h2>📂 Project-X</h2>
+                <h3>Project Overview</h3>
+                <p>Project-X is an imitation of an enterprise environment that builds software for consumers. Leveraging virtualization, I simulated a business network with essential components and systems that power today’s modern networks.</p>
+                <p>I also simulated an end-to-end cyber attack on the Project-X network from reconnaissance to defense evasion. As the attacker, my goal was to achieve persistence, access sensitive files for extortion, and create a backdoor for continuous access.</p>
+                <p>VirtualBox was used as the hypervisor, facilitating a NAT Network across my seven virtual machines. This allowed a small, private lab network that could communicate internally while maintaining internet access.</p>
+                <p>Throughout the development of my business network, I encountered several challenges. To the side are 11 mini projects that break down the components of Project-X. Within those projects, I will also provide details of these obstacles, how they were addressed, and ultimately resolved.</p>
+                <p>At this point, I have already achieved my goals for project-x. I am revisiting my notes to provide an in-depth explanation of most of the steps in my process and how I accomplished them.</p>
+            </div>
+    
+            <div>
+                <ul class="mini-projects">
+                    <li><a href="active_directory.html">🔹 Building a Directory Service Server with Active Directory</a></li>
+                    <li><a href="windows11.html">🔹 Setup Windows 11 Enterprise</a></li>
+                    <li><a href="ubuntu_desktop.html">🔹 Setup Ubuntu Desktop 22.04</a></li>
+                    <li><a href="ubuntu_server.html">🔹 Setup Ubuntu Server 22.04</a></li>
+                    <li><a href="postfix.html">🔹 Setup Postfix Mail Transfer Agent</a></li>
+                    <li><a href="security_onion.html">🔹 Setup Security Onion</a></li>
+                    <li><a href="security_server.html">🔹 Security Server - Setup Ubuntu Desktop 22.04</a></li>
+                    <li><a href="wazuh.html">🔹 Setup Wazuh</a></li>
+                    <li><a href="vulnerable_env.html">🔹 Configure a Vulnerable Environment</a></li>
+                    <li><a href="attacker_machine.html">🔹 Setup Attacker Machine</a></li>
+                    <li><a href="cyber_attack.html">🔹 Cyber Attack - Initial Access to Breach</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div>
-            <ul class="mini-projects">
-                <li><a href="active_directory.html">🔹 Building a Directory Service Server with Active Directory</a></li>
-                <li><a href="windows11.html">🔹 Setup Windows 11 Enterprise</a></li>
-                <li><a href="ubuntu_desktop.html">🔹 Setup Ubuntu Desktop 22.04</a></li>
-                <li><a href="ubuntu_server.html">🔹 Setup Ubuntu Server 22.04</a></li>
-                <li><a href="postfix.html">🔹 Setup Postfix Mail Transfer Agent</a></li>
-                <li><a href="security_onion.html">🔹 Setup Security Onion</a></li>
-                <li><a href="security_server.html">🔹 Security Server - Setup Ubuntu Desktop 22.04</a></li>
-                <li><a href="wazuh.html">🔹 Setup Wazuh</a></li>
-                <li><a href="vulnerable_env.html">🔹 Configure a Vulnerable Environment</a></li>
-                <li><a href="attacker_machine.html">🔹 Setup Attacker Machine</a></li>
-                <li><a href="cyber_attack.html">🔹 Cyber Attack - Initial Access to Breach</a></li>
+    
+        <div class="image-container">
+            <h3>Network Topology & Cyber Attack Simulation</h3>
+            <img id="topology-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram" onclick="openFullscreen()">
+        </div>
+    
+        <div id="fullscreen-container" class="fullscreen-image" onclick="closeFullscreen()">
+            <span class="close">&times;</span>
+            <img id="fullscreen-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram">
+        </div>
+    
+        <div class="info-section">
+            <h2>NAT Network</h2>
+            <p><strong>Name:</strong> project-x-nat (NatNetwork)</p>
+            <p><strong>IP Address Range:</strong> 10.0.0.24/24</p>
+            <ul>
+                <li>Usable Range: 10.0.0.1 - 10.0.0.254</li>
+                <li>DHCP Dynamic Scope: 10.0.0.100 - 10.0.0.200</li>
             </ul>
         </div>
-    </div>
-
-    <div class="image-container">
-        <h3>Network Topology & Cyber Attack Simulation</h3>
-        <img id="topology-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram" onclick="openFullscreen()">
-    </div>
-
-    <div id="fullscreen-container" class="fullscreen-image" onclick="closeFullscreen()">
-        <span class="close">&times;</span>
-        <img id="fullscreen-image" src="assets/images/attacker.drawio.png" alt="Network Topology Diagram">
-    </div>
-
-    <div class="info-section">
-        <h2>NAT Network</h2>
-        <p><strong>Name:</strong> project-x-nat (NatNetwork)</p>
-        <p><strong>IP Address Range:</strong> 10.0.0.24/24</p>
-        <ul>
-            <li>Usable Range: 10.0.0.1 - 10.0.0.254</li>
-            <li>DHCP Dynamic Scope: 10.0.0.100 - 10.0.0.200</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Hosts Table</h2>
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th>Hostname</th>
-                    <th>IP Address</th>
-                    <th>Function</th>
-                </tr>
-                <tr>
-                    <td>dc (corp.project-x-dc.com)</td>
-                    <td>10.0.0.5</td>
-                    <td>Domain Controller (DNS, DHCP, SSO)</td>
-                </tr>
-                <tr>
-                    <td>email-svr</td>
-                    <td>10.0.0.8</td>
-                    <td>SMTP Relay Server</td>
-                </tr>
-                <tr>
-                    <td>sec-box</td>
-                    <td>10.0.0.10</td>
-                    <td>Dedicated Security Server</td>
-                </tr>
-                <tr>
-                    <td>sec-work</td>
-                    <td>10.0.0.103 (dynamic)</td>
-                    <td>Security Playground</td>
-                </tr>
-                <tr>
-                    <td>win-client</td>
-                    <td>10.0.0.100 (dynamic)</td>
-                    <td>Windows Workstation</td>
-                </tr>
-                <tr>
-                    <td>linux-client</td>
-                    <td>10.0.0.101 (dynamic)</td>
-                    <td>Linux Desktop Workstation</td>
-                </tr>
-                <tr>
-                    <td>attacker</td>
-                    <td>10.0.0.50 (dynamic)</td>
-                    <td>Attacker Environment</td>
-                </tr>
-            </table>
-        </div>
-    </div>
     
-    <div class="info-section">
-        <h2>Operating Systems & Functions</h2>
-        <ul>
-            <li><strong>Windows Server 2025:</strong> Designed for enterprise-level applications, network, and identity management. Used as the directory services server.</li>
-            <li><strong>Windows 11 Enterprise:</strong> Optimized for productivity, commonly used in businesses. Simulated a business user.</li>
-            <li><strong>Ubuntu Desktop 22.04:</strong> General-purpose desktop OS for software development. Simulated an enterprise development environment.</li>
-            <li><strong>Security Onion:</strong> Open-source security monitoring, log analysis, and intrusion detection system.</li>
-            <li><strong>Ubuntu Server 22.04:</strong> Linux server OS for hosting applications and databases. Configured as the email server.</li>
-            <li><strong>Kali Linux:</strong> Penetration testing and ethical hacking OS used for attacking the project-x network.</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h2>Tools Used</h2>
-        <h3>Enterprise Tools + Defense</h3>
-        <ul>
-            <li><strong>Microsoft Active Directory:</strong> Manages users, devices, and permissions in a Windows environment.</li>
-            <li><strong>Wazuh:</strong> Open-source security monitoring platform for intrusion detection, log analysis, and vulnerability detection.</li>
-            <li><strong>Postfix:</strong> Mail transfer agent used for sending and receiving emails on Unix-like systems.</li>
-        </ul>
+        <div class="info-section">
+            <h2>Hosts Table</h2>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Hostname</th>
+                        <th>IP Address</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>dc (corp.project-x-dc.com)</td>
+                        <td>10.0.0.5</td>
+                        <td>Domain Controller (DNS, DHCP, SSO)</td>
+                    </tr>
+                    <tr>
+                        <td>email-svr</td>
+                        <td>10.0.0.8</td>
+                        <td>SMTP Relay Server</td>
+                    </tr>
+                    <tr>
+                        <td>sec-box</td>
+                        <td>10.0.0.10</td>
+                        <td>Dedicated Security Server</td>
+                    </tr>
+                    <tr>
+                        <td>sec-work</td>
+                        <td>10.0.0.103 (dynamic)</td>
+                        <td>Security Playground</td>
+                    </tr>
+                    <tr>
+                        <td>win-client</td>
+                        <td>10.0.0.100 (dynamic)</td>
+                        <td>Windows Workstation</td>
+                    </tr>
+                    <tr>
+                        <td>linux-client</td>
+                        <td>10.0.0.101 (dynamic)</td>
+                        <td>Linux Desktop Workstation</td>
+                    </tr>
+                    <tr>
+                        <td>attacker</td>
+                        <td>10.0.0.50 (dynamic)</td>
+                        <td>Attacker Environment</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
         
-        <h3>Offense</h3>
-        <ul>
-            <li><strong>Evil-WinRM:</strong> Used by penetration testers to connect to and interact with Windows systems remotely.</li>
-            <li><strong>Hydra:</strong> Fast password-cracking tool for brute-force and dictionary-based attacks on network protocols.</li>
-            <li><strong>SecLists:</strong> Comprehensive collection of penetration testing resources, including wordlists for usernames, passwords, and web directories.</li>
-            <li><strong>NetExec:</strong> Network exploitation tool enabling remote command execution on target machines for lateral movement.</li>
-            <li><strong>XFreeRDP:</strong> Open-source implementation of the Remote Desktop Protocol (RDP) for reconnaissance and post-exploitation.</li>
-        </ul>
+        <div class="info-section">
+            <h2>Operating Systems & Functions</h2>
+            <ul>
+                <li><strong>Windows Server 2025:</strong> Designed for enterprise-level applications, network, and identity management. Used as the directory services server.</li>
+                <li><strong>Windows 11 Enterprise:</strong> Optimized for productivity, commonly used in businesses. Simulated a business user.</li>
+                <li><strong>Ubuntu Desktop 22.04:</strong> General-purpose desktop OS for software development. Simulated an enterprise development environment.</li>
+                <li><strong>Security Onion:</strong> Open-source security monitoring, log analysis, and intrusion detection system.</li>
+                <li><strong>Ubuntu Server 22.04:</strong> Linux server OS for hosting applications and databases. Configured as the email server.</li>
+                <li><strong>Kali Linux:</strong> Penetration testing and ethical hacking OS used for attacking the project-x network.</li>
+            </ul>
+        </div>
+    
+        <div class="info-section">
+            <h2>Tools Used</h2>
+            <h3>Enterprise Tools + Defense</h3>
+            <ul>
+                <li><strong>Microsoft Active Directory:</strong> Manages users, devices, and permissions in a Windows environment.</li>
+                <li><strong>Wazuh:</strong> Open-source security monitoring platform for intrusion detection, log analysis, and vulnerability detection.</li>
+                <li><strong>Postfix:</strong> Mail transfer agent used for sending and receiving emails on Unix-like systems.</li>
+            </ul>
+            
+            <h3>Offense</h3>
+            <ul>
+                <li><strong>Evil-WinRM:</strong> Used by penetration testers to connect to and interact with Windows systems remotely.</li>
+                <li><strong>Hydra:</strong> Fast password-cracking tool for brute-force and dictionary-based attacks on network protocols.</li>
+                <li><strong>SecLists:</strong> Comprehensive collection of penetration testing resources, including wordlists for usernames, passwords, and web directories.</li>
+                <li><strong>NetExec:</strong> Network exploitation tool enabling remote command execution on target machines for lateral movement.</li>
+                <li><strong>XFreeRDP:</strong> Open-source implementation of the Remote Desktop Protocol (RDP) for reconnaissance and post-exploitation.</li>
+            </ul>
+        </div>
+    </div> <!-- End dropdown-content -->
+</div> <!-- End project-dropdown -->
+
+ <!-- Divider line -->
+<hr class="divider-line">
+
+<!-- Second Project dropdown placeholder -->
+<div class="project-dropdown">
+    <button class="dropdown-toggle">
+        <span class="arrow">▶</span> Project-Y (Web Development)
+    </button>
+    <div class="dropdown-content">
+        <p>[Insert second project content here...]</p>
     </div>
+</div>
     
     <script>
         function openFullscreen() {
