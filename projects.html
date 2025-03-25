@@ -218,6 +218,26 @@
             color: black;
         }
 
+        .vulnerabilities-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            min-width: 600px;
+        }
+        
+        .vulnerabilities-table th,
+        .vulnerabilities-table td {
+            border: 1px solid #00FF00;
+            padding: 15px;
+            text-align: center;
+            word-break: break-word;
+        }
+        
+        .vulnerabilities-table th {
+            background-color: #00FF00;
+            color: black;
+        }
+        
         /* Dropdown styles */
         .project-dropdown {
             width: 80%;
@@ -487,7 +507,7 @@
             <h3 class="center-heading">⭐ALL VULNERABILITIES I DISCOVERED WITH EXPLOIT ID'S⭐</h3>
             <section id="exploit-matrix" class="py-10">
               <div class="overflow-x-auto">
-                <table class="min-w-[800px] text-sm border border-gray-300">
+                <table class="vulnerabilities-table">
                     <thead class="bg-gray-100">
                       <tr>
                         <th class="px-4 py-2 border" style="white-space: nowrap;">Exploit ID</th>
