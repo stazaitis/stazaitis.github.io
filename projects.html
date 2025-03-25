@@ -223,8 +223,9 @@
             border-collapse: collapse;
             margin-top: 20px;
             min-width: 600px;
+            table-layout: fixed;
         }
-        
+    
         .vulnerabilities-table th,
         .vulnerabilities-table td {
             border: 1px solid #00FF00;
@@ -232,10 +233,27 @@
             text-align: center;
             word-break: break-word;
         }
-        
+    
         .vulnerabilities-table th {
             background-color: #00FF00;
             color: black;
+        }
+    
+        .vulnerabilities-table td:last-child,
+        .vulnerabilities-table th:last-child {
+            white-space: normal;
+            word-break: break-word;
+            width: 40%;
+        }
+    
+        .vulnerabilities-table th:nth-child(1),
+        .vulnerabilities-table td:nth-child(1),
+        .vulnerabilities-table th:nth-child(3),
+        .vulnerabilities-table td:nth-child(3),
+        .vulnerabilities-table th:nth-child(4),
+        .vulnerabilities-table td:nth-child(4) {
+            width: 10%;
+            white-space: nowrap;
         }
         
         /* Dropdown styles */
