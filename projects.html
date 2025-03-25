@@ -292,6 +292,63 @@
             font-weight: bold;
             font-size: 1.25rem;
             margin: 1rem 0;
+
+        .ai-project .info-section {
+            margin: 50px auto;
+            max-width: 900px;
+            padding: 25px;
+            background: rgba(0, 255, 0, 0.05);
+            box-shadow: 0 0 12px rgba(0, 255, 0, 0.2);
+            border-radius: 15px;
+            border: none; /* Removes harsh green outlines */
+        }
+        
+        .ai-project .table-container {
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+        }
+        
+        .ai-project .vulnerabilities-table {
+            border: none;
+            box-shadow: none;
+            border-radius: 10px;
+        }
+        
+        .ai-project .vulnerabilities-table th,
+        .ai-project .vulnerabilities-table td {
+            border: 1px solid #00FF00;
+            padding: 15px;
+            word-break: break-word;
+            text-align: center;
+        }
+        
+        .ai-project .vulnerabilities-table td:last-child,
+        .ai-project .vulnerabilities-table th:last-child {
+            white-space: normal;
+            word-break: break-word;
+            width: 40%;
+        }
+        
+        .ai-project .vulnerabilities-table th:nth-child(1),
+        .ai-project .vulnerabilities-table td:nth-child(1),
+        .ai-project .vulnerabilities-table th:nth-child(3),
+        .ai-project .vulnerabilities-table td:nth-child(3),
+        .ai-project .vulnerabilities-table th:nth-child(4),
+        .ai-project .vulnerabilities-table td:nth-child(4) {
+            width: 10%;
+            white-space: nowrap;
+        }
+        
+        .ai-project .exploit-entry {
+            margin-bottom: 60px;
+        }
+        
+        /* Optional: Glowing divider between entries */
+        .divider-glow {
+            height: 2px;
+            margin: 40px auto;
+            width: 90%;
+            background: linear-gradient(to right, transparent, #00FF00, transparent);
         }
         
         @media (max-width: 768px) {
@@ -482,7 +539,7 @@
     <button class="dropdown-toggle">
         <span class="arrow">▶</span> Reverse Engineering a Domain-Restricted AI Assistant (Prompt Injection & Safety Control Evasion)
     </button>
-    <div class="dropdown-content">
+    <div class="dropdown-content ai-project">
 
         <!-- Background Section -->
         <div class="info-section">
