@@ -404,6 +404,21 @@
         </div>
     </div>
 
+    <div class="content">
+        <h2>Unlocking Jane's Account</h2>
+    
+        <p>Then I realized the answer was right in front of me… <strong>I am</strong> the system administrator. So I proceeded to focus on the Domain Controller virtual machine.</p>
+    
+        <p>All I had to do was manually uncheck user <code>janed</code>’s <strong>“Account is disabled”</strong> checkbox. It appears her account had been locked by default after failed <code>sudo</code> login attempts — even though the correct password was used.</p>
+    
+        <p>I suspect it may have been related to not retrying <code>sudo -U Administrator</code> commands early on, which could have refreshed authentication.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/disabled.png" alt="Disabled Account Checkbox in Active Directory for Jane Doe">
+        </div>
+    
+        <p>I wanted to get down to the root cause of the issue, so I performed additional research.</p>
+    </div>
     
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
