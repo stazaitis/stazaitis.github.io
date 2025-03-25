@@ -350,7 +350,22 @@
     </div>
 </div>
     
-    <script>
+ <script>
+    document.querySelectorAll('.dropdown-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const arrow = button.querySelector('.arrow');
+        
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.display = 'block';
+                arrow.style.transform = 'rotate(90deg)';
+        }
+    });
+});
+        
         function openFullscreen() {
         document.getElementById("fullscreen-container").style.display = "flex";
     }
