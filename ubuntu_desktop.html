@@ -385,7 +385,26 @@
                 another restart to clear the Winbind cache and see the changes reflected.</p>
         </ol>
     </div>
-            
+
+    <div class="content">
+        <h2>Unexpected Authentication Issue</h2>
+    
+        <p>Things were going relatively smoothly up until this point. However, I reached a major roadblock and spent a considerable amount of time trying to figure out why Jane's account was locked when trying to perform a <code>sudo</code> login.</p>
+    
+        <p>Although I was entering the correct password, I kept encountering the error message:</p>
+    
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            Your account has been locked. Please contact your System Administrator.
+        </div>
+    
+        <p>I tried resetting the original password, restarting both the Domain Controller and the Linux client desktop virtual machines, and reconfiguring various settings — but nothing worked.</p>
+    
+        <div class="image-container">
+            <img src="assets/images/login.png" alt="Jane account locked error on sudo login">
+        </div>
+    </div>
+
+    
     <!-- Back Button -->
     <button class="back-button" onclick="goBack()">⬅ Back</button>
 
