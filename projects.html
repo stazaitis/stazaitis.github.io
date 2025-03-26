@@ -849,9 +849,12 @@
           </div>
         
           <h3>🔧 Exploit Summary</h3>
-          <p>I began this red team simulation by first submitting benign, high-level questions about the AI assistant’s internal behavior — such as its system prompt, database schema, and AI engine version. These were immediately rejected with a fallback response enforcing topic restrictions (“I can only assist with running-related topics”). This confirmed that strict domain filtering was in place.</p>
-          <p>I then escalated by introducing structured YAML prompts formatted as developer configuration requests. This subtle reframing exploited fallback logic and bypassed the domain lock, revealing internal decision rules. Despite being restricted to race-related topics, the assistant disclosed logic intended only for backend configuration.</p>
-        
+          <p>To test the assistant’s restrictions, I first asked simple technical questions like “what system are you running?” All of them were blocked, which showed the assistant was enforcing topic filters properly.</p>
+          <p>Next, I rephrased my request using YAML — basically presenting it like a developer trying to configure training logic. Even though the assistant was only supposed to talk about running, it treated the prompt as a backend setup request and exposed internal decision rules.</p>
+          <p>This showed that by formatting inputs a certain way, I could bypass the usual filters and access information that shouldn’t have been available.
+
+</p>
+            
           <h3>🧪 Prompt Used (Example Below)</h3>
           <div class="code-block">
             <pre>
