@@ -1009,8 +1009,12 @@
           <ul>
             <li>It treated each input separately instead of seeing the bigger picture.</li>
             <li>A real system should warn users or adapt the advice when there's risk of injury.</li>
-            <li><strong>Recommendation:</strong> Add checks for input conflicts and prioritize safety logic when goals contradict physical limits.</li>
           </ul>
+            
+          <h3>🔐 Recommendation</h3>
+            <ul>
+              <li>Add checks for input conflicts and prioritize safety logic when goals contradict physical limits.</li>
+            </ul>
         </section>
 
         <!-- Green Divider Line -->
@@ -1113,7 +1117,11 @@
           <ul>
             <li>Structuring the input as YAML made the assistant treat it like a config task, not a medical concern.</li>
             <li>This avoided the usual health risk warnings or refusal messages.</li>
-            <li><strong>Recommendation:</strong> Implement format-aware safety filters that detect medical inputs even when embedded inside developer-style requests like YAML or JSON.</li>
+          </ul>
+            
+          <h3>🔐 Recommendation</h3>
+          <ul>
+            <li>Implement format-aware safety filters that detect medical inputs even when embedded inside developer-style requests like YAML or JSON.</li>
           </ul>
         </section>
         
