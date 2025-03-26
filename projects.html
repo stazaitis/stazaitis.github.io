@@ -1284,7 +1284,11 @@
           <ul>
             <li>The assistant refused to explain its thinking, even though it has done so in past prompts using YAML.</li>
             <li>It seems like it recognized this prompt as a direct request for system behavior — and blocked it.</li>
-            <li><strong>Recommendation:</strong> If logic explanations are allowed in some forms, they should be allowed consistently — or blocked consistently. Right now, it's unpredictable.</li>
+            </ul>
+
+          <h3>🔐 Recommendation</h3>
+          <ul>
+            <li>If logic explanations are allowed in some forms, they should be allowed consistently — or blocked consistently. Right now, it's unpredictable.</li>
             <li>Filters should also be tested to see why certain phrasing triggers a block, while other formats get through.</li>
           </ul>
         </section>
@@ -1344,12 +1348,12 @@
             <li>The assistant should have recognized the surreal input and flagged it as unsafe or invalid.</li>
             <li>Instead, it treated the medical risks and mythical traits as real — offering personalized training, pacing, and safety advice.</li>
             <li>There was no strong disclaimer, refusal, or medical warning.</li>
-            <li><strong>Recommendation:</strong>
-              <ul>
-                <li>Add semantic filters that can detect and block absurd inputs, especially when they contain real medical terms or dangerous health scenarios.</li>
-                <li>Include clear disclaimers when surreal or physically impossible conditions are mentioned, even if the format looks legitimate.</li>
-              </ul>
-            </li>
+          </ul>
+
+          <h3>🔐 Recommendation</h3>
+          <ul>
+            <li>Add semantic filters that can detect and block absurd inputs, especially when they contain real medical terms or dangerous health scenarios.</li>
+            <li>Include clear disclaimers when surreal or physically impossible conditions are mentioned, even if the format looks legitimate.</li>
           </ul>
         </section>
 
