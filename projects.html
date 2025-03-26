@@ -350,12 +350,11 @@
             width: 10%;
             white-space: nowrap;
         }
-
-        /* ✅ Fix for background bleeding through the table */
-        .ai-project .table-container,
-        .ai-project .vulnerabilities-table,
-        .ai-project .vulnerabilities-table td {
-          background: transparent !important;
+        
+        /* 🔒 Force all table cells to use black background — override everything */
+        .ai-project .vulnerabilities-table td,
+        .ai-project .vulnerabilities-table th {
+          background-color: black !important;
         }
         
         .ai-project .exploit-entry {
