@@ -877,15 +877,15 @@
         
           <h3>🧠 Exploit Logic</h3>
           <ul>
-            <li><strong>Trigger:</strong> YAML-style prompt bypassed filtering.</li>
-            <li><strong>Outcome:</strong> Returned internal rule mappings.</li>
-            <li><strong>Bypassed Filters:</strong> Domain lock failed under structured prompt.</li>
+            <li><strong>Trigger:</strong> I sent a prompt that looked like a developer configuring training logic using YAML.</li>
+            <li><strong>Outcome:</strong> The assistant responded with internal rules that should’ve stayed hidden.</li>
+            <li><strong>Bypassed Filters:</strong> It ignored its topic restrictions because of how the request was structured.</li>
           </ul>
         
           <h3>🛠 Analyst Notes</h3>
           <ul>
-            <li>Initial probes were rejected; structured format reframed the intent and bypassed restrictions.</li>
-            <li><strong>Recommendation:</strong> Add format-aware blocking logic for YAML/JSON-like developer prompts.</li>
+            <li>At first, I tested with normal questions and they were blocked. But once I switched to a more technical format (like YAML), the assistant saw it differently and gave away sensitive logic.</li>
+            <li><strong>Recommendation:</strong> It should detect and block prompts that look like developer input (YAML or JSON), since they can trick the assistant into revealing protected behavior.</li>
           </ul>
         </section>
         
