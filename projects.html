@@ -1443,13 +1443,13 @@
           <ul>
             <li>This prompt used realistic system-building language to simulate developer intent and bypass topic restrictions.</li>
             <li>The assistant didn’t recognize that it was revealing internal configuration structure instead of general running advice.</li>
-            <li><strong>Recommendation:</strong>
-              <ul>
-                <li>Introduce prompt validation that flags system-structure requests, especially in YAML or JSON format.</li>
-                <li>Block responses to developer-mode simulations unless verified as safe.</li>
-                <li>Add logic to distinguish genuine user questions from internal audit-style simulations.</li>
-              </ul>
-            </li>
+          </ul>
+            
+          <h3>🔐 Recommendation</h3>
+          <ul>
+            <li>Introduce prompt validation that flags system-structure requests, especially in YAML or JSON format.</li>
+            <li>Block responses to developer-mode simulations unless verified as safe.</li>
+          <li>Add logic to distinguish genuine user questions from internal audit-style simulations.</li>
           </ul>
         </section>
 
