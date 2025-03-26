@@ -451,6 +451,26 @@
           position: absolute;
           left: 0;
         }
+
+        /* Make the table background black on all screen sizes */
+        .vulnerabilities-table {
+          background-color: black !important;
+          border: none;
+          box-shadow: none;
+          border-radius: 10px;
+        }
+        
+        /* Table cell backgrounds black */
+        .vulnerabilities-table td {
+          background-color: black !important;
+        }
+        
+        /* Optional: Black header too, if you don’t want neon green top row */
+        .vulnerabilities-table th {
+          background-color: black !important;
+          color: #00FF00;
+          border: 1px solid #00FF00;
+        }
         
         @media (max-width: 768px) {
         .project-container {
@@ -532,7 +552,7 @@
             overflow-x: auto;
         }
             
-                /* Make the background of the table black */
+        /* Make the background of the table black */
         .ai-project .vulnerabilities-table {
           background-color: black !important;
           border: none;
