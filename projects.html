@@ -515,23 +515,32 @@
         }
 
           /* ✅ Add these new lines below */
-       .ai-project .vulnerabilities-table td,
-       .ai-project .vulnerabilities-table th {
-           word-break: normal;
-           white-space: normal;
-           font-size: 14px;
-           padding: 10px;
+        .ai-project .vulnerabilities-table td,
+        .ai-project .vulnerabilities-table th {
+            word-break: normal;
+            white-space: normal;
+            font-size: 14px;
+            padding: 10px;
         }
 
-      .ai-project .vulnerabilities-table td:nth-child(2),
-      .ai-project .vulnerabilities-table th:nth-child(2) {
-          min-width: 150px; /* Keep titles readable */
+        .ai-project .vulnerabilities-table td:nth-child(2),
+        .ai-project .vulnerabilities-table th:nth-child(2) {
+            min-width: 150px; /* Keep titles readable */
         } 
             
-      .ai-project .table-container {
-          overflow-x: auto;
-        } 
+        .ai-project .table-container {
+            overflow-x: auto;
+        }
             
+                /* Make the background of the table black */
+        .ai-project .vulnerabilities-table {
+          background-color: black !important;
+          border: none;
+          box-shadow: none;
+          border-radius: 10px;
+        }
+
+        
     </style>
 </head>
 <body>
