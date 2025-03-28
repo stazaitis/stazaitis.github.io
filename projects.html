@@ -535,6 +535,101 @@
           border-radius: 10px;
         }
 
+        /* Neon-styled executive box */
+        .neon-box {
+          background: #0b0f0b;
+          border: 2px solid #00ff66;
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: 0 0 20px #00ff66;
+          margin-bottom: 2rem;
+        }
+        
+        /* Title headers */
+        .neon-heading {
+          color: #00ff66;
+          text-shadow: 0 0 5px #00ff66;
+          font-size: 1.6rem;
+          margin-bottom: 1rem;
+        }
+        
+        /* Grid of top stats (12/6/100%) */
+        .metrics-row {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .metric-card {
+          background: #111;
+          padding: 1rem;
+          border: 1px solid #00ff66;
+          border-radius: 10px;
+          flex: 1;
+          text-align: center;
+        }
+        
+        /* Section subtitles */
+        .section-subtitle {
+          color: #00ff66;
+          margin-top: 2rem;
+          margin-bottom: 0.5rem;
+          font-size: 1.2rem;
+        }
+        
+        /* Basic list spacing */
+        .clean-list li {
+          margin-bottom: 0.4rem;
+        }
+        
+        /* Methodology layout blocks */
+        .phases-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .phase-block h4 {
+          color: #00ff66;
+          margin-bottom: 0.3rem;
+        }
+        
+        /* Tools Used */
+        .tools-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin: 1rem 0;
+        }
+        
+        .tool-tag {
+          background: #0f0;
+          color: #000;
+          padding: 0.3rem 0.6rem;
+          border-radius: 5px;
+          font-weight: bold;
+        }
+        
+        /* Takeaways layout */
+        .takeaways-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .takeaway-card h4 {
+          color: #00ff66;
+          margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonial quote */
+        .testimonial {
+          background: #111;
+          padding: 1rem;
+          border-left: 4px solid #00ff66;
+          margin-top: 1.5rem;
+          font-style: italic;
+        }
         
     </style>
 </head>
@@ -707,7 +802,7 @@
             </div>
         
             <!-- Executive Case Study Summary Section -->
-            <div class="info-section" id="executive-summary">
+            <div class="info-section neon-box" id="executive-summary">
               <h2>🔍 Executive Summary</h2>
               <div class="metrics-grid">
                 <div class="metric-card critical">
