@@ -802,14 +802,16 @@
             </div>
         
             <!-- Executive Case Study Summary Section -->
-            <div class="info-section neon-box" id="executive-summary">
-              <h2>🔍 Executive Summary</h2>
-              <div class="metrics-grid">
-                <div class="metric-card critical">
+            <div class="neon-box" id="executive-summary">
+              <h2 class="neon-heading">🔍 Executive Summary</h2>
+            
+              <!-- Top Metrics -->
+              <div class="metrics-row">
+                <div class="metric-card">
                   <h3>12</h3>
                   <p>Critical Vulnerabilities</p>
                 </div>
-                <div class="metric-card high">
+                <div class="metric-card">
                   <h3>6</h3>
                   <p>High-Risk Findings</p>
                 </div>
@@ -818,58 +820,64 @@
                   <p>Vendor Patch Rate</p>
                 </div>
               </div>
-              <h3>Key Achievements</h3>
-              <ul class="achievement-list">
+            
+              <!-- Key Achievements -->
+              <div class="section-subtitle">Key Achievements</div>
+              <ul class="clean-list">
                 <li>Discovered logic engine leaks via YAML injection</li>
                 <li>Bypassed medical safety filters using simulated coaching prompts</li>
                 <li>Extracted internal decision trees through structured prompt chaining</li>
                 <li>Findings presented to and patched by vendor engineering team</li>
               </ul>
-        
-              <h2>🛠️ Methodology</h2>
-              <div class="phase-container">
-                <div class="phase">
-                  <h3>1. Reconnaissance</h3>
-                  <ul>
+            
+              <!-- Methodology -->
+              <div class="section-subtitle">🛠️ Methodology</div>
+              <div class="phases-container">
+                <div class="phase-block">
+                  <h4>1. Reconnaissance</h4>
+                  <ul class="clean-list">
                     <li>Mapped input schema via fuzzing (YAML/JSON probes)</li>
                     <li>Identified content boundaries through roleplay testing</li>
                   </ul>
                 </div>
-                <div class="phase">
-                  <h3>2. Exploitation</h3>
-                  <ul>
+                <div class="phase-block">
+                  <h4>2. Exploitation</h4>
+                  <ul class="clean-list">
                     <li>Developer mode simulation (debug_trace, config requests)</li>
                     <li>Medical boundary testing (asthma/anemia scenarios)</li>
                     <li>Conflict injection (impossible runner profiles)</li>
                   </ul>
                 </div>
-                <div class="phase">
-                  <h3>3. Reporting</h3>
-                  <ul>
+                <div class="phase-block">
+                  <h4>3. Reporting</h4>
+                  <ul class="clean-list">
                     <li>CVSS scoring for all vulnerabilities</li>
                     <li>Proof-of-concept payloads for each finding</li>
                     <li>Remediation recommendations</li>
                   </ul>
                 </div>
               </div>
-              <h3>Tools Used</h3>
-              <div class="tools-grid">
+            
+              <!-- Tools Used -->
+              <div class="section-subtitle">Tools Used</div>
+              <div class="tools-row">
                 <span class="tool-tag">Burp Suite</span>
                 <span class="tool-tag">Custom Python Fuzzers</span>
                 <span class="tool-tag">LangChain Attack Library</span>
                 <span class="tool-tag">Unicode Obfuscation</span>
               </div>
-        
-              <h2>📚 Key Takeaways</h2>
-              <div class="takeaways">
+            
+              <!-- Key Takeaways -->
+              <div class="section-subtitle">📚 Key Takeaways</div>
+              <div class="takeaways-grid">
                 <div class="takeaway-card">
-                  <h3>AI-Specific Risks</h3>
+                  <h4>AI-Specific Risks</h4>
                   <p>Discovered that structured prompts (YAML/JSON) bypass standard content filters more easily than natural language</p>
                 </div>
                 <div class="takeaway-card">
-                  <h3>Vendor Impact</h3>
+                  <h4>Vendor Impact</h4>
                   <p>Findings led to implementation of:
-                    <ul>
+                    <ul class="clean-list">
                       <li>Input validation layers</li>
                       <li>Context-aware filtering</li>
                       <li>Medical disclaimer system</li>
@@ -877,7 +885,8 @@
                   </p>
                 </div>
               </div>
-        
+            
+              <!-- Testimonial -->
               <div class="testimonial">
                 <blockquote>
                   "Your findings fundamentally changed how we secure our AI systems against adversarial prompts."
