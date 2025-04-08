@@ -258,6 +258,8 @@
 <div class="content">
     <h2>🔐 Samba Winbind AD Join Steps</h2>
 
+    <p>The next step was connecting the Ubuntu server to Active Directory using <strong>Samba Winbind</strong>. Since <code>realmd</code> + <code>SSSD</code> wasn’t compatible with Windows Server 2025, I transitioned to Winbind — the same method I used to connect the Ubuntu Desktop. This approach provided a more direct way to join Linux systems to AD, as shown in the previous section.</p>
+
     <ol>
         <li><strong>Updated the system:</strong></li>
         <div style="margin: 15px 0;">
@@ -383,6 +385,28 @@
     </ol>
 
     <p><strong>🎉 At this point:</strong> The Ubuntu mail server was successfully joined to the domain, authenticated, and ready for mail service configuration. Next up — Postfix!</p>
+</div>
+
+<div class="content">
+    <h2>🛠️ Snapshot Crash & AD Login Failure</h2>
+
+    <p>While working on the email server VM, I hit a pretty frustrating issue. I tried taking a snapshot in VirtualBox, but it caused a <strong>critical crash</strong> that shut down the entire VM.</p>
+
+    <p>My laptop (the host) logged a <strong>Kernel-Power Event 41</strong>, and afterward I saw disk warnings in Event Viewer — turns out the VM’s virtual disk might’ve been affected by <strong>storage issues</strong> on the host.</p>
+
+    <p>After rebooting, the Ubuntu server got stuck at the <strong>TTY login screen</strong>, and I couldn’t log in using the domain account (<code>CORP+email-svr</code>). Only the local account worked.</p>
+
+    <p>The error message <strong>"No logon servers available"</strong> made it clear the server couldn’t communicate with the domain controller anymore.</p>
+
+    <p>To fix it, I:</p>
+    <ul>
+        <li>Ran <code>chkdsk /f /r</code> on my laptop to repair the host drive</li>
+        <li>Double-checked the <code>.vdi</code> file and VirtualBox logs for corruption</li>
+        <li>Booted into the VM locally and confirmed disk space wasn't full</li>
+        <li>Eventually restored AD connectivity after rebooting and restarting <code>winbind</code></li>
+    </ul>
+
+    <p>Glad this didn’t result in a full VM loss, but it reminded me how important disk integrity is when snapshotting live environments.</p>
 </div>
 
 
