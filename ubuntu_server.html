@@ -196,7 +196,6 @@
   <div class="content">
       <h2>📧 Email Security Server Overview</h2>
       <p>For this project, I set up Ubuntu Server 22.04 LTS as the foundation for an email security server that will run Postfix as a Mail Transfer Agent (MTA). While most people rely on services like Gmail or Microsoft 365, I wanted to build an email server from scratch to better understand how email works — and how to secure it.</p>
-      <p>I started by provisioning the Ubuntu server from an ISO and applying the baseline system configurations, similar to how I set up the Ubuntu Desktop earlier (just without a GUI). Once the OS was ready, I connected the server to Active Directory using Winbind, configured a static IP address, verified DNS and domain authentication, and resolved several networking and login issues along the way.</p>
       <p>Running a mail server today takes a lot of behind-the-scenes work — things like configuring DNS, preventing spam, and keeping your server’s IP reputation clean. It’s no surprise most people avoid it, but doing it manually gave me hands-on experience with all the moving parts.</p>
   
       <p>There are a bunch of security risks that come with hosting your own email server, including:</p>
