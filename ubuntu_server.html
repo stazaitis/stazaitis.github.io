@@ -2,22 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setup Ubuntu Server 22.04 | Cybersecurity Project</title>
-
   <style>
-    /* 🔥 COPY YOUR CSS STYLES HERE from ubuntu_desktop.html */
-    /* Same neon green, navbar, button, and content styling */
-    /* For example... */
-    body {
-      font-family: Arial, sans-serif;
-      background: black;
-      color: #FFFFFF;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
-    }
+    /* Exact same CSS from your Windows 11 page */
+    body { font-family: Arial, sans-serif; background: black; color: #FFFFFF; margin: 0; padding: 0; text-align: center; text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5); }
 
     .navbar {
       width: 100%;
@@ -31,6 +20,7 @@
       top: 0;
       left: 0;
       z-index: 1000;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     }
 
     .navbar a {
@@ -42,6 +32,19 @@
       border-radius: 10px;
       background: rgba(0, 255, 0, 0.3);
       box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+      transition: 0.3s;
+    }
+
+    .navbar a:hover, .navbar a.active {
+      background: #00FF00;
+      color: black;
+      box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+    }
+
+    .navbar.hidden {
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     }
 
     .title-section {
@@ -67,38 +70,75 @@
       border-radius: 10px;
     }
 
-    .back-button, .next-button {
+    .content h2 {
+      color: #00FF00;
+      text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .back-button {
       position: fixed;
       bottom: 20px;
+      left: 12.5%;
+      transform: translateX(-50%);
+      padding: 12px 20px;
       font-size: 18px;
       font-weight: bold;
       color: black;
       background: rgba(0, 255, 0, 0.6);
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+      transition: 0.3s;
       border: none;
       cursor: pointer;
       opacity: 0.8;
-      padding: 12px 20px;
-      transition: 0.3s;
     }
 
-    .back-button {
-      left: 12.5%;
-      transform: translateX(-50%);
-    }
-
-    .next-button {
-      right: 12.5%;
-      transform: translateX(50%);
-      text-decoration: none;
-    }
-
-    .back-button:hover, .next-button:hover {
+    .back-button:hover {
       background: rgba(0, 255, 0, 1);
       color: white;
       box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
       opacity: 1;
+    }
+
+    .next-button {
+      position: fixed;
+      bottom: 20px;
+      right: 12.5%;
+      transform: translateX(50%);
+      padding: 12px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: black;
+      background: rgba(0, 255, 0, 0.6);
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      text-decoration: none;
+    }
+
+    .next-button:hover {
+      background: rgba(0, 255, 0, 1);
+      color: white;
+      box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+      opacity: 1;
+    }
+
+    .image-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .image-container img {
+      width: 90%;
+      max-width: 1000px;
+      border: 2px solid #00FF00;
+      box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -109,18 +149,29 @@
     <a href="index.html" class="active">Home</a>
   </div>
 
-  <!-- Title -->
+  <!-- Title Section -->
   <div class="title-section">
     <h1>Setup Ubuntu Server 22.04</h1>
   </div>
 
-  <!-- Main Content -->
+  <!-- Content Placeholder -->
   <div class="content">
     <h2>Overview</h2>
     <p>This section will walk through the process of installing and configuring Ubuntu Server 22.04 as part of the Project-X homelab environment.</p>
   </div>
 
-  <!-- Navigation Buttons -->
+  <!-- Example Block to Copy/Paste -->
+  <!--
+  <div class="content">
+    <h2>Step Title</h2>
+    <p>Details about what you did in this step...</p>
+    <div class="image-container">
+      <img src="assets/images/your-screenshot.png" alt="Descriptive alt text">
+    </div>
+  </div>
+  -->
+
+  <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="postfix.html" class="next-button">Next ➡</a>
 
@@ -128,6 +179,22 @@
     function goBack() {
       window.history.back();
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop;
+      });
+    });
   </script>
+
 </body>
 </html>
