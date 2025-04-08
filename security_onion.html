@@ -191,9 +191,39 @@
 
   <!-- Title Section -->
   <div class="title-section">
-    <h1>Setup Postfix Mail Transfer Agent</h1>
+    <h1>Setup Security Onion</h1>
   </div>
 
+  <div class="content">
+    <h2>🖥️ PROVISIONING & SETUP: SECURITY ONION</h2>
+    <p>I provisioned <strong>Security Onion</strong> alongside my Windows 11 and Ubuntu Desktop 22.04 workstations. It’s designed to act as a security monitoring system — kind of like Kali Linux, but for defense. It comes preloaded with tools like <strong>Zeek</strong>, <strong>Suricata</strong>, and the <strong>Elastic Stack</strong>, which allow for deep packet inspection, intrusion detection, and log analysis.</p>
+
+    <p>For this setup, I intentionally did <strong>not</strong> connect Security Onion to the Domain Controller or Active Directory. In most environments, Security Onion is used as a standalone observer, monitoring traffic from the outside without being joined to any domain — this helps reduce its exposure and keeps the monitoring infrastructure isolated.</p>
+  </div>
+
+  <div class="content">
+    <h2>🔍 SECURITY ONION OVERVIEW</h2>
+
+    <p><strong>What It Does:</strong><br>
+    Security Onion is a free, open-source platform for <strong>network security monitoring</strong>, <strong>log collection</strong>, and <strong>threat detection</strong>. It helps analysts detect and respond to suspicious activity in real time.</p>
+
+    <p><strong>Core Tools:</strong></p>
+    <ul>
+        <li><strong>Zeek</strong> – for network traffic analysis</li>
+        <li><strong>Suricata</strong> – for deep packet inspection</li>
+        <li><strong>Elastic Stack</strong> – for querying and visualizing logs</li>
+    </ul>
+
+    <p><strong>Use Cases:</strong></p>
+    <ul>
+        <li>Capturing and analyzing traffic</li>
+        <li>Aggregating logs from across the environment</li>
+        <li>Alerting on suspicious behavior and enabling threat hunting</li>
+    </ul>
+
+    <p><strong>Security Role:</strong><br>
+    It plays a key role in <strong>incident response</strong>, giving a full view of what’s happening on the network — all while staying <strong>isolated</strong> from the systems it’s watching.</p>
+  </div>
 
 
 
