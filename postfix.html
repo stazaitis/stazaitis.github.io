@@ -238,6 +238,38 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>🌐 DNS Configuration</h2>
+
+    <p>To make things easier across the network, I created a new DNS host record for the SMTP server:</p>
+    <ul>
+        <li><strong>Hostname:</strong> <code>smtp.corp.project-x-dc.com</code></li>
+        <li><strong>IP Address:</strong> <code>10.0.0.8</code></li>
+    </ul>
+
+    <p>By adding this entry in <strong>DNS Manager</strong> on the Domain Controller under <strong>Forward Lookup Zones</strong>, I made sure all devices on the network can resolve <code>smtp.corp.project-x-dc.com</code> to the correct IP.</p>
+
+    <div class="image-container">
+        <img src="assets/images/lookup.png" alt="DNS Manager Host Record for SMTP Server">
+    </div>
+
+    <h3>Why This Matters:</h3>
+    <ul>
+        <li>✅ Simplifies network management</li>
+        <li>✅ Avoids the need to remember IPs</li>
+        <li>✅ Makes services easier to access</li>
+        <li>✅ Supports future changes (just update the DNS record)</li>
+    </ul>
+
+    <p>From any device, I can now ping the hostname:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        ping smtp.corp.project-x-dc.com
+    </div>
+
+    <p>And get a response from <code>10.0.0.8</code>.</p>
+</div>
+
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="postfix.html" class="next-button">Next ➡</a>
