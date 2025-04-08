@@ -255,6 +255,106 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>🔐 Samba Winbind AD Join Steps</h2>
+
+    <ol>
+        <li><strong>Updated the system:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            sudo apt update
+        </div>
+
+        <li><strong>Installed required packages:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            sudo apt install -y winbind libpam-winbind libnss-winbind \<br>
+            krb5-config krb5-user samba-dsdb-modules samba-vfs-modules
+        </div>
+
+        <li><strong>Backed up then replaced the Samba config:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            mv /etc/samba/smb.conf /etc/samba/smb.conf.org<br>
+            sudo nano /etc/samba/smb.conf
+        </div>
+
+        <p>Inside <code>[global]</code>, I set the following:</p>
+
+<pre style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; color: #00FF00; margin-bottom: 15px; overflow-x: auto;">
+[global]
+ kerberos method = secrets and keytab
+ realm = CORP.PROJECT-X-DC.COM
+ workgroup = CORP
+ security = ads
+ template shell = /bin/bash
+ winbind enum groups = Yes
+ winbind enum users = Yes
+ winbind separator = +
+ idmap config * : rangesize = 1000000
+ idmap config * : range = 1000000-19999999
+ idmap config * : backend = autorid
+</pre>
+
+        <li><strong>Confirmed</strong> <code>winbind</code> is listed in <code>/etc/nsswitch.conf</code> under <code>passwd</code> and <code>group</code>.</li>
+
+        <li><strong>Ran</strong> <code>sudo pam-auth-update</code> and selected “Create home directory on login”.</li>
+
+        <li><strong>Edited DNS settings:</strong></li>
+        <ul>
+            <li><code>/etc/resolv.conf</code> → pointed to the domain controller</li>
+            <li><code>/etc/hosts</code> → added <code>corp.project-x-dc.com</code></li>
+        </ul>
+
+        <li><strong>Joined the domain:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            sudo net ads join -U Administrator
+        </div>
+
+        <li><strong>Restarted Winbind:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            sudo systemctl restart winbind
+        </div>
+
+        <li><strong>Confirmed domain connection:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            net ads info<br>
+            wbinfo -u
+        </div>
+
+        <p><strong>email-svr</strong> was successfully listed in domain users!</p>
+        <div class="image-container">
+            <img src="assets/images/wbinfo.png" alt="Output of wbinfo -u showing email-svr user">
+        </div>
+
+        <li><strong>Created AD account</strong> in <strong>Active Directory Users and Computers</strong> under <code>Users</code> folder. Used:</li>
+        <ul>
+            <li><strong>Username:</strong> email-svr@corp.project-x-dc.com</li>
+            <li><strong>Password:</strong> @password123!</li>
+        </ul>
+
+        <li><strong>Restarted Winbind again</strong> to clear cache:</li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            sudo systemctl restart winbind<br>
+            wbinfo -u
+        </div>
+
+        <li><strong>Logged in with domain credentials:</strong></li>
+        <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+            sudo login<br>
+            CORP+email-svr
+        </div>
+
+        <div class="image-container">
+            <img src="assets/images/dir.png" alt="Domain Login as CORP+email-svr">
+        </div>
+
+        <p>After logging in using <code>@password123!</code>, a new home directory was created. I also verified domain membership using <code>id</code>, confirming we’re now part of the <strong>domain users</strong> group:</p>
+
+        <div class="image-container">
+            <img src="assets/images/id.png" alt="id output showing domain group membership">
+        </div>
+    </ol>
+
+    <p><strong>✅ Success:</strong> We’ve now fully joined the Ubuntu mail server to the domain and finished all baseline system configurations. We’re ready to set up Postfix in the next section.</p>
+</div>
 
 
   <!-- Back and Next Buttons -->
