@@ -289,6 +289,18 @@
     <p>Using <code>s-nail</code>, I was able to enter the mailbox, view the test message, and read the email content.</p>
 </div>
 
+<div class="content">
+    <h2>🔄 Testing Internal Delivery: email-svr to janed</h2>
+
+    <p>To simulate an internal exchange, I impersonated the <strong>janed</strong> account and sent a message from one local user to another using the <code>-r</code> flag to modify the "From" field. This allowed me to route and receive email internally on the same server — successfully validating that Postfix was set up and functioning.</p>
+
+    <div class="image-container">
+        <img src="assets/images/init.png" alt="Internal email test sent from email-svr to janed using s-nail">
+    </div>
+
+    <p>However, this didn't come without any challenges...</p>
+</div>
+
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="postfix.html" class="next-button">Next ➡</a>
