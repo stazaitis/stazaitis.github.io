@@ -301,6 +301,51 @@
     <p>However, this didn't come without any challenges...</p>
 </div>
 
+<div class="content">
+    <h2>⚠️ Challenge: Maildir Troubleshooting</h2>
+
+    <p>While testing internal email delivery with Postfix and <code>s-nail</code>, I ran into a frustrating issue where email messages weren’t landing where I expected. The system was inconsistently writing to both <code>Maildir/</code> and <code>maildir/</code>, which caused delivery failures or messages to vanish altogether.</p>
+
+    <h3>🧩 Real-World Debugging: Maildir vs. maildir</h3>
+    <p>Turns out, the system was creating both <code>Maildir/</code> and <code>maildir/</code> directories, and emails were bouncing between them. I expected messages to land in <code>Maildir/new/</code>, but sometimes they showed up in <code>maildir/new/</code> — or not at all. Here's how I tracked it down:</p>
+
+    <ul>
+        <li><strong>Incorrect Postfix setting</strong> – My <code>main.cf</code> had <code>home_mailbox = maildir/</code>, forcing Postfix to use the wrong directory.</li>
+        <li><strong>s-nail default behavior</strong> – Without a proper <code>~/.mailrc</code> config, it defaulted to <code>maildir</code>.</li>
+        <li><strong>File system case sensitivity</strong> – Depending on the environment (like WSL or NTFS mounts), <code>Maildir</code> and <code>maildir</code> might not be treated as separate folders.</li>
+        <li><strong>Mail services resetting configs</strong> – Even after fixing it once, <code>maildir</code> kept reappearing during test emails, showing something was still misconfigured.</li>
+    </ul>
+
+    <h3>🛠️ How I Fixed It</h3>
+    
+    <p><strong>Step 1:</strong> Edited Postfix config:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo nano /etc/postfix/main.cf
+    </div>
+    
+    <p>Changed:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        home_mailbox = Maildir/
+    </div>
+
+    <p>Then restarted Postfix:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo systemctl restart postfix
+    </div>
+
+    <p><strong>Step 2:</strong> Updated s-nail settings:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        nano ~/.mailrc
+    </div>
+
+    <p>Added:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        set folder=~/Maildir
+    </div>
+
+    <p>After both fixes, I re-sent a test message and confirmed that it properly landed in <code>Maildir/new/</code> and was viewable in the <code>s-nail</code> client.</p>
+</div>
+
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="postfix.html" class="next-button">Next ➡</a>
