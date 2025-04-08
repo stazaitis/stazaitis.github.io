@@ -220,8 +220,16 @@
 </div>
 
 <div class="content">
-    <h2>Connecting Ubuntu Server to Active Directory</h2>
-    <p>Next step was connecting the Ubuntu Server to Active Directory.</p>
+    <h2>Preparing the Server for AD Integration</h2>
+    <p>Before setting up the mail server, I needed to join the Ubuntu Server to Active Directory. Since <strong>realmd + SSSD</strong> isn’t compatible with Windows Server 2025 on Ubuntu, I used <strong>Winbind</strong> instead — the same method I used for connecting the Ubuntu Desktop and Security Server.</p>
+
+    <p>I created an AD account for <code>email-svr</code> by going into the main domain controller and using <strong>Active Directory Users and Computers</strong>, just like I did for the other machines earlier in the project. This allowed the Linux server to authenticate with the domain.</p>
+
+    <p>I also changed the <code>email-svr</code> network configuration from DHCP to a static IP address using <strong>NetPlan</strong>. This ensures reliable connectivity to the domain controller and avoids IP conflicts during testing.</p>
+
+    <div class="image-container">
+        <img src="assets/images/nett.png" alt="Static IP Configuration Using NetPlan">
+    </div>
 </div>
 
 
