@@ -1,1 +1,62 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Setup Ubuntu Server 22.04 | Cybersecurity Project</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Include all your styles from ubuntu_desktop.html here... */
+    /* Omitted in this snippet since you already have them in your file */
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+  </div>
+
+  <!-- Title -->
+  <div class="title-section">
+    <h1>Setup Ubuntu Server 22.04</h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2>Overview</h2>
+    <p>This section will walk through the process of installing and configuring Ubuntu Server 22.04 as part of the Project-X homelab environment.</p>
+  </div>
+
+  <!-- Add your other content blocks below like <div class="content">...</div> -->
+
+  <!-- Back Button -->
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+
+  <!-- Next Section Button -->
+  <a href="postfix.html" class="next-button">Next ➡</a>
+
+  <!-- JS for Back Button and Navbar Scroll -->
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop;
+      });
+    });
+  </script>
+</body>
+</html>
