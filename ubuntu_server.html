@@ -232,7 +232,28 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>Resolving Network Issues Before Domain Join</h2>
+    <p>Before the domain join could succeed, I had to resolve some networking issues.</p>
 
+    <p>Initially, the server couldn’t ping the domain controller (<strong>10.0.0.5</strong>).</p>
+
+    <div class="image-container">
+        <img src="assets/images/host.png" alt="Ping Failure to Domain Controller">
+    </div>
+
+    <p>The ARP table showed that the machine couldn’t resolve the MAC address for either the gateway (<strong>10.0.0.1</strong>) or the domain controller. This meant the server was sending ARP requests but not receiving any responses. It didn’t know where to send packets!</p>
+
+    <div class="image-container">
+        <img src="assets/images/host2.png" alt="ARP Table Missing MAC Addresses">
+    </div>
+
+    <p>The fix was simply switching the network adapter to <strong>NAT Network</strong> in VirtualBox, which allowed ARP to function properly and restored connectivity to the domain controller.</p>
+
+    <div class="image-container">
+        <img src="assets/images/host3.png" alt="VirtualBox NAT Network Fix">
+    </div>
+</div>
 
 
 
