@@ -154,16 +154,16 @@
     <h1>Setup Ubuntu Server 22.04</h1>
   </div>
 
-  <div class="content-section" style="border: 2px solid #00FF00; padding: 25px; border-radius: 12px; background-color: rgba(0, 255, 0, 0.05); margin-top: 40px;">
+  <!-- Email Server Overview Section -->
+  <div style="border: 2px solid #00FF00; padding: 25px; border-radius: 12px; background-color: rgba(0, 255, 0, 0.05); margin-top: 40px;">
       <h2 style="color: #00FF00; text-shadow: 0 0 6px #00FF00;">📧 Email Security Server Overview</h2>
-  
       <p>For this project, I set up <strong>Postfix</strong> as a Mail Transfer Agent (MTA) on <strong>Ubuntu Server 22.04 LTS</strong>, connected to <strong>Active Directory</strong>. Even though most people rely on services like Gmail or Microsoft 365 now, I wanted to go through the full process of building an email server from scratch to really understand how email works — and how to secure it.</p>
   
       <p>Running a mail server today takes a lot of behind-the-scenes work — things like configuring DNS, preventing spam, and keeping your server’s IP reputation clean. It’s no surprise most people avoid it, but doing it manually gave me hands-on experience with all the moving parts.</p>
   
       <p>There are a bunch of security risks that come with hosting your own email server, including:</p>
   
-      <ul style="margin-left: 20px;">
+      <ul style="margin-left: 25px; text-align: left;">
           <li><strong>Open relay abuse</strong> – spammers using your server to blast junk mail</li>
           <li><strong>Brute-force attacks</strong> – attackers trying to guess login credentials</li>
           <li><strong>Spoofing & phishing</strong> – fake emails that look like they’re coming from your domain</li>
@@ -173,6 +173,7 @@
   
       <p>Setting this up gave me a solid understanding of mail flow and the security challenges that come with it — something I think is easy to overlook when using managed services.</p>
   </div>
+
 
 
   <!-- Back and Next Buttons -->
