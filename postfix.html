@@ -270,6 +270,25 @@
     <p>And get a response from <code>10.0.0.8</code>.</p>
 </div>
 
+<div class="content">
+    <h2>📥 Sending a Test Email with s-nail</h2>
+
+    <p>To test the email server, I used the <strong>s-nail</strong> package — a command-line email client. Once installed and configured, I could send a message and verify it landed in the <code>/home/email-svr/Maildir</code> directory.</p>
+
+    <p><strong>Maildir</strong> automatically created three subfolders:</p>
+    <ul>
+        <li><strong>cur/</strong> – read messages</li>
+        <li><strong>new/</strong> – unread messages</li>
+        <li><strong>tmp/</strong> – temp files during delivery</li>
+    </ul>
+
+    <div class="image-container">
+        <img src="assets/images/snail.png" alt="Test email results using s-nail inside Maildir">
+    </div>
+
+    <p>Using <code>s-nail</code>, I was able to enter the mailbox, view the test message, and read the email content.</p>
+</div>
+
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="postfix.html" class="next-button">Next ➡</a>
