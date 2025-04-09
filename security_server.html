@@ -288,6 +288,26 @@
     <p>And finally, I was able to successfully log in as <strong>secuser</strong>.</p>
 </div>
 
+<div class="content">
+    <h2>🧩 Domain Join Recap</h2>
+
+    <p>At this point, we’ve finished setting up the essentials for the security server:</p>
+
+    <ul>
+        <li>✅ Connected the box to <strong>Active Directory</strong></li>
+        <li>✅ Changed the hostname to <code>sec-box</code></li>
+        <li>✅ Created a new default user account: <strong>sec-user</strong></li>
+    </ul>
+
+    <p>After joining to the domain and restarting Winbind, I verified that <code>sec-user@corp.project-x-dc.com</code> was fully active and could log in with domain credentials.</p>
+
+    <div class="image-container">
+        <img src="assets/images/secuser.png" alt="sec-user domain account confirmed">
+    </div>
+
+    <p>From here, the system is ready to start receiving logs, alerts, and telemetry once Wazuh gets installed and configured in the next section.</p>
+</div>
+
 <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="wazuh.html" class="next-button">Next ➡</a>
