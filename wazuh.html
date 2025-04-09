@@ -215,27 +215,6 @@
 
     <p>Before installing Wazuh, I already had the core infrastructure in place:</p>
 
-    <ul>
-        <li>✅ A dedicated security server: <strong>project-x-security-svr</strong></li>
-        <li>✅ Fully working client VMs:
-            <ul>
-                <li><strong>project-x-win-client</strong></li>
-                <li><strong>project-x-linux-client</strong></li>
-            </ul>
-        </li>
-        <li>✅ A Domain Controller: <strong>project-x-dc</strong></li>
-        <li>✅ Active Directory fully operational and synced</li>
-        <li>✅ All machines networked and able to communicate internally</li>
-    </ul>
-
-    <p>This baseline setup ensured Wazuh could connect with and monitor all systems as soon as it was installed.</p>
-  </div>
-
-  <div class="content">
-    <h2>🧰 Lab Environment Prerequisites</h2>
-
-    <p>Before installing Wazuh, I already had the core infrastructure in place:</p>
-
     <p>✅ A dedicated security server:<br>
     <strong>project-x-security-svr</strong></p>
 
@@ -255,6 +234,31 @@
 
     <p>This baseline setup ensured Wazuh could connect with and monitor all systems as soon as it was installed.</p>
   </div>
+
+  <div class="content">
+    <h2>🧠 Challenge I Solved: Cross-VM Clipboard Sharing</h2>
+
+    <p>I hit a roadblock when I couldn’t copy-paste between Linux and Windows VMs — which made it frustrating to move commands and configs.</p>
+
+    <h3>🚫 Problem:</h3>
+    <ul>
+        <li>Guest Additions weren’t fully installed</li>
+        <li><code>VBoxClient --clipboard</code> wasn’t running</li>
+        <li>Clipboard sharing was disabled in VirtualBox settings</li>
+    </ul>
+
+    <h3>✅ Fix:</h3>
+    <ul>
+        <li>Manually mounted and installed <strong>VirtualBox Guest Additions</strong></li>
+        <li>Ran: <code>VBoxClient --clipboard</code></li>
+        <li>Enabled <strong>bidirectional clipboard</strong> in VM settings</li>
+        <li>Rebooted the VM</li>
+    </ul>
+
+    <p>After that, I was able to copy-paste freely between systems — a huge time-saver for building and configuring this lab.</p>
+</div>
+
+  
 
 
   <!-- Back and Next Buttons -->
