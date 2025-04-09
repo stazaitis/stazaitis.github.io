@@ -210,6 +210,30 @@
     <p>It also adds a layer of protection. These tools handle sensitive logs and scans, so keeping them isolated minimizes the attack surface. Plus, having one central place to manage alerts, logs, and threat data makes monitoring way more efficient.</p>
 </div>
 
+<div class="content">
+    <h2>🛠️ Changing the Hostname & Creating a New Account</h2>
+
+    <p>After cloning, the new VM still had the old hostname and user account. I updated the hostname from <code>linux-client</code> to <code>sec-box</code> by editing <code>/etc/hostname</code> and rebooting to apply the change.</p>
+
+    <p>Then I created a new user account:</p>
+    <ul>
+        <li><strong>Username:</strong> sec-user</li>
+        <li><strong>Password:</strong> @password123! (default for this lab)</li>
+    </ul>
+
+    <p>I gave <code>sec-user</code> sudo privileges and verified access with a quick:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo whoami
+    </div>
+
+    <p>At this point, the box was customized and ready to be joined to the domain.</p>
+
+    <div class="image-container">
+        <img src="assets/images/sec.png" alt="Security Server Hostname and User Setup">
+    </div>
+</div>
+
   
 
 <!-- Back and Next Buttons -->
