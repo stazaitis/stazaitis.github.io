@@ -205,9 +205,23 @@
 <div class="content">
     <h2>💻 Why a Dedicated Security Server?</h2>
 
-    <p>The idea behind a dedicated security server is to isolate performance-heavy tools from the rest of the environment. Security tools often consume a lot of CPU, RAM, and disk I/O — so running them on a separate system avoids slowing down user machines.</p>
+    <p>The goal of setting up a dedicated security server is to separate all the heavy-duty monitoring and analysis tools from the regular client machines. Security tools tend to eat up a lot of system resources — CPU, RAM, disk I/O — and running them on a shared system can slow everything down. Keeping them isolated on their own box makes sure nothing else gets impacted.</p>
 
-    <p>It also adds a layer of protection. These tools handle sensitive logs and scans, so keeping them isolated minimizes the attack surface. Plus, having one central place to manage alerts, logs, and threat data makes monitoring way more efficient.</p>
+    <p>But performance is just one part of it. There’s also the security angle.</p>
+
+    <p>This server is going to receive log data from multiple client machines across the network. All that data gets aggregated into the <strong>Wazuh indexer</strong>, which we’ll be using as our main open-source security platform. From there, Wazuh powers everything from threat detection and incident response to proactive defense and centralized security management.</p>
+
+    <p>As a client gets compromised or shows signs of suspicious behavior, Wazuh collects and surfaces that telemetry. It gives us the ability to query that data, identify threats early, and take action — whether that’s isolating the host, containing malware, or just flagging it for further investigation.</p>
+
+    <p>This setup allows for:</p>
+    <ul>
+        <li>✅ Real-time threat detection</li>
+        <li>✅ Proactive defense and threat hunting</li>
+        <li>✅ Efficient incident response</li>
+        <li>✅ Centralized visibility across the environment</li>
+    </ul>
+
+    <p>Ultimately, having this as a dedicated security server gives me full control to monitor, detect, prevent, and respond to security events — all in one place.</p>
 </div>
 
 <div class="content">
