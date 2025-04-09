@@ -234,7 +234,45 @@
     <p>At this point, the box was customized and ready to be joined to the domain.</p>
 </div>
 
-  
+<div class="content">
+    <h2>🌐 Connecting to Active Directory</h2>
+
+    <p>Since the cloned machine inherited all the domain join dependencies from the original Ubuntu client, I was able to join it to the domain with no issues.</p>
+
+    <p>First, I confirmed I could ping the domain controller (<strong>10.0.0.5</strong>) and the domain itself (<strong>corp.project-x-dc.com</strong>):</p>
+
+    <div class="image-container">
+        <img src="assets/images/pingit.png" alt="Ping to Domain Controller and Domain Name">
+    </div>
+
+    <p>Then I used the following command to join the machine to Active Directory:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo net ads join -U Administrator
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/joiny.png" alt="Joining the Domain via Terminal">
+    </div>
+
+    <p>On the Domain Controller, I created the AD user account:</p>
+    <ul>
+        <li><strong>Username:</strong> secuser@corp.project-x-dc.com</li>
+    </ul>
+    <p>This was done using the <strong>Active Directory Users and Computers</strong> tool under the "Users" folder.</p>
+
+    <div class="image-container">
+        <img src="assets/images/dc.png" alt="Adding secuser in AD Users and Computers">
+    </div>
+
+    <p>I then restarted the <code>winbind</code> service, verified the user appeared in the directory using:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        wbinfo -u
+    </div>
+
+    <p>And finally, I was able to successfully log in as <strong>secuser</strong>.</p>
+</div>
 
 <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
