@@ -261,9 +261,37 @@
 
     <p>After that, I was able to copy-paste freely between systems — a huge time-saver for building and configuring this lab.</p>
 </div>
+  
+<div class="content">
+    <h2>🛠️ Installing the Wazuh Stack</h2>
+
+    <h3>🔹 Step 1: Install Wazuh Server, Indexer & Dashboard</h3>
+    <p>On my security server, I logged in as <code>sec-user</code> and ran:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo apt install curl<br>
+        curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh &amp;&amp; sudo bash ./wazuh-install.sh -a -i
+    </div>
+
+    <p>This installed everything — the Wazuh Server (log processor), Indexer (storage engine), and Dashboard (UI).</p>
+
+    <p>After installation, I extracted the auto-generated admin credentials:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
+    </div>
+
+    <h3>🔹 Step 2: Access the Wazuh Dashboard</h3>
+    <p>I opened a browser inside the security server VM and visited:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        https://localhost
+    </div>
+
+    <p>After accepting the certificate warning, I logged in with the credentials from the file above and accessed the Wazuh Dashboard — ready to start managing agents and logs.</p>
+</div>
 
   
-
 
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
