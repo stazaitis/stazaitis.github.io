@@ -298,7 +298,74 @@
     </div>
 </div>
 
-  
+<div class="content">
+    <h2>🧩 Deploying Wazuh Agents to All Lab Systems</h2>
+
+    <p>In order to get data into Wazuh, I had to deploy agents — lightweight software that sits on each endpoint (client or server) and forwards logs to the Wazuh Manager. These agents are responsible for capturing system activity, forwarding relevant logs, and enabling full visibility into the behavior of every machine in the environment.</p>
+
+    <p>Once deployed, Wazuh takes those logs and:</p>
+    <ul>
+        <li>Aggregates them centrally</li>
+        <li>Parses and normalizes the data (so I’m not dealing with messy or inconsistent formats)</li>
+        <li>Allows me to query, correlate, and respond based on the data being collected</li>
+    </ul>
+
+    <p>I deployed agents on all three of my core systems: the Windows client, the domain controller, and the Linux client.</p>
+
+    <h3>💻 Windows Client – project-x-win-client</h3>
+    <p>On the Windows workstation, I installed the agent using PowerShell. Here's the exact process I followed:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.2-1.msi -OutFile $env:tmp\wazuh-agent<br>
+        msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.0.10' WAZUH_AGENT_GROUP='default' WAZUH_AGENT_NAME='project-x-win-client'<br>
+        NET START WAZUH
+    </div>
+
+    <p>This silently installed the agent, registered it to my Wazuh Manager (10.0.0.10), and started the service. The agent began forwarding logs immediately after installation.</p>
+
+    <div class="image-container">
+        <img src="assets/images/age2.png" alt="Wazuh agent running on Windows client">
+    </div>
+
+    <p>Wazuh has been successfully integrated.</p>
+
+    <h3>🖥️ Domain Controller – project-x-dc</h3>
+    <p>I followed the same process for the domain controller. The only thing I changed was the agent name to reflect the hostname and its unique role in the environment:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        WAZUH_AGENT_NAME='project-x-dc'
+    </div>
+
+    <p>Installing the agent on the DC was important — it gives me visibility into AD events, user authentication, group policy changes, and other domain activity.</p>
+
+    <div class="image-container">
+        <img src="assets/images/win.png" alt="Wazuh agent installed on domain controller">
+    </div>
+
+    <h3>🐧 Linux Client – project-x-linux-client</h3>
+    <p>On my Ubuntu client, I manually downloaded and installed the .deb package:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.9.2-1_amd64.deb<br>
+        sudo WAZUH_MANAGER='10.0.0.10' WAZUH_AGENT_GROUP='default' WAZUH_AGENT_NAME='project-x-linux-client' dpkg -i ./wazuh-agent_4.9.2-1_amd64.deb<br>
+        sudo systemctl daemon-reload<br>
+        sudo systemctl enable wazuh-agent<br>
+        sudo systemctl start wazuh-agent
+    </div>
+
+    <p>After enabling and starting the service, the Linux agent also began reporting in real-time. This machine sends logs from key locations like <code>/var/log/auth.log</code>, <code>/var/log/secure</code>, and <code>/var/log/audit/audit.log</code> — which I’ll use for command tracking, login attempts, and auditing security events.</p>
+
+    <div class="image-container">
+        <img src="assets/images/lin2.png" alt="Wazuh agent running on Linux client">
+    </div>
+
+    <p>✅ After deploying all three agents, I confirmed that each one showed up in the Wazuh Dashboard under <strong>Agents → Connected</strong>. From here, I was ready to start organizing agents into groups and tuning log collection settings for better visibility and alerting.</p>
+
+    <div class="image-container">
+        <img src="assets/images/work.png" alt="Wazuh Dashboard showing connected agents">
+    </div>
+</div>
+
 
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
