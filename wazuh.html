@@ -410,6 +410,17 @@
     <p>This gave me insight into Windows authentication events, software behavior, and system-level alerts — important for detecting common Windows-based attack techniques.</p>
 </div>
 
+<div class="content">
+    <h3>📊 Key Linux Log Files</h3>
+    <p>These three logs were critical for understanding what's happening on my Linux machines:</p>
+    <ul>
+        <li><code>auth.log</code> – Captures client login attempts, SSH activity, sudo commands, and authentication failures.</li>
+        <li><code>secure</code> – Tracks privilege elevation, login changes, and sensitive service access.</li>
+        <li><code>audit.log</code> – Provides low-level system telemetry like syscalls, binary execution, and command histories.</li>
+    </ul>
+    <p>Together, these gave me complete visibility into what users were doing, which services were accessed, and what commands were being run on my Linux endpoints — essential for real threat investigation and forensic analysis.</p>
+</div>
+
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
   <a href="vulnerable_env.html" class="next-button">Next ➡</a>
