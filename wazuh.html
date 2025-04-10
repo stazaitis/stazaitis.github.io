@@ -398,28 +398,24 @@
 </div>
 
 <div class="content">
-    <h2>📁 Custom Log Configuration for Linux and Windows</h2>
-
-    <h3>🪟 Linux Group Log Settings</h3>
+    <h3>🖪 Linux Group Log Settings</h3>
     <p>Inside <code>agent.conf</code>, I added:</p>
 
     <div class="image-container">
         <img src="assets/images/linconfig.png" alt="Custom agent.conf settings for Windows logs">
     </div>
 
-    <p>This gave me insight into Windows authentication events, software behavior, and system-level alerts — important for detecting common Windows-based attack techniques.</p>
-</div>
-
-<div class="content">
-    <h3>📊 Key Linux Log Files</h3>
     <p>These three logs were critical for understanding what's happening on my Linux machines:</p>
+
     <ul>
-        <li><code>auth.log</code> – Captures client login attempts, SSH activity, sudo commands, and authentication failures.</li>
-        <li><code>secure</code> – Tracks privilege elevation, login changes, and sensitive service access.</li>
-        <li><code>audit.log</code> – Provides low-level system telemetry like syscalls, binary execution, and command histories.</li>
+        <li><strong>auth.log</strong> – Captures client login attempts, SSH activity, sudo commands, and authentication failures.</li>
+        <li><strong>secure</strong> – Tracks privilege elevation, login changes, and sensitive service access.</li>
+        <li><strong>audit.log</strong> – Provides low-level system telemetry like syscalls, binary execution, and command histories.</li>
     </ul>
+
     <p>Together, these gave me complete visibility into what users were doing, which services were accessed, and what commands were being run on my Linux endpoints — essential for real threat investigation and forensic analysis.</p>
 </div>
+
 
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
