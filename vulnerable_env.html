@@ -194,14 +194,22 @@
   </div>
 
   <div class="content">
-  <h2>📌 Network Topology & Cyber Attack Simulation</h2>
+  <h2>📌 Network Topology Overview</h2>
   <p style="font-size: 16px; color: #ffffff;">
-    The diagram below shows the full topology of my Project-X cyber lab — including the simulated attacker machine, Active Directory, security servers, enterprise clients, and the monitored environment. It also outlines the phases of a full red team simulation: from initial access and persistence to privilege escalation and data exfiltration.
+    This diagram shows the vulnerable enterprise environment I configured for red team testing. Each component is intentionally misconfigured — from insecure SSH and RDP settings to exposed services and phished credentials — in order to simulate realistic attack paths across the lab.
   </p>
+
   <div class="image-container">
-    <img src="assets/images/vuln.drawio.png" alt="Network Topology and Cyber Attack Simulation">
+    <h3 style="text-align: center;">Vulnerable Lab Network Diagram</h3>
+    <img id="topology-image" src="assets/images/vuln.drawio.png" alt="Vulnerable Network Diagram" onclick="openFullscreen()">
+  </div>
+
+  <div id="fullscreen-container" class="fullscreen-image" onclick="closeFullscreen()">
+    <span class="close">&times;</span>
+    <img id="fullscreen-image" src="assets/images/vuln.drawio.png" alt="Vulnerable Network Diagram">
   </div>
 </div>
+
 
 
 
