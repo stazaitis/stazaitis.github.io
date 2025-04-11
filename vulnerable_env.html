@@ -218,24 +218,32 @@
   <a href="vulnerable_env.html" class="next-button">Next ➡</a>
 
   <script>
-    function goBack() {
-      window.history.back();
-    }
+  function goBack() {
+    window.history.back();
+  }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      let lastScrollTop = 0;
-      const navbar = document.querySelector(".navbar");
+  document.addEventListener("DOMContentLoaded", function () {
+    let lastScrollTop = 0;
+    const navbar = document.querySelector(".navbar");
 
-      window.addEventListener("scroll", function () {
-        let scrollTop = window.scrollY || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop && scrollTop > 50) {
-          navbar.classList.add("hidden");
-        } else {
-          navbar.classList.remove("hidden");
-        }
-        lastScrollTop = scrollTop;
-      });
+    window.addEventListener("scroll", function () {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        navbar.classList.add("hidden");
+      } else {
+        navbar.classList.remove("hidden");
+      }
+      lastScrollTop = scrollTop;
     });
-  </script>
+  });
+
+  function openFullscreen() {
+    document.getElementById("fullscreen-container").style.display = "flex";
+  }
+
+  function closeFullscreen() {
+    document.getElementById("fullscreen-container").style.display = "none";
+  }
+</script>
 
 </body>
