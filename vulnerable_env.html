@@ -379,6 +379,31 @@
     <p>✅ The main difference was that the Linux client <strong>does have the Wazuh agent installed</strong>, so later, I could detect suspicious activities like brute-force login attempts.</p>
 </div>
 
+<div class="content">
+    <h2>📬 Establishing Email Communication Between Email Server and Linux Client</h2>
+
+    <p>Now I’m going to establish a connection between the email server and the Janed Linux client so we can route email between each other.</p>
+
+    <p>At this point, the <strong>email-svr</strong> can only route email to itself — it cannot yet deliver messages to other machines on the network.</p>
+</div>
+
+<div class="content">
+    <h2>📦 Installing Postfix on Linux Client</h2>
+
+    <p>I installed Postfix utilities and a client configuration on the Linux client:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; color: #FF5555; display: inline-block; margin-bottom: 20px;">
+        sudo apt install postfix mailutils -y
+    </div>
+
+    <p>During setup, I selected <strong>"Internet Site."</strong></p>
+
+    <p>This is where I can add some settings and customize where I want emails routed.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln5.png" alt="Postfix installation on Linux client">
+    </div>
+</div>
 
 
 
