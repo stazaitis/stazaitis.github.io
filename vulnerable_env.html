@@ -281,9 +281,46 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>🛠️ Applying Vulnerable SSH Configurations</h2>
 
+    <p>Now it was time to apply some various vulnerable configurations that could be found in real-world setups.</p>
 
+    <div class="image-container">
+        <img src="assets/images/vuln2.png" alt="Editing SSH Configuration">
+    </div>
 
+    <p>I went into the SSH configuration and:</p>
+    <ul>
+        <li>Navigated to the <code>#PermitRootLogin</code> block</li>
+        <li>Uncommented the line and changed <code>prohibit-password</code> to <code>yes</code></li>
+        <li>Located the <code>PasswordAuthentication</code> line and uncommented it if it was commented</li>
+    </ul>
+
+    <p>After making those changes, I restarted SSH:</p>
+
+    <div style="text-align: left;">
+        <div style="background-color: black; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; padding: 10px; margin: 10px 0;">
+            <code style="color: #FF6347;">sudo systemctl restart ssh</code>
+        </div>
+    </div>
+
+    <p>Then I set root’s password to something extremely weak and easy to guess — "<strong>november</strong>":</p>
+
+    <div style="text-align: left;">
+        <div style="background-color: black; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; padding: 10px; margin: 10px 0;">
+            <code style="color: #FF6347;">sudo passwd root</code>
+        </div>
+    </div>
+
+    <p>I was now logged in under the root account:</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln3.png" alt="Logged in as Root">
+    </div>
+</div>
+
+  
 
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
