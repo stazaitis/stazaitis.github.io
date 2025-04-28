@@ -566,6 +566,30 @@
     <p>✅ The Linux client was now ready to accept incoming email traffic.</p>
 </div>
 
+<div class="content">
+    <h2>✉️ Sending and Receiving a Test Email</h2>
+
+    <p>I tested creating a test email from the email server to Janed’s Linux client.</p>
+
+    <p>The body of the email contained the message "This is a text message" and the subject was "Hello" — sent directly to <strong>janed@linux-client</strong>.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln14.png" alt="Sending a test email from the email server">
+    </div>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        echo "This is a text message" | mail -s "Hello" janed@linux-client
+    </div>
+
+    <p>I logged back into Janed’s client — and successfully received the test message!</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln15.png" alt="Receiving the test email on the Linux client">
+    </div>
+
+    <p>✅ Email routing was now fully operational between the email server and the Linux workstation.</p>
+</div>
+
   
 
   <!-- Back and Next Buttons -->
