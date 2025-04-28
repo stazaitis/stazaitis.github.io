@@ -405,6 +405,26 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>⚙️ Configuring Postfix</h2>
+
+    <p>I edited the <code>/etc/postfix/main.cf</code> file to add the following settings:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; color: #FF5555; display: inline-block; margin-bottom: 20px;">
+        mydomain = corp.project-x-dc.com<br>
+        mynetworks = 127.0.0.0/8 10.0.0.0/24<br>
+        home_mailbox = Maildir/<br>
+        virtual_alias_maps = hash:/etc/postfix/virtual
+    </div>
+</div>
+
+<div class="content">
+    <h2>❓ Why add 10.0.0.0/24 to mynetworks?</h2>
+
+    <p>It defines trusted networks that are allowed to relay mail through the server without requiring authentication.</p>
+
+    <p>This is the homelab IP address block that we established at the beginning of the course.</p>
+</div>
 
 
 
