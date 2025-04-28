@@ -320,6 +320,26 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>🔥 Opening Firewall Ports</h2>
+
+    <p>The final thing I did was enable the UFW firewall and allow port 22 into the server.</p>
+
+    <div style="text-align: left;">
+        <div style="background-color: black; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; padding: 10px; margin: 10px 0;">
+            <code style="color: #FF6347;">sudo ufw allow 22</code><br>
+            <code style="color: #FF6347;">sudo ufw enable</code>
+        </div>
+    </div>
+
+    <p>Postfix and SSH (port 22) were now open on both IPv4 and IPv6.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln4.png" alt="Firewall Ports Opened">
+    </div>
+</div>
+
+
   
 
   <!-- Back and Next Buttons -->
