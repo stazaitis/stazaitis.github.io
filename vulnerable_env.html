@@ -268,6 +268,29 @@
     <p>My goal is to apply security monitoring configurations later in Wazuh so I can get notified or alerted when specific suspicious activity happens — and catch an attacker right in their tracks.</p>
 </div>
 
+<div class="content">
+    <h2>🛠️ First Configurations: Enabling SSH on Email Server</h2>
+
+    <p>SSH is typically enabled on administrative servers because it makes remote login easy for administrators. Since this is an email server that routes and propagates email, if an attacker finds it online and sees SSH open, it immediately becomes a target.</p>
+
+    <h3>Guide:</h3>
+    <p>Enable the SSH server and make sure it runs on boot:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; margin-bottom: 20px;">
+        sudo systemctl start ssh<br>
+        sudo systemctl enable ssh
+    </div>
+
+    <p>Verify SSH is running:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; margin-bottom: 20px;">
+        sudo systemctl status ssh
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln1.png" alt="SSH Status Check Screenshot">
+    </div>
+</div>
 
 
 
