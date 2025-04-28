@@ -254,6 +254,29 @@
     </p>
 </div>
 
+<div class="content">
+    <h2>🛠️ First Target: Project-X Email Server (project-x-email-svr)</h2>
+    <p>
+        I started by setting up the Ubuntu 22.04 server running Postfix, intentionally leaving several misconfigurations in place.
+    </p>
+
+    <h3>🔓 SSH Server Setup</h3>
+    <p>
+        First, I enabled the SSH service and made sure it started automatically at boot.
+    </p>
+
+    <pre><code>sudo systemctl start ssh
+sudo systemctl enable ssh</code></pre>
+
+    <p>Verified SSH was running:</p>
+
+    <pre><code>sudo systemctl status ssh</code></pre>
+
+    <div class="image-container">
+        <img src="assets/images/vuln1.png" alt="SSH server running on Ubuntu 22.04">
+    </div>
+</div>
+
 
 
   <!-- Back and Next Buttons -->
