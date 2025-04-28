@@ -590,7 +590,29 @@
     <p>✅ Email routing was now fully operational between the email server and the Linux workstation.</p>
 </div>
 
-  
+<div class="content">
+    <h2>🪟 Setting Up Vulnerabilities on Windows Machines</h2>
+
+    <p>After finishing the Linux setup, my next step was to configure vulnerabilities on the Windows systems.</p>
+</div>
+
+<div class="content">
+    <h2>🖥️ Enabling WinRM on Project-X Windows Client</h2>
+
+    <p>On the Project-X Windows 11 Enterprise client, I opened PowerShell as Administrator and logged in using the administrator credentials I created earlier.</p>
+
+    <p>I then entered the following commands to enable WinRM:</p>
+
+    <pre><code>powershell -ep bypass
+Enable-PSRemoting -force
+winrm quickconfig -transport:https
+Set-Item wsman:\localhost\client\trustedhosts *
+net localgroup "Remote Management Users" /add administrator
+Restart-Service WinRM</code></pre>
+
+    <p>✅ WinRM was now enabled — another major entry point for attackers.</p>
+</div>
+
 
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
