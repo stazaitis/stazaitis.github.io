@@ -501,6 +501,24 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>🛠️ Setting Up Environment Variables for Email Access</h2>
+
+    <p>In order for Jane to interact with her incoming emails correctly, I needed to set a few environment variables. Specifically, I edited two key default files that are uploaded to Jane’s terminal session each time she opens a new shell:</p>
+
+    <ul>
+        <li><code>/etc/bash.bashrc</code></li>
+        <li><code>/etc/profile.d/mail.sh</code></li>
+    </ul>
+
+    <p>Here’s the command I ran to echo the new setting into both files:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
+    </div>
+
+    <p>This export statement sets the <code>MAIL</code> environment variable to route properly to Jane's <code>Maildir</code>.</p>
+</div>
 
   
 
