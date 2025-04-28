@@ -539,6 +539,30 @@
     <p>This export statement sets the <code>MAIL</code> environment variable to route properly to Jane's <code>Maildir</code>.</p>
 </div>
 
+<div class="content">
+    <h2>📬 Allowing Email Traffic over SMTP</h2>
+
+    <p>Next, I added firewall rules to allow SMTP traffic (port 25), ensuring the Linux client could receive emails.</p>
+
+    <p>I updated UFW:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo ufw allow postfix
+    </div>
+
+    <p>And then restarted postfix:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo systemctl restart postfix
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln13.png" alt="Postfix SMTP firewall rules and service restart">
+    </div>
+
+    <p>✅ The Linux client was now ready to accept incoming email traffic.</p>
+</div>
+
   
 
   <!-- Back and Next Buttons -->
