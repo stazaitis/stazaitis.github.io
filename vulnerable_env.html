@@ -613,6 +613,51 @@ Restart-Service WinRM</code></pre>
     <p>✅ WinRM was now enabled — another major entry point for attackers.</p>
 </div>
 
+<div class="content">
+    <h2>🖥️ Enabling RDP on the Domain Controller</h2>
+
+    <p>For the next vulnerable configuration, I enabled Windows RDP (Remote Desktop Protocol) on the Domain Controller.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln16.png" alt="Enabling RDP on Domain Controller">
+    </div>
+
+    <p>This would allow domain users and administrators to log in remotely to the DC over RDP — another risk intentionally left open for the simulation.</p>
+</div>
+
+<div class="content">
+    <h2>📂 Creating an Emulated Sensitive File for Cyberattack Simulation</h2>
+
+    <p>To simulate a real-world exfiltration target, I created a new folder:</p>
+
+    <p><code>C:\Users\Administrator\Documents\ProductionFiles</code></p>
+
+    <p>Inside the <strong>ProductionFiles</strong> folder, I made a new document that included my Domain Controller password.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln17.png" alt="Production Files and Secrets Document">
+    </div>
+
+    <p>This file would serve as the "flag" or "prize" when I later conduct the attack simulation. The goal is to be able to access and exfiltrate this <code>secrets.txt</code> file during my hands-on exercise.</p>
+</div>
+
+<div class="content">
+    <h2>⚡ Current Vulnerable Configuration State</h2>
+
+    <p>At this point, the following vulnerabilities were successfully applied across the Project-X network:</p>
+
+    <ul>
+        <li><strong>Insecure SSH configurations</strong></li>
+        <li><strong>Weak and phished credentials</strong></li>
+        <li><strong>Insecure WinRM service enabled</strong></li>
+        <li><strong>Insecure RDP access opened</strong></li>
+        <li><strong>No encryption between hosts</strong></li>
+    </ul>
+
+    <p>The environment was now intentionally exposed and vulnerable.</p>
+</div>
+
+
 
   <!-- Back and Next Buttons -->
   <button class="back-button" onclick="goBack()">⬅ Back</button>
