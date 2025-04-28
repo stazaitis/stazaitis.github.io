@@ -246,106 +246,17 @@
 
 <div class="content">
     <h2>🧨 Setting Up a Vulnerable Environment</h2>
-    <p>
-        For this phase of the project, I intentionally applied insecure configurations across my Project-X network to simulate a real-world weak environment. The goal was to leave obvious gaps like default SSH credentials, exposed WinRM services, and no encryption, so I could later detect and respond using Wazuh.
-    </p>
-    <p>
-        Detection integrations will come after this setup section.
-    </p>
+    <p>In this part of the project, I’ll be applying insecure configurations across the Project-X environment.<br><br>
+    This includes default or insecure SSH passwords, phished credentials, an insecure WinRM service, no encryption, and insecure RDP access.</p>
+
+    <p>Detection integrations will come after this section.</p>
 </div>
 
 <div class="content">
-    <h2>🛠️ First Target: Project-X Email Server (project-x-email-svr)</h2>
-    <p>
-        I started by setting up the Ubuntu 22.04 server running Postfix, intentionally leaving several misconfigurations in place.
-    </p>
-
-    <h3>🔓 SSH Server Setup</h3>
-    <p>
-        First, I enabled the SSH service and made sure it started automatically at boot:
-    </p>
-
-    <div style="background-color: black; color: #FF5733; border: 2px solid #00FF00; padding: 10px; margin: 10px 0; width: auto; border-radius: 8px; font-family: monospace; display: inline-block;">
-        sudo systemctl start ssh<br>
-        sudo systemctl enable ssh
-    </div>
-
-    <p>Then, I verified SSH was running:</p>
-
-    <div style="background-color: black; color: #FF5733; border: 2px solid #00FF00; padding: 10px; margin: 10px 0; width: auto; border-radius: 8px; font-family: monospace; display: inline-block;">
-        sudo systemctl status ssh
-    </div>
-
-    <div class="image-container">
-        <img src="assets/images/vuln1.png" alt="SSH server running on Ubuntu 22.04">
-    </div>
+    <h2>🛠️ First Target: Project-X Email Server (Ubuntu 22.04 running Postfix)</h2>
+    <p>The first configurations I focused on were for the Project-X email server, running Ubuntu Server 22.04 LTS and Postfix.</p>
 </div>
 
-<div class="content">
-    <h2>🛠️ Applying Vulnerable SSH Configurations</h2>
-
-    <p>Now it was time to apply some various vulnerable configurations that could be found in real-world setups.</p>
-
-    <div class="image-container">
-        <img src="assets/images/vuln2.png" alt="Editing SSH Configuration">
-    </div>
-
-    <p>I went into the SSH configuration and:</p>
-    <ul>
-        <li>Navigated to the <code>#PermitRootLogin</code> block</li>
-        <li>Uncommented the line and changed <code>prohibit-password</code> to <code>yes</code></li>
-        <li>Located the <code>PasswordAuthentication</code> line and uncommented it if it was commented</li>
-    </ul>
-
-    <p>After making those changes, I restarted SSH:</p>
-
-    <div style="text-align: left;">
-        <div style="background-color: black; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; padding: 10px; margin: 10px 0;">
-            <code style="color: #FF6347;">sudo systemctl restart ssh</code>
-        </div>
-    </div>
-
-    <p>Then I set root’s password to something extremely weak and easy to guess — "<strong>november</strong>":</p>
-
-    <div style="text-align: left;">
-        <div style="background-color: black; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; padding: 10px; margin: 10px 0;">
-            <code style="color: #FF6347;">sudo passwd root</code>
-        </div>
-    </div>
-
-    <p>I was now logged in under the root account:</p>
-
-    <div class="image-container">
-        <img src="assets/images/vuln3.png" alt="Logged in as Root">
-    </div>
-</div>
-
-<div class="content">
-    <h2>🔥 Opening Firewall Ports</h2>
-
-    <p>The final thing I did was enable the UFW firewall and allow port 22 into the server.</p>
-
-    <div style="text-align: left;">
-        <div style="background-color: black; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; padding: 10px; margin: 10px 0;">
-            <code style="color: #FF6347;">sudo ufw allow 22</code><br>
-            <code style="color: #FF6347;">sudo ufw enable</code>
-        </div>
-    </div>
-
-    <p>Postfix and SSH (port 22) were now open on both IPv4 and IPv6.</p>
-
-    <div class="image-container">
-        <img src="assets/images/vuln4.png" alt="Firewall Ports Opened">
-    </div>
-</div>
-
-<div class="content">
-    <h2>📋 Detection Gaps – No Wazuh Agent Installed</h2>
-
-    <p><strong>Important note:</strong> <code>project-x-email-svr</code> does not have the Wazuh agent installed.</p>
-
-    <p>This was intentional — to show how the absence of detection tools can leave a huge blind spot for malicious activity.</p>
-</div>
 
 
 
