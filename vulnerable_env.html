@@ -436,6 +436,42 @@
     </div>
 </div>
 
+<div class="content">
+    <h2>🔗 Creating Virtual Alias Maps</h2>
+
+    <div class="image-container">
+        <img src="assets/images/vuln8.png" alt="Postfix Virtual Alias Maps">
+    </div>
+
+    <p>I created a new configuration block called "virtual maps" to map various different email accounts:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 20px 0;">
+        sudo nano /etc/postfix/virtual
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln9.png" alt="Editing Postfix Virtual File">
+    </div>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 20px 0;">
+        # email-svr@smtp.corp.project-x-dc.com janed
+    </div>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 20px 0;">
+        sudo postmap /etc/postfix/virtual
+    </div>
+
+    <p>This file lets me map incoming emails to specific local users on the Linux system.</p>
+    <p>In this case, I mapped any emails coming to <strong>email-svr</strong> directly to <strong>Janed</strong>’s local account.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln3.png" alt="Virtual Alias Mapping to Janed User">
+    </div>
+
+    <p>I want to be able to receive emails from anywhere and have them land in the right inbox.</p>
+</div>
+
+
 
 
   
