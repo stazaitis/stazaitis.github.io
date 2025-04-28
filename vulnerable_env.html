@@ -358,6 +358,26 @@
     <p>This is intentional to demonstrate how the absence of detection controls can create a gap in identifying potentially malicious activity.</p>
 </div>
 
+<div class="content">
+    <h2>🖥️ Moving to the Next Machine: Project-X Linux Client (project-x-linux-client)</h2>
+
+    <p>Now it was time to move on to the next virtual machine and perform the same actions on the Project-X Linux Client.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln5.png" alt="Project-X Linux Client Setup">
+    </div>
+
+    <p>I performed the same steps as I did on the email server:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 15px 0;">
+        - Enabled SSH<br>
+        - Allowed password authentication<br>
+        - Permitted root login<br>
+        - Set the root password to <strong>november</strong>
+    </div>
+
+    <p>✅ The main difference was that the Linux client <strong>does have the Wazuh agent installed</strong>, so later, I could detect suspicious activities like brute-force login attempts.</p>
+</div>
 
 
 
