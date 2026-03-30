@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Ubuntu Server 22.04 | Cybersecurity Project</title>
+  <style>
+        /* Exact same CSS from your Windows 11 page */
+        body { 
+            font-family: Arial, sans-serif;
+            background: black;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        .navbar.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .title-section {
+            margin-top: 100px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .content h2 {
+            color: #00FF00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section-header-blue {
+            color: #00FFFF;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 12.5%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+                /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+        /* Remove underline from Next button */
+        .next-button {
+            text-decoration: none; /* This removes the underline */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .image-container-blue {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container-blue img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+  </style>
+</head>
+<body>
+
+
+<!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+  </div>
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1>Setup Postfix Mail Transfer Agent</h1>
+  </div>
+
+  <div class="content">
+      <h2>📬 Postfix Mail Transfer Agent (SMTP)</h2>
+  
+      <p><strong>Postfix</strong> is a popular open-source Mail Transfer Agent (MTA) used to route and deliver email on Linux systems. It’s reliable, fast, and runs on about 25% of public email servers.</p>
+  
+      <p>For this project, I set up Postfix as a simple SMTP server to send and deliver messages between my simulated clients — the Windows and Linux workstations. It acted as the middleman in the delivery process, taking in messages, processing them, and passing them on to the right destination.</p>
+  
+      <p>Setting up Postfix in this environment gave me a clearer understanding of how email flows across a network and what’s involved in securing that process.</p>
+  </div>
+
+  <div class="content">
+    <h2>🧠 Why Build an Email Server?</h2>
+
+    <p>Running an email server helps me see how real-world messaging systems operate. It covers everything from <strong>SMTP</strong>, <strong>IMAP</strong>, and <strong>POP3</strong> protocols, to DNS configuration, identity mapping, and internal routing.</p>
+
+    <p>While I didn’t set up full external communication (like sending from <code>johnd</code> to a real <code>janed@gmail.com</code>), I was able to simulate email exchange between two local users — such as <strong>johnd</strong> and <strong>janed</strong> — within the lab environment.</p>
+  </div>
+
+  <div class="content">
+    <h2>⚙️ Setting Up Postfix</h2>
+
+    <p>I configured <code>/etc/postfix/virtual</code> to map arbitrary email addresses to the local <strong>email-svr</strong> system account. This way, Postfix knows which messages to accept and where to deliver them.</p>
+
+    <div class="image-container">
+        <img src="assets/images/postfix.png" alt="Virtual Mapping File in Postfix">
+    </div>
+
+    <p>I then applied the mappings.</p>
+
+    <div class="image-container">
+        <img src="assets/images/map.png" alt="Applying Virtual Maps in Postfix">
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>🧭 Backup DNS Configuration</h2>
+
+    <p>I also added Google’s DNS (<code>8.8.8.8</code>) as a backup resolver in case my Domain Controller is unavailable — ensuring continued DNS resolution.</p>
+
+    <div class="image-container">
+        <img src="assets/images/DNS.png" alt="Configured DNS Backup with Google 8.8.8.8">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🌐 DNS Configuration</h2>
+
+    <p>To make things easier across the network, I created a new DNS host record for the SMTP server:</p>
+    <ul>
+        <li><strong>Hostname:</strong> <code>smtp.corp.project-x-dc.com</code></li>
+        <li><strong>IP Address:</strong> <code>10.0.0.8</code></li>
+    </ul>
+
+    <p>By adding this entry in <strong>DNS Manager</strong> on the Domain Controller under <strong>Forward Lookup Zones</strong>, I made sure all devices on the network can resolve <code>smtp.corp.project-x-dc.com</code> to the correct IP.</p>
+
+    <div class="image-container">
+        <img src="assets/images/lookup.png" alt="DNS Manager Host Record for SMTP Server">
+    </div>
+
+    <h3>Why This Matters:</h3>
+    <ul>
+        <li>✅ Simplifies network management</li>
+        <li>✅ Avoids the need to remember IPs</li>
+        <li>✅ Makes services easier to access</li>
+        <li>✅ Supports future changes (just update the DNS record)</li>
+    </ul>
+
+    <p>From any device, I can now ping the hostname:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        ping smtp.corp.project-x-dc.com
+    </div>
+
+    <p>And get a response from <code>10.0.0.8</code>.</p>
+</div>
+
+<div class="content">
+    <h2>📥 Sending a Test Email with s-nail</h2>
+
+    <p>To test the email server, I used the <strong>s-nail</strong> package — a command-line email client. Once installed and configured, I could send a message and verify it landed in the <code>/home/email-svr/Maildir</code> directory.</p>
+
+    <p><strong>Maildir</strong> automatically created three subfolders:</p>
+    <ul>
+        <li><strong>cur/</strong> – read messages</li>
+        <li><strong>new/</strong> – unread messages</li>
+        <li><strong>tmp/</strong> – temp files during delivery</li>
+    </ul>
+
+    <div class="image-container">
+        <img src="assets/images/snail.png" alt="Test email results using s-nail inside Maildir">
+    </div>
+
+    <p>Using <code>s-nail</code>, I was able to enter the mailbox, view the test message, and read the email content.</p>
+</div>
+
+<div class="content">
+    <h2>🔄 Testing Internal Delivery: email-svr to janed</h2>
+
+    <p>To simulate an internal exchange, I impersonated the <strong>janed</strong> account and sent a message from one local user to another using the <code>-r</code> flag to modify the "From" field. This allowed me to route and receive email internally on the same server — successfully validating that Postfix was set up and functioning.</p>
+
+    <div class="image-container">
+        <img src="assets/images/test.png" alt="Internal email test sent from email-svr to janed using s-nail">
+    </div>
+
+    <p>However, this didn't come without any challenges...</p>
+</div>
+
+<div class="content">
+    <h2>⚠️ Challenge: Maildir Troubleshooting</h2>
+
+    <p>While testing internal email delivery with Postfix and <code>s-nail</code>, I ran into a frustrating issue where email messages weren’t landing where I expected. The system was inconsistently writing to both <code>Maildir/</code> and <code>maildir/</code>, which caused delivery failures or messages to vanish altogether.</p>
+
+    <h3>🧩 Real-World Debugging: Maildir vs. maildir</h3>
+    <p>Turns out, the system was creating both <code>Maildir/</code> and <code>maildir/</code> directories, and emails were bouncing between them. I expected messages to land in <code>Maildir/new/</code>, but sometimes they showed up in <code>maildir/new/</code> — or not at all. Here's how I tracked it down:</p>
+
+    <ul>
+        <li><strong>Incorrect Postfix setting</strong> – My <code>main.cf</code> had <code>home_mailbox = maildir/</code>, forcing Postfix to use the wrong directory.</li>
+        <li><strong>s-nail default behavior</strong> – Without a proper <code>~/.mailrc</code> config, it defaulted to <code>maildir</code>.</li>
+        <li><strong>File system case sensitivity</strong> – Depending on the environment (like WSL or NTFS mounts), <code>Maildir</code> and <code>maildir</code> might not be treated as separate folders.</li>
+        <li><strong>Mail services resetting configs</strong> – Even after fixing it once, <code>maildir</code> kept reappearing during test emails, showing something was still misconfigured.</li>
+    </ul>
+
+    <h3>🛠️ How I Fixed It</h3>
+    
+    <p><strong>Step 1:</strong> Edited Postfix config:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo nano /etc/postfix/main.cf
+    </div>
+    
+    <p>Changed:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        home_mailbox = Maildir/
+    </div>
+
+    <p>Then restarted Postfix:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo systemctl restart postfix
+    </div>
+
+    <p><strong>Step 2:</strong> Updated s-nail settings:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        nano ~/.mailrc
+    </div>
+
+    <p>Added:</p>
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        set folder=~/Maildir
+    </div>
+
+    <p>After both fixes, I re-sent a test message and confirmed that it properly landed in <code>Maildir/new/</code> and was viewable in the <code>s-nail</code> client.</p>
+</div>
+
+  <!-- Back and Next Buttons -->
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+  <a href="security_onion.html" class="next-button">Next ➡</a>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop;
+      });
+    });
+  </script>
+
+</body>

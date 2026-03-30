@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Wazuh | Cybersecurity Project</title>
+  <style>
+        /* Exact same CSS from your Windows 11 page */
+        body { 
+            font-family: Arial, sans-serif;
+            background: black;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        .navbar.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .title-section {
+            margin-top: 100px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .content h2 {
+            color: #00FF00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section-header-blue {
+            color: #00FFFF;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 12.5%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+                /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+        /* Remove underline from Next button */
+        .next-button {
+            text-decoration: none; /* This removes the underline */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .image-container-blue {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container-blue img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+  </div>
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1>Setup Wazuh</h1>
+  </div>
+
+  <div class="content">
+    <h2>📌 Overview – Why I Set Up Wazuh in My Lab</h2>
+
+    <p>For this stage of my lab, I built out a full Wazuh security stack to act as my centralized SIEM, XDR platform, and vulnerability scanner. My goal was to create an environment that mirrors a real-world enterprise where logs from every machine flow into a single dashboard for detection, response, and threat hunting.</p>
+
+    <p>I followed Wazuh's <a href="https://documentation.wazuh.com/current/quickstart.html" target="_blank">QuickStart Guide documentation</a>.</p>
+
+    <p>What makes this setup especially important is that it's hands-on — I’m not just installing Wazuh, I’m actively using it to:</p>
+
+    <ul>
+        <li>📥 Collect real logs from both Windows and Linux machines</li>
+        <li>🧠 Monitor my Domain Controller for suspicious activity</li>
+        <li>⚠️ Simulate real-world threats and watch how Wazuh reacts</li>
+    </ul>
+
+    <p>This gives me practical experience with detection engineering, system monitoring, and security automation — not just theory.</p>
+</div>
+
+  <div class="content">
+    <h2>🧰 Lab Environment Prerequisites</h2>
+
+    <p>Before installing Wazuh, I already had the core infrastructure in place:</p>
+
+    <p>✅ A dedicated security server:</p>
+    <ul>
+        <li><strong>project-x-security-svr</strong></li>
+    </ul>
+
+    <p>✅ Fully working client VMs:</p>
+    <ul>
+        <li><strong>project-x-win-client</strong></li>
+        <li><strong>project-x-linux-client</strong></li>
+    </ul>
+
+    <p>✅ A Domain Controller:</p>
+    <ul>
+        <li><strong>project-x-dc</strong></li>
+    </ul>
+
+    <p>✅ Active Directory fully operational and synced</p>
+
+    <p>✅ All machines networked and able to communicate internally</p>
+
+    <p>This baseline setup ensured Wazuh could connect with and monitor all systems as soon as it was installed.</p>
+  </div>
+
+
+  <div class="content">
+    <h2>🧠 Challenge I Solved: Cross-VM Clipboard Sharing</h2>
+
+    <p>I hit a roadblock when I couldn’t copy-paste between Linux and Windows VMs — which made it frustrating to move commands and configs.</p>
+
+    <h3>🚫 Problem:</h3>
+    <ul>
+        <li>Guest Additions weren’t fully installed</li>
+        <li><code>VBoxClient --clipboard</code> wasn’t running</li>
+        <li>Clipboard sharing was disabled in VirtualBox settings</li>
+    </ul>
+
+    <h3>✅ Fix:</h3>
+    <ul>
+        <li>Manually mounted and installed <strong>VirtualBox Guest Additions</strong></li>
+        <li>Ran: <code>VBoxClient --clipboard</code></li>
+        <li>Enabled <strong>bidirectional clipboard</strong> in VM settings</li>
+        <li>Rebooted the VM</li>
+    </ul>
+
+    <p>After that, I was able to copy-paste freely between systems — a huge time-saver for building and configuring this lab.</p>
+</div>
+  
+<div class="content">
+    <h2>🛠️ Installing the Wazuh Stack</h2>
+
+    <h3>🔹 Step 1: Install Wazuh Server, Indexer & Dashboard</h3>
+    <p>On my security server, I logged in as <code>sec-user</code> and ran:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo apt install curl<br>
+        curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh &amp;&amp; sudo bash ./wazuh-install.sh -a -i
+    </div>
+
+    <p>This installed everything — the Wazuh Server (log processor), Indexer (storage engine), and Dashboard (UI).</p>
+
+    <p>After installation, I extracted the auto-generated admin credentials:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
+    </div>
+
+    <h3>🔹 Step 2: Access the Wazuh Dashboard</h3>
+    <p>I opened a browser inside the security server VM and visited:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        https://localhost
+    </div>
+
+    <p>After accepting the certificate warning, I logged in with the credentials from the file above and accessed the Wazuh Dashboard — ready to start managing agents and logs.</p>
+
+    <div class="image-container">
+        <img src="assets/images/waz2.png" alt="Wazuh Dashboard Login">
+    </div>
+    <div class="image-container">
+        <img src="assets/images/waz3.png" alt="Wazuh Dashboard Overview">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🧩 Deploying Wazuh Agents to All Lab Systems</h2>
+
+    <p>In order to get data into Wazuh, I had to deploy agents — lightweight software that sits on each endpoint (client or server) and forwards logs to the Wazuh Manager. These agents are responsible for capturing system activity, forwarding relevant logs, and enabling full visibility into the behavior of every machine in the environment.</p>
+
+    <p>Once deployed, Wazuh takes those logs and:</p>
+    <ul>
+        <li>Aggregates them centrally</li>
+        <li>Parses and normalizes the data (so I’m not dealing with messy or inconsistent formats)</li>
+        <li>Allows me to query, correlate, and respond based on the data being collected</li>
+    </ul>
+
+    <p>I deployed agents on all three of my core systems: the Windows client, the domain controller, and the Linux client.</p>
+
+    <h3>💻 Windows Client – project-x-win-client</h3>
+    <p>On the Windows workstation, I installed the agent using PowerShell. Here's the exact process I followed:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.2-1.msi -OutFile $env:tmp\wazuh-agent<br>
+        msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='10.0.0.10' WAZUH_AGENT_GROUP='default' WAZUH_AGENT_NAME='project-x-win-client'<br>
+        NET START WAZUH
+    </div>
+
+    <p>This silently installed the agent, registered it to my Wazuh Manager (10.0.0.10), and started the service. The agent began forwarding logs immediately after installation.</p>
+
+    <div class="image-container">
+        <img src="assets/images/age2.png" alt="Wazuh agent running on Windows client">
+    </div>
+
+    <p>Wazuh has been successfully integrated.</p>
+
+    <h3>🖥️ Domain Controller – project-x-dc</h3>
+    <p>I followed the same process for the domain controller. The only thing I changed was the agent name to reflect the hostname and its unique role in the environment:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        WAZUH_AGENT_NAME='project-x-dc'
+    </div>
+
+    <p>Installing the agent on the DC was important — it gives me visibility into AD events, user authentication, group policy changes, and other domain activity.</p>
+
+    <div class="image-container">
+        <img src="assets/images/win.png" alt="Wazuh agent installed on domain controller">
+    </div>
+
+    <h3>🐧 Linux Client – project-x-linux-client</h3>
+    <p>On my Ubuntu client, I manually downloaded and installed the .deb package:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.9.2-1_amd64.deb<br>
+        sudo WAZUH_MANAGER='10.0.0.10' WAZUH_AGENT_GROUP='default' WAZUH_AGENT_NAME='project-x-linux-client' dpkg -i ./wazuh-agent_4.9.2-1_amd64.deb<br>
+        sudo systemctl daemon-reload<br>
+        sudo systemctl enable wazuh-agent<br>
+        sudo systemctl start wazuh-agent
+    </div>
+
+    <p>After enabling and starting the service, the Linux agent also began reporting in real-time. This machine sends logs from key locations like <code>/var/log/auth.log</code>, <code>/var/log/secure</code>, and <code>/var/log/audit/audit.log</code> — which I’ll use for command tracking, login attempts, and auditing security events.</p>
+
+    <div class="image-container">
+        <img src="assets/images/lin2.png" alt="Wazuh agent running on Linux client">
+    </div>
+
+    <p>✅ After deploying all three agents, I confirmed that each one showed up in the Wazuh Dashboard under <strong>Agents → Connected</strong>. From here, I was ready to start organizing agents into groups and tuning log collection settings for better visibility and alerting.</p>
+
+    <div class="image-container">
+        <img src="assets/images/work.png" alt="Wazuh Dashboard showing connected agents">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🗂️ Creating Agent Groups in Wazuh</h2>
+
+    <p>To keep things organized, I created two agent groups in the Dashboard:</p>
+    <ul>
+        <li><strong>Linux Group</strong></li>
+        <li><strong>Windows Group</strong></li>
+    </ul>
+
+    <p>Then I assigned each machine to its respective group using:</p>
+    <p><strong>Server Management → Endpoint Groups → Assign Agents</strong></p>
+
+    <div class="image-container">
+        <img src="assets/images/confyes.png" alt="Custom agent.conf settings for Windows logs">
+    </div>
+
+    <p>This gave me flexibility to apply custom log configurations to each group separately.</p>
+</div>
+
+<div class="content">
+    <h2>📁 Custom Log Configuration for Windows</h2>
+    <p>Inside <code>agent.conf</code>, I added:</p>
+
+    <div class="image-container">
+        <img src="assets/images/winconfig.png" alt="Custom agent.conf settings for Windows logs">
+    </div>
+
+    <p>This gave me insight into Windows authentication events, software behavior, and system-level alerts — important for detecting common Windows-based attack techniques.</p>
+</div>
+
+<div class="content">
+    <h2>📁 Custom Log Configuration for Linux</h2>
+    <p>Inside <code>agent.conf</code>, I added:</p>
+
+    <div class="image-container">
+        <img src="assets/images/linconfig.png" alt="Custom agent.conf settings for Windows logs">
+    </div>
+
+    <p>These three logs were critical for understanding what's happening on my Linux machines:</p>
+
+    <ul>
+        <li><strong>auth.log</strong> – Captures client login attempts, SSH activity, sudo commands, and authentication failures.</li>
+        <li><strong>secure</strong> – Tracks privilege elevation, login changes, and sensitive service access.</li>
+        <li><strong>audit.log</strong> – Provides low-level system telemetry like syscalls, binary execution, and command histories.</li>
+    </ul>
+
+    <p>Together, these gave me complete visibility into what users were doing, which services were accessed, and what commands were being run on my Linux endpoints — essential for real threat investigation and forensic analysis.</p>
+</div>
+
+<div class="content">
+    <h2>✅ Snapshot + Ready for Attack Simulation</h2>
+
+    <p>Once all agents were online, logs were flowing, and alerts were showing in the dashboard, I took a snapshot of the Wazuh security server VM.</p>
+
+    <p>At this point, the SIEM was fully deployed and working — giving me a centralized place to monitor every system, detect threats, and plan out incident response strategies.</p>
+</div>
+
+ <div class="content">
+    <h2>🚀 What’s Next</h2>
+
+    <p>Now that Wazuh is fully set up and all systems are reporting, I’m ready to move into simulating attacks. I’ll be testing things like privilege escalation, brute-force login attempts, suspicious binaries, and malware behaviors — and seeing how Wazuh responds in real time.</p>
+</div>
+
+
+  <!-- Back and Next Buttons -->
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+  <a href="vulnerable_env.html" class="next-button">Next ➡</a>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop;
+      });
+    });
+  </script>
+
+</body>
