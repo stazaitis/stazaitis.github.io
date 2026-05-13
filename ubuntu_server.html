@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Ubuntu Server 22.04 | Cybersecurity Project</title>
+  <style>
+        /* Exact same CSS from your Windows 11 page */
+        body { 
+            font-family: Arial, sans-serif;
+            background: black;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        .navbar.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .title-section {
+            margin-top: 100px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .content h2 {
+            color: #00FF00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section-header-blue {
+            color: #00FFFF;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 12.5%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+                /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+        /* Remove underline from Next button */
+        .next-button {
+            text-decoration: none; /* This removes the underline */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .image-container-blue {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container-blue img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+  </div>
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1>Setup Ubuntu Server 22.04</h1>
+  </div>
+
+  <div class="content">
+      <h2>📧 Email Security Server Overview</h2>
+      <p>For this project, I set up Ubuntu Server 22.04 LTS as the foundation for an email security server that will run Postfix as a Mail Transfer Agent (MTA). While most people rely on services like Gmail or Microsoft 365, I wanted to build an email server from scratch to better understand how email works — and how to secure it.</p>
+      <p>Running a mail server today takes a lot of behind-the-scenes work — things like configuring DNS, preventing spam, and keeping your server’s IP reputation clean. It’s no surprise most people avoid it, but doing it manually gave me hands-on experience with all the moving parts.</p>
+  
+      <p>There are a bunch of security risks that come with hosting your own email server, including:</p>
+      <ul>
+          <li><strong>Open relay abuse</strong> – spammers using your server to blast junk mail</li>
+          <li><strong>Brute-force attacks</strong> – attackers trying to guess login credentials</li>
+          <li><strong>Spoofing & phishing</strong> – fake emails that look like they’re coming from your domain</li>
+          <li><strong>Data exposure</strong> – leaked emails or credentials if the server isn’t secured properly</li>
+          <li><strong>Malware distribution</strong> – infected attachments slipping through if you’re not scanning content</li>
+      </ul>
+  
+      <p>Setting this up gave me a solid understanding of mail flow and the security challenges that come with it — something I think is easy to overlook when using managed services.</p>
+  </div>
+
+  <div class="content">
+    <h2>Provisioning the Ubuntu Server</h2>
+    <p>I started by provisioning the Ubuntu server from an ISO and applying the baseline system configurations, similar to how I set up the Ubuntu Desktop earlier (just without a GUI).</p>
+
+    <div class="image-container">
+        <img src="assets/images/install.png" alt="Ubuntu Server Installation">
+    </div>
+</div>
+
+<div class="content">
+    <h2>Preparing the Server for AD Integration</h2>
+    <p>Before setting up the mail server, I needed to join the Ubuntu Server to Active Directory. Since <strong>realmd + SSSD</strong> isn’t compatible with Windows Server 2025 on Ubuntu, I used <strong>Winbind</strong> instead — the same method I used for connecting the Ubuntu Desktop and Security Server.</p>
+
+    <p>I created an AD account for <code>email-svr</code> by going into the main domain controller and using <strong>Active Directory Users and Computers</strong>, just like I did for the other machines earlier in the project. This allowed the Linux server to authenticate with the domain.</p>
+
+    <p>I also changed the <code>email-svr</code> network configuration from DHCP to a static IP address using <strong>NetPlan</strong>. This ensures reliable connectivity to the domain controller and avoids IP conflicts during testing.</p>
+
+    <div class="image-container">
+        <img src="assets/images/nett.png" alt="Static IP Configuration Using NetPlan">
+    </div>
+</div>
+
+<div class="content">
+    <h2>Resolving Network Issues Before Domain Join</h2>
+    <p>Before the domain join could succeed, I had to resolve some networking issues.</p>
+
+    <p>Initially, the server couldn’t ping the domain controller (<strong>10.0.0.5</strong>).</p>
+
+    <div class="image-container">
+        <img src="assets/images/host.png" alt="Ping Failure to Domain Controller">
+    </div>
+
+    <p>The ARP table showed that the machine couldn’t resolve the MAC address for either the gateway (<strong>10.0.0.1</strong>) or the domain controller. This meant the server was sending ARP requests but not receiving any responses. It didn’t know where to send packets!</p>
+
+    <div class="image-container">
+        <img src="assets/images/host2.png" alt="ARP Table Missing MAC Addresses">
+    </div>
+
+    <p>The fix was simply switching the network adapter to <strong>NAT Network</strong> in VirtualBox, which allowed ARP to function properly and restored connectivity to the domain controller.</p>
+
+    <div class="image-container">
+        <img src="assets/images/host3.png" alt="VirtualBox NAT Network Fix">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🔐 Samba Winbind AD Join Steps</h2>
+
+    <p>The next step was connecting the Ubuntu server to Active Directory using <strong>Samba Winbind</strong>. Since <code>realmd</code> + <code>SSSD</code> wasn’t compatible with Windows Server 2025, I transitioned to Winbind — the same method I used to connect the Ubuntu Desktop. This approach provided a more direct way to join Linux systems to AD, as shown in the previous section.</p>
+
+    <ol>
+        <li><strong>Updated the system:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo apt update
+            </div>
+        </div>
+
+        <li><strong>Installed required packages:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo apt install -y winbind libpam-winbind libnss-winbind \<br>
+                krb5-config krb5-user samba-dsdb-modules samba-vfs-modules
+            </div>
+        </div>
+
+        <li><strong>Backed up and edited the Samba config file:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.org
+            </div>
+        </div>
+
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo nano /etc/samba/smb.conf
+            </div>
+        </div>
+
+        <p>In the <code>[global]</code> section, I added:</p>
+        <pre style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; font-size: 16px; font-family: monospace; color: #00FF00; margin-bottom: 20px; overflow-x: auto;">
+[global]
+ kerberos method = secrets and keytab
+ realm = CORP.PROJECT-X-DC.COM
+ workgroup = CORP
+ security = ads
+ template shell = /bin/bash
+ winbind enum groups = Yes
+ winbind enum users = Yes
+ winbind separator = +
+ idmap config * : rangesize = 1000000
+ idmap config * : range = 1000000-19999999
+ idmap config * : backend = autorid
+        </pre>
+
+        <li><strong>Confirmed</strong> <code>winbind</code> appears in <code>/etc/nsswitch.conf</code> for both <code>passwd</code> and <code>group</code>.</li>
+
+        <li><strong>Enabled automatic home directory creation:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo pam-auth-update
+            </div>
+        </div>
+
+        <li><strong>Set DNS and domain info:</strong></li>
+        <ul>
+            <li><code>/etc/resolv.conf</code> → pointed to <strong>10.0.0.5</strong> (the DC)</li>
+            <li><code>/etc/hosts</code> → added <strong>corp.project-x-dc.com</strong></li>
+        </ul>
+
+        <li><strong>Joined the domain:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo net ads join -U Administrator
+            </div>
+        </div>
+
+        <li><strong>Restarted Winbind:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo systemctl restart winbind
+            </div>
+        </div>
+
+        <li><strong>Verified the connection:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                net ads info<br>
+                wbinfo -u
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="assets/images/wbinfo.png" alt="wbinfo output showing domain user">
+        </div>
+
+        <li><strong>Created <code>email-svr</code> AD account</strong> in the <code>Users</code> folder using:</li>
+        <ul>
+            <li><strong>Username:</strong> email-svr@corp.project-x-dc.com</li>
+            <li><strong>Password:</strong> @password123!</li>
+        </ul>
+
+        <li><strong>Restarted Winbind again:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo systemctl restart winbind<br>
+                wbinfo -u
+            </div>
+        </div>
+
+        <li><strong>Logged in as the domain user:</strong></li>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                sudo login<br>
+                CORP+email-svr
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="assets/images/dir.png" alt="Domain login with CORP+email-svr">
+        </div>
+
+        <p>After login, a new home directory was created and I verified domain group membership with:</p>
+        <div style="margin: 15px 0;">
+            <div style="background-color: black; padding: 15px; border: 2px solid #00FF00; border-radius: 7px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555;">
+                id
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="assets/images/id.png" alt="Output of id command showing domain groups">
+        </div>
+    </ol>
+
+    <p><strong>🎉 At this point:</strong> The Ubuntu mail server was successfully joined to the domain, authenticated, and ready for mail service configuration. Next up — Postfix!</p>
+</div>
+
+<div class="content">
+    <h2>🛠️ Snapshot Crash & AD Login Failure</h2>
+
+    <p>While working on the email server VM, I hit a pretty frustrating issue. I tried taking a snapshot in VirtualBox, but it caused a <strong>critical crash</strong> that shut down the entire VM.</p>
+
+    <p>My laptop (the host) logged a <strong>Kernel-Power Event 41</strong>, and afterward I saw disk warnings in Event Viewer — turns out the VM’s virtual disk might’ve been affected by <strong>storage issues</strong> on the host.</p>
+
+    <p>After rebooting, the Ubuntu server got stuck at the <strong>TTY login screen</strong>, and I couldn’t log in using the domain account (<code>CORP+email-svr</code>). Only the local account worked.</p>
+
+    <p>The error message <strong>"No logon servers available"</strong> made it clear the server couldn’t communicate with the domain controller anymore.</p>
+
+    <p>To fix it, I:</p>
+    <ul>
+        <li>Ran <code>chkdsk /f /r</code> on my laptop to repair the host drive</li>
+        <li>Double-checked the <code>.vdi</code> file and VirtualBox logs for corruption</li>
+        <li>Booted into the VM locally and confirmed disk space wasn't full</li>
+        <li>Eventually restored AD connectivity after rebooting and restarting <code>winbind</code></li>
+    </ul>
+
+    <p>Glad this didn’t result in a full VM loss, but it reminded me how important disk integrity is when snapshotting live environments.</p>
+</div>
+
+  <!-- Back and Next Buttons -->
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+  <a href="postfix.html" class="next-button">Next ➡</a>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop;
+      });
+    });
+  </script>
+
+</body>
+</html>

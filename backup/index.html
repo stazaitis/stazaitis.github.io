@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephen Stasaitis | Cybersecurity Portfolio</title>
+    <link rel="icon" type="image/png" href="https://your-logo-url.png">
+    <meta name="description" content="Cybersecurity Portfolio of Stephen Stasaitis">
+    <style>
+        /* General Styles */
+        body { 
+            font-family: Arial, sans-serif;
+            background: black;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow: hidden;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Matrix Background */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* Full-Width Navbar with Only Home Button */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-top: -10px;
+        }
+
+        /* Button Styles */
+        .button-container {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 20px;
+            margin: 10px;
+            color: black;
+            background: #00FF00;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #008000;
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Full-width Navbar with Only Home Button -->
+    <div class="navbar">
+        <a href="index.html" class="active">Home</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Stephen Stasaitis</h1>
+        <p>Cybersecurity Enthusiast | Ethical Hacker | Security Analyst</p>
+
+        <div class="button-container">
+            <a href="projects.html" class="btn">View My Projects</a>
+            <a href="resume.html" class="btn">See My Resume</a>
+            <a href="contact.html" class="btn">Contact Me</a>
+        </div>
+    </div>
+
+    <script>
+        // Matrix Rain Effect with Randomized Speeds
+        const canvas = document.getElementById("matrix-canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "01";
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize); // Random start positions
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // Fade effect
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00FF00"; // Neon green text
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                // Randomized falling speed
+                const speed = Math.random() * 5 + 2; // Each column has a different speed
+                drops[i] += speed;
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0; // Reset column at random intervals
+                }
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+    </script>
+
+</body>
+</html>

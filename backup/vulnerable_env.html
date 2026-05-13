@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configure a Vulnerable Environment | Cybersecurity Project</title>
+  <style>
+        /* Exact same CSS from your Windows 11 page */
+        body { 
+            font-family: Arial, sans-serif;
+            background: black;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        .navbar.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .title-section {
+            margin-top: 100px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .content h2 {
+            color: #00FF00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section-header-blue {
+            color: #00FFFF;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+    
+        .fullscreen-image {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .fullscreen-image img {
+            max-width: 95vw;
+            max-height: 90vh;
+            border: 2px solid #00FF00;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+        }
+        
+        .fullscreen-image .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 48px;
+            font-weight: bold;
+            color: #00FF00;
+            cursor: pointer;
+            z-index: 2100;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 12.5%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+                /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+        /* Remove underline from Next button */
+        .next-button {
+            text-decoration: none; /* This removes the underline */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .image-container-blue {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container-blue img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+  </style>
+</head>
+<body>
+  
+    <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+  </div>
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1>Configure a Vulnerable Environment</h1>
+  </div>
+
+  <div class="content">
+  <h2>📌 Network Topology Overview</h2>
+  <p style="font-size: 16px; color: #ffffff;">
+    This diagram shows the vulnerable enterprise environment I configured for red team testing. Each component is intentionally misconfigured — from insecure SSH and RDP settings to exposed services and phished credentials — in order to simulate realistic attack paths across the lab.
+  </p>
+
+  <div class="image-container">
+    <h3 style="text-align: center;">Vulnerable Lab Network Diagram</h3>
+    <p style="text-align: center; font-size: 16px; color: #cccccc; margin-top: -10px;">(Click to enlarge)</p>
+    <img id="topology-image" src="assets/images/vuln.drawio.png" alt="Vulnerable Network Diagram" onclick="openFullscreen()">
+  </div>
+
+  <div id="fullscreen-container" class="fullscreen-image" onclick="closeFullscreen()">
+    <span class="close">&times;</span>
+    <img id="fullscreen-image" src="assets/images/vuln.drawio.png" alt="Vulnerable Network Diagram">
+  </div>
+</div>
+
+<div class="content">
+    <h2>🧨 Setting Up a Vulnerable Environment</h2>
+    <p>In this part of the project, I’ll be applying insecure configurations across the Project-X environment.<br><br>
+    This includes default or insecure SSH passwords, phished credentials, an insecure WinRM service, no encryption, and insecure RDP access.</p>
+
+    <p>Detection integrations will come after this section.</p>
+</div>
+
+<div class="content">
+    <h2>🛠️ First Target: Project-X Email Server (Ubuntu 22.04 running Postfix)</h2>
+    <p>The first configurations I focused on were for the Project-X email server, running Ubuntu Server 22.04 LTS and Postfix.</p>
+</div>
+
+<div class="content">
+    <h2>🔥 Security Implications of a Poorly Configured Email Server</h2>
+    <p>Running a server with default configurations can introduce serious risks:</p>
+    <ul>
+        <li>Outdated and vulnerable software</li>
+        <li>Default settings that are easy to exploit</li>
+        <li>A bigger attack surface for threats like brute-force, phishing, or privilege escalation</li>
+    </ul>
+    <p>My goal is to apply security monitoring configurations later in Wazuh so I can get notified or alerted when specific suspicious activity happens — and catch an attacker right in their tracks.</p>
+</div>
+
+<div class="content">
+    <h2>🛠️ First Configurations: Enabling SSH on Email Server</h2>
+
+    <p>SSH is typically enabled on administrative servers because it makes remote login easy for administrators. Since this is an email server that routes and propagates email, if an attacker finds it online and sees SSH open, it immediately becomes a target.</p>
+
+    <p><strong>Steps:</strong><br>Enable the SSH server and make sure it runs on boot:</p>
+
+    <div style="display: inline-block; background-color: black; padding: 10px 15px; border: 2px solid #00FF00; border-radius: 8px; margin: 10px 0; text-align: left;">
+        <code style="color: #FF5733; font-family: monospace; font-size: 16px;">
+            sudo systemctl start ssh<br>
+            sudo systemctl enable ssh
+        </code>
+    </div>
+
+    <p>Verify SSH is running:</p>
+
+    <div style="display: inline-block; background-color: black; padding: 10px 15px; border: 2px solid #00FF00; border-radius: 8px; margin: 10px 0; text-align: left;">
+        <code style="color: #FF5733; font-family: monospace; font-size: 16px;">
+            sudo systemctl status ssh
+        </code>
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln1.png" alt="SSH Running on Email Server">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🚨 Applying Realistic Vulnerable Configurations</h2>
+    <p>Now it was time to apply some various vulnerable configurations that could realistically exist in the real world.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln2.png" alt="Vulnerable SSH Configuration Screenshot">
+    </div>
+
+    <p>Inside the SSH config file:</p>
+    <ul>
+        <li>Navigated to the <code>#PermitRootLogin</code> block</li>
+        <li>Uncommented the line and changed <code>prohibit-password</code> to <code>yes</code></li>
+        <li>Located the <code>PasswordAuthentication</code> line and uncommented it (if it was commented)</li>
+    </ul>
+
+    <p>Then I restarted the SSH service to apply the changes:</p>
+
+    <div style="background-color: black; color: #ff6666; border: 2px solid #00FF00; padding: 10px; width: fit-content; margin-top: 10px; margin-bottom: 10px; text-align: left;">
+        sudo systemctl restart ssh
+    </div>
+</div>
+
+<div class="content">
+    <h2>🔑 Setting a Weak Root Password</h2>
+    <p>After enabling root login, I set root’s password to a very simple, guessable password:</p>
+
+    <div style="background-color: black; color: #ff6666; border: 2px solid #00FF00; padding: 10px; width: fit-content; margin-top: 10px; margin-bottom: 10px; text-align: left;">
+        sudo passwd root
+    </div>
+
+    <p><strong>Password used:</strong> november</p>
+
+    <p>At this point, I was officially logged into the server as root.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln3.png" alt="Logged in as root screenshot">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🔥 Opening Firewall for SSH</h2>
+
+    <p>The final thing I did was enable the UFW firewall and allow port 22 for SSH traffic:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 15px 0;">
+        sudo ufw allow 22<br>
+        sudo ufw enable
+    </div>
+
+    <p>Now Postfix and SSH (port 22) were open on both IPv4 and IPv6, fully exposed.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln4.png" alt="Firewall open ports Postfix and SSH">
+    </div>
+</div>
+
+  
+<div class="content">
+    <h2>📋 Detection Integration</h2>
+    <p><strong>Detection Integration [project-x-email-svr]</strong> does not have the Wazuh agent installed.</p>
+    <p>This is intentional to demonstrate how the absence of detection controls can create a gap in identifying potentially malicious activity.</p>
+</div>
+
+<div class="content">
+    <h2>🖥️ Moving to the Next Machine: Project-X Linux Client (project-x-linux-client)</h2>
+
+    <p>Now it was time to move on to the next virtual machine and perform the same actions on the Project-X Linux Client.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln5.png" alt="Project-X Linux Client Setup">
+    </div>
+
+    <p>I performed the same steps as I did on the email server:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 15px 0;">
+        - Enabled SSH<br>
+        - Allowed password authentication<br>
+        - Permitted root login<br>
+        - Set the root password to <strong>november</strong>
+    </div>
+
+    <p>✅ The main difference was that the Linux client <strong>does have the Wazuh agent installed</strong>, so later, I could detect suspicious activities like brute-force login attempts.</p>
+</div>
+
+<div class="content">
+    <h2>📬 Establishing Email Communication Between Email Server and Linux Client</h2>
+
+    <p>Now I’m going to establish a connection between the email server and the Janed Linux client so we can route email between each other.</p>
+
+    <p>At this point, the <strong>email-svr</strong> can only route email to itself — it cannot yet deliver messages to other machines on the network.</p>
+</div>
+
+<div class="content">
+    <h2>📦 Installing Postfix on Linux Client</h2>
+
+    <p>I installed Postfix utilities and a client configuration on the Linux client:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; color: #FF5555; display: inline-block; margin-bottom: 20px;">
+        sudo apt install postfix mailutils -y
+    </div>
+
+    <p>During setup, I selected <strong>"Internet Site."</strong></p>
+
+    <p>This is where I can add some settings and customize where I want emails routed.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln6.png" alt="Postfix installation on Linux client">
+    </div>
+</div>
+
+<div class="content">
+    <h2>⚙️ Configuring Postfix</h2>
+
+    <p>I edited the <code>/etc/postfix/main.cf</code> file to add the following settings:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; font-size: 16px; font-family: monospace; color: #FF5555; display: inline-block; margin-bottom: 20px;">
+        mydomain = corp.project-x-dc.com<br>
+        mynetworks = 127.0.0.0/8 10.0.0.0/24<br>
+        home_mailbox = Maildir/<br>
+        virtual_alias_maps = hash:/etc/postfix/virtual
+    </div>
+</div>
+
+<div class="content">
+    <h2>❓ Why add 10.0.0.0/24 to mynetworks?</h2>
+
+    <p>It defines trusted networks that are allowed to relay mail through the server without requiring authentication.</p>
+
+    <p>This is the homelab IP address block that I established at the beginning of the project.</p>
+</div>
+
+<div class="content">
+    <h2>🏠 Setting Up Default Mail Directory</h2>
+
+    <p>Adding <code>home_mailbox = Maildir/</code> sets up the default email directory, where emails will be sent and stored for the Janed user.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln7.png" alt="Maildir Configuration in Postfix">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🔗 Creating Virtual Alias Maps</h2>
+
+    <div class="image-container">
+        <img src="assets/images/vuln8.png" alt="Postfix Virtual Alias Maps">
+    </div>
+
+    <p>I created a new configuration block called "virtual maps" to map various different email accounts:</p>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 20px 0;">
+        sudo nano /etc/postfix/virtual
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln9.png" alt="Editing Postfix Virtual File">
+    </div>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 20px 0;">
+        # email-svr@smtp.corp.project-x-dc.com janed
+    </div>
+
+    <div style="background-color: black; padding: 12px; border: 2px solid #00FF00; border-radius: 8px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin: 20px 0;">
+        sudo postmap /etc/postfix/virtual
+    </div>
+
+    <p>This file lets me map incoming emails to specific local users on the Linux system.</p>
+    <p>In this case, I mapped any emails coming to <strong>email-svr</strong> directly to <strong>Janed</strong>’s local account.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln10.png" alt="Virtual Alias Mapping to Janed User">
+    </div>
+
+    <p>I want to be able to receive emails from anywhere and have them land in the right inbox.</p>
+</div>
+
+<div class="content">
+    <h2>💾 Saving the File</h2>
+
+    <p>After saving the virtual alias mapping file, my next step was to create Jane’s mail or local directory where her email will be stored and routed to.</p>
+
+    <p>This way, when the email-svr sends an email to Janed, the message has a proper place to land.</p>
+</div>
+
+<div class="content">
+    <h2>📁 Setting Up Jane's Mail Directory</h2>
+
+    <p>I created Jane's Maildir structure with the necessary subfolders:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        mkdir -p ~/Maildir/{cur,new,tmp}
+    </div>
+
+    <p>Here, I made sure to give Jane user read, write, and execute permissions to her own Maildir, while making sure that groups or others couldn’t do anything with it.</p>
+
+    <p>The goal was to keep email private and properly secured to only the owner.</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        chmod -R 700 ~/Maildir
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln11.png" alt="Jane's Maildir Structure">
+    </div>
+</div>
+
+<div class="content">
+    <h2>🛠️ Setting Up Environment Variables for Email Access</h2>
+
+    <p>In order for Jane to interact with her incoming emails correctly, I needed to set a few environment variables. Specifically, I edited two key default files that are uploaded to Jane’s terminal session each time she opens a new shell:</p>
+
+    <ul>
+        <li><code>/etc/bash.bashrc</code></li>
+        <li><code>/etc/profile.d/mail.sh</code></li>
+    </ul>
+
+    <p>Here’s the command I ran to echo the new setting into both files:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        echo 'export MAIL=~/Maildir' | sudo tee -a /etc/bash.bashrc | sudo tee -a /etc/profile.d/mail.sh
+    </div>
+
+    <p>This export statement sets the <code>MAIL</code> environment variable to route properly to Jane's <code>Maildir</code>.</p>
+</div>
+
+<div class="content">
+    <h2>🔄 Sourcing the Environment Variable</h2>
+
+    <p>After editing the files, I sourced the environment variable immediately so it would take effect without rebooting:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        source /etc/profile.d/mail.sh
+    </div>
+
+    <p>Then, by entering <code>env</code> into the terminal, I confirmed that:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        MAIL=/home/janed/Maildir
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln12.png" alt="Environment variable MAIL correctly set to Maildir">
+    </div>
+
+    <p>✅ The environment was properly updated and ready to route email.</p>
+</div>
+  
+<div class="content">
+    <h2>📬 Allowing Email Traffic over SMTP</h2>
+
+    <p>Next, I added firewall rules to allow SMTP traffic (port 25), ensuring the Linux client could receive emails.</p>
+
+    <p>I updated UFW:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo ufw allow postfix
+    </div>
+
+    <p>And then restarted postfix:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo systemctl restart postfix
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/vuln13.png" alt="Postfix SMTP firewall rules and service restart">
+    </div>
+
+    <p>✅ The Linux client was now ready to accept incoming email traffic.</p>
+</div>
+
+<div class="content">
+    <h2>✉️ Sending and Receiving a Test Email</h2>
+
+    <p>I tested creating a test email from the email server to Janed’s Linux client.</p>
+
+    <p>The body of the email contained the message "This is a text message" and the subject was "Hello" — sent directly to <strong>janed@linux-client</strong>.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln14.png" alt="Sending a test email from the email server">
+    </div>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        echo "This is a text message" | mail -s "Hello" janed@linux-client
+    </div>
+
+    <p>I logged back into Janed’s client — and successfully received the test message!</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln15.png" alt="Receiving the test email on the Linux client">
+    </div>
+
+    <p>✅ Email routing was now fully operational between the email server and the Linux workstation.</p>
+</div>
+
+<div class="content">
+    <h2>🪟 Setting Up Vulnerabilities on Windows Machines</h2>
+
+    <p>After finishing the Linux setup, my next step was to configure vulnerabilities on the Windows systems.</p>
+</div>
+
+<div class="content">
+    <h2>🖥️ Enabling WinRM on Project-X Windows Client</h2>
+
+    <p>On the Project-X Windows 11 Enterprise client, I opened PowerShell as Administrator and logged in using the administrator credentials I created earlier.</p>
+
+    <p>I then entered the following commands to enable WinRM:</p>
+
+    <pre><code>powershell -ep bypass
+Enable-PSRemoting -force
+winrm quickconfig -transport:https
+Set-Item wsman:\localhost\client\trustedhosts *
+net localgroup "Remote Management Users" /add administrator
+Restart-Service WinRM</code></pre>
+
+    <p>✅ WinRM was now enabled — another major entry point for attackers.</p>
+</div>
+
+<div class="content">
+    <h2>🖥️ Enabling RDP on the Domain Controller</h2>
+
+    <p>For the next vulnerable configuration, I enabled Windows RDP (Remote Desktop Protocol) on the Domain Controller.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln16.png" alt="Enabling RDP on Domain Controller">
+    </div>
+
+    <p>This would allow domain users and administrators to log in remotely to the DC over RDP — another risk intentionally left open for the simulation.</p>
+</div>
+
+<div class="content">
+    <h2>📂 Creating an Emulated Sensitive File for Cyberattack Simulation</h2>
+
+    <p>To simulate a real-world exfiltration target, I created a new folder:</p>
+
+    <p><code>C:\Users\Administrator\Documents\ProductionFiles</code></p>
+
+    <p>Inside the <strong>ProductionFiles</strong> folder, I made a new document that included my Domain Controller password.</p>
+
+    <div class="image-container">
+        <img src="assets/images/vuln17.png" alt="Production Files and Secrets Document">
+    </div>
+
+    <p>This file would serve as the "flag" or "prize" when I later conduct the attack simulation. The goal is to be able to access and exfiltrate this <code>secrets.txt</code> file during my hands-on exercise.</p>
+</div>
+
+<div class="content">
+    <h2>⚡ Current Vulnerable Configuration State</h2>
+
+    <p>At this point, the following vulnerabilities were successfully applied across the Project-X network:</p>
+
+    <ul>
+        <li><strong>Insecure SSH configurations</strong></li>
+        <li><strong>Weak and phished credentials</strong></li>
+        <li><strong>Insecure WinRM service enabled</strong></li>
+        <li><strong>Insecure RDP access opened</strong></li>
+        <li><strong>No encryption between hosts</strong></li>
+    </ul>
+
+    <p>The environment was now intentionally exposed and vulnerable.</p>
+</div>
+
+<div class="content">
+    <h2>🛠️ Preparing the Attacker’s Staging Area on Kali Linux</h2>
+
+    <p>On my attacker Kali Linux machine, I created a new staging area to capture the <strong>secrets.txt</strong> file later during the simulated breach.</p>
+
+    <p>I also enabled SSH on Kali to allow remote access into the attacker's staging directory for file transfers.</p>
+</div>
+
+<div class="content">
+    <h2>✅ Closing Summary</h2>
+
+    <p>At this point, I had:</p>
+    <ul>
+        <li>Exposed multiple insecure configurations across Linux and Windows</li>
+        <li>Emulated sensitive data for exfiltration</li>
+        <li>Created a realistic vulnerable environment ready for attack</li>
+    </ul>
+
+    <p>In the next project phase, I’ll focus on setting up detections and alerts in Wazuh so I can analyze activity inside the network during the upcoming cyberattack simulation.</p>
+</div>
+
+
+  <!-- Back and Next Buttons -->
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+  <a href="vulnerable_env.html" class="next-button">Next ➡</a>
+
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let lastScrollTop = 0;
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", function () {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        navbar.classList.add("hidden");
+      } else {
+        navbar.classList.remove("hidden");
+      }
+      lastScrollTop = scrollTop;
+    });
+  });
+
+  function openFullscreen() {
+    document.getElementById("fullscreen-container").style.display = "flex";
+  }
+
+  function closeFullscreen() {
+    document.getElementById("fullscreen-container").style.display = "none";
+  }
+</script>
+
+</body>

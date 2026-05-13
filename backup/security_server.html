@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup Security Onion | Cybersecurity Project</title>
+  <style>
+        /* Exact same CSS from your Windows 11 page */
+        body { 
+            font-family: Arial, sans-serif;
+            background: black;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 15px 0;
+            border-bottom: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .navbar a {
+            color: #00FF00;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: #00FF00;
+            color: black;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+        }
+
+        .navbar.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .title-section {
+            margin-top: 100px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            color: #00FF00;
+            text-shadow: 2px 2px 15px rgba(0, 255, 0, 0.9);
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+            border: 2px solid #00FF00;
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .content h2 {
+            color: #00FF00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.8);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section-header-blue {
+            color: #00FFFF;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 12.5%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+                /* Next Button - Positioned Same as Back Button */
+        .next-button {
+            position: fixed;
+            bottom: 20px;
+            right: 12.5%; /* Matches back button positioning */
+            transform: translateX(50%);
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background: rgba(0, 255, 0, 0.6); /* Same transparency */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.9);
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        /* Hover effect to make it fully visible */
+        .next-button:hover {
+            background: rgba(0, 255, 0, 1);
+            color: white;
+            box-shadow: 0px 0px 15px rgba(0, 255, 0, 1);
+            opacity: 1;
+        }
+
+        /* Remove underline from Next button */
+        .next-button {
+            text-decoration: none; /* This removes the underline */
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FF00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .image-container-blue {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container-blue img {
+            width: 90%;
+            max-width: 1000px;
+            border: 2px solid #00FFFF;
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+  </style>
+</head>
+<body>
+
+
+<!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="active">Home</a>
+  </div>
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1>Security Server - Setup Ubuntu Desktop 22.04</h1>
+  </div>
+
+  <div class="content">
+    <h2>🔧 Provisioning the Security Server</h2>
+
+    <p>Instead of provisioning a brand new machine, I cloned my existing <strong>Ubuntu Desktop 22.04</strong> client VM to create the security server. This saved time and ensured consistency across my lab environment.</p>
+
+    <p>I named the clone <code>project-x-sec-box</code> and made a few configuration changes to repurpose it for security monitoring.</p>
+</div>
+
+<div class="content">
+    <h2>💻 Why a Dedicated Security Server?</h2>
+
+    <p>The goal of setting up a dedicated security server is to separate all the heavy-duty monitoring and analysis tools from the regular client machines. Security tools tend to eat up a lot of system resources — CPU, RAM, disk I/O — and running them on a shared system can slow everything down. Keeping them isolated on their own box makes sure nothing else gets impacted.</p>
+
+    <p>But performance is just one part of it. There’s also the security angle.</p>
+
+    <p>This server is going to receive log data from multiple client machines across the network. All that data gets aggregated into the <strong>Wazuh indexer</strong>, which I'll be using as the main open-source security platform. From there, Wazuh powers everything from threat detection and incident response to proactive defense and centralized security management.</p>
+
+    <p>As a client gets compromised or shows signs of suspicious behavior, Wazuh collects and surfaces that telemetry. It users the ability to query that data, identify threats early, and take action — whether that’s isolating the host, containing malware, or just flagging it for further investigation.</p>
+
+    <p>This setup allows for:</p>
+    <ul>
+        <li>✅ Real-time threat detection</li>
+        <li>✅ Proactive defense and threat hunting</li>
+        <li>✅ Efficient incident response</li>
+        <li>✅ Centralized visibility across the environment</li>
+    </ul>
+
+    <p>Ultimately, having this as a dedicated security server gives me full control to monitor, detect, prevent, and respond to security events — all in one place.</p>
+</div>
+
+<div class="content">
+    <h2>🛠️ Changing the Hostname & Creating a New Account</h2>
+
+    <p>After cloning, the new VM still had the old hostname and user account. I updated the hostname from <code>linux-client</code> to <code>sec-box</code> by editing <code>/etc/hostname</code> and rebooting to apply the change.</p>
+
+    <p>Then I created a new user account:</p>
+    <ul>
+        <li><strong>Username:</strong> sec-user</li>
+        <li><strong>Password:</strong> @password123! (default for this lab)</li>
+    </ul>
+
+    <p>I gave <code>sec-user</code> sudo privileges and verified access with a quick:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo whoami
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/neww.png" alt="Security Server Hostname and User Setup">
+    </div>
+  
+    <p>At this point, the box was customized and ready to be joined to the domain.</p>
+</div>
+
+<div class="content">
+    <h2>🌐 Connecting to Active Directory</h2>
+
+    <p>Since the cloned machine inherited all the domain join dependencies from the original Ubuntu client, I was able to join it to the domain with no issues.</p>
+
+    <p>First, I confirmed I could ping the domain controller (<strong>10.0.0.5</strong>) and the domain itself (<strong>corp.project-x-dc.com</strong>):</p>
+
+    <div class="image-container">
+        <img src="assets/images/new2.png" alt="Ping to Domain Controller and Domain Name">
+    </div>
+
+    <p>Then I used the following command to join the machine to Active Directory:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        sudo net ads join -U Administrator
+    </div>
+
+    <div class="image-container">
+        <img src="assets/images/new4.png" alt="Joining the Domain via Terminal">
+    </div>
+
+    <p>On the Domain Controller, I created the AD user account:</p>
+    <ul>
+        <li><strong>Username:</strong> secuser@corp.project-x-dc.com</li>
+    </ul>
+    <p>This was done using the <strong>Active Directory Users and Computers</strong> tool under the "Users" folder.</p>
+
+    <div class="image-container">
+        <img src="assets/images/dc.png" alt="Adding secuser in AD Users and Computers">
+    </div>
+
+    <p>I then restarted the <code>winbind</code> service, verified the user appeared in the directory using:</p>
+
+    <div style="background-color: black; padding: 12px; border: 1px solid #00FF00; border-radius: 5px; display: inline-block; font-size: 16px; font-family: monospace; color: #FF5555; margin-bottom: 15px;">
+        wbinfo -u
+    </div>
+
+    <p>And finally, I was able to successfully log in as <strong>secuser</strong>.</p>
+</div>
+
+<div class="content">
+    <h2>🧩 Domain Join Recap</h2>
+
+    <p>At this point, I've finished setting up the essentials for the security server:</p>
+
+    <ul>
+        <li>✅ Connected the box to <strong>Active Directory</strong></li>
+        <li>✅ Changed the hostname to <code>sec-box</code></li>
+        <li>✅ Created a new default user account: <strong>sec-user</strong></li>
+    </ul>
+
+    <p>After joining to the domain and restarting Winbind, I verified that <code>sec-user@corp.project-x-dc.com</code> was fully active and could log in with domain credentials.</p>
+
+    <div class="image-container">
+        <img src="assets/images/secuser.png" alt="sec-user domain account confirmed">
+    </div>
+  
+    <p>At this point I have connected our sec box to active directory, changed the hostname, and added a new default user called sec-user</p>
+    <p>From here, the system is ready to start receiving logs, alerts, and telemetry once Wazuh gets installed and configured in the next section.</p>
+</div>
+
+<!-- Back and Next Buttons -->
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+  <a href="wazuh.html" class="next-button">Next ➡</a>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lastScrollTop = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("hidden");
+        } else {
+          navbar.classList.remove("hidden");
+        }
+        lastScrollTop = scrollTop;
+      });
+    });
+  </script>
+
+</body>
